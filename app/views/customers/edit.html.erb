@@ -1,0 +1,30 @@
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li class="current"><%= link_to "Edytuj Profil", edit_customer_path(@customer) %></li>
+  </ul>
+</nav>
+          
+<!-- The content -->
+<section id="content">
+
+<h2>Edytuj Profil</h2>
+
+<%= simple_form_for(@customer) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email, :autofocus => true %>
+    <%= f.input :password, :hint => "leave it blank if you don't want to change it", :required => false %>
+    <%= f.input :password_confirmation, :required => false %>
+    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+</section>

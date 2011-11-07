@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>VideoQuiz - Admin</title>
+
+    <%= stylesheet_link_tag "admin/reset", "admin/visualize", "admin/datatables", "admin/buttons", "admin/checkboxes", "admin/inputtags", "admin/main" %>
+   
+    <!--[if lt IE 9]>
+    <%= stylesheet_link_tag "admin/ie" %>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="gradient">
+      <div id="stars">
+        <div id="container">
+        
+          <header>
+          
+            <!-- Logo -->
+            <h1 id="logo">VideoQuiz Panel Administracyjny</h1>
+          
+            <!-- User info -->
+            <div id="userinfo">
+              <div class="intro">
+                Witaj <%= current_customer.name %><br/>
+                Pomoc: kontakt@filmpoint.pl | 604 099 886
+              </div>
+            </div>
+          
+          </header>
+        
+          <!-- The application "window" -->
+          <div id="application">
+          
+            <!-- Primary navigation -->
+            <nav id="primary">
+              <ul>
+                <li>
+                  <a href="/quizzes">
+                    <span class="icon dashboard"></span>
+                    <span class="badge"><%= Quiz.count %></span>
+                    Quizy
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/quizzes/new">
+                    <span class="icon pencil"></span>
+                    Dodaj Quiz
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="/customers">
+                    <span class="icon tables"></span>
+                    <span class="badge"><%= Customer.count %></span>
+                    Klienci
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/customers/new">
+                    <span class="icon pencil"></span>
+                    Dodaj Klienta
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="/customers/<%= current_customer.id %>/edit">
+                    <span class="icon anchor"></span>
+                    Edytuj Profil
+                  </a>
+                </li>
+   
+              </ul>
+            
+            </nav>
+          
+            <%= yield %>
+
+	  </div>
+        
+          <footer id="copyright"><%= raw t("footer") %></footer>
+        </div>
+      </div>
+    </div>
+
+<%= javascript_include_tag "admin/excanvas", "admin/jquery", "admin/jquery.visualize", "admin/jquery.datatables", "admin/jquery.placeholder", "admin/jquery.selectskin", "admin/jquery.checkboxes", "admin/jquery.wymeditor", "admin/jquery.validate", "admin/jquery.inputtags", "admin/notifications", "admin/application" %>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li class="current"><a href="/customers">Klienci</a></li>
+  </ul>
+</nav>
+          
+<!-- The content -->
+<section id="content">
+
+  <h2>Wszyscy Klienci</h2>
+
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Klient</th>
+        <th>Email</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.email %></td>
+        <td>
+          <span class="button-group">
+            <%= link_to "Edytuj", edit_customer_path(c), :class=>"button icon edit" %>
+            <%= link_to "Usuń", "", :class=>"button icon remove danger" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</section>
+

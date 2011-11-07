@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title><%= t('title') %></title>
+
+<link rel="shortcut icon" href="<%= image_path('favicon.ico') %>"/>
+
+<%= stylesheet_link_tag "reset", "layout", "lightbox" %>
+<%= javascript_include_tag "landing/jquery-core", "landing/jquery-cycle", "landing/jquery-lightbox", "landing/wufoo" %>
+
+<!--[if IE 6]>
+<%= stylesheet_link_tag "ie6" %>
+<%= javascript_include_tag "landing/query-pngfix" %>
+<%= javascript_include_tag "landing/jquery-config-ie6" %>
+<![endif]-->
+<!--[if IE 7]>
+<%= stylesheet_link_tag "ie7" %>
+<![endif]-->
+
+<meta name="Description" content="<%= t('description') %>" />
+<meta name="Keywords" content="video, marketing, videomarketing" />
+
+<!-- fb meta -->
+
+<meta property="og:title" content="<%= t('title') %>"/>
+<meta property="og:type" content="company"/>
+<meta property="og:url" content="http://www.filmpoint.pl/videoquiz"/>
+<meta property="og:image" content="http://www.filmpoint.pl/filmpoint-logo-for-fb.png"/>
+<meta property="og:site_name" content="VideoQuiz | Filmpoint Videomarketing"/>
+<meta property="og:description" content="<%= t('description') %>"/>
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1&appId=260842760622698";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- splash -->
+<div id="in-splash-container">
+  <div class="in-splash">
+    <div class="in-splash-content">
+        <div class="in-splash-left">
+          <!-- splash text -->
+          <h1><%= t('description') %></h1>	 	   
+	  <p>Proste. Niedrogie. Niesamowicie skuteczne w zwiększaniu sprzedaży.<br />
+          Najwyższa jakość od studia filmowego <a href="http://filmpoint.pl">Filmpoint.pl</a>.</p>	   
+          <!-- /splash text -->
+        </div>
+        <!-- splash image -->
+    	<span class="in-splash-right">
+	<iframe src="http://player.vimeo.com/video/31538213?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="460" height="279" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe></span>
+        <!-- /splash image -->
+        <!-- splash buttons -->
+        <span class="in-splash-buttons">
+            <span class="splash-button"><a href="#contact">Zamów Teraz</a></span>
+            <span class="splash-link"><a href="#demo">Zobacz Demo</a></span>
+        </span>
+        <!-- /splash buttons -->
+    </div>
+  </div>
+</div>
+<!-- /splash -->
+
+<!-- header -->
+<div id="ge-header-container">
+  <div class="ge-header">
+  	<!-- logo -->
+    <div class="ge-logo"><a href="http://filmpoint.pl"><img src="images/landing/ge-logo.png" alt="Autopilot" width="250" height="39" /></a></div>
+	<!-- /logo -->
+    <!-- phone -->
+    <div class="ge-phone">Zapytaj: +48 604 099 886</div>
+    <!-- /phone -->
+  </div>
+</div>
+<!-- /header -->
+
+<!-- benefits -->
+<div id="in-benefits-container">
+  <div class="in-benefits">
+    <ul>
+      <!-- benefit item -->
+      <li>
+        <span class="benefits-icon"><img src="/images/landing/benefits/benefits-001.png" alt="example" width="48" height="48" /></span>
+        <div class="benefits-text">
+      	  <h2>Lepsza Komunikacja</h2>
+          <p>Video najskuteczniej przedstawia ofertę.</p>
+        </div>
+      </li>
+      <!-- /benefit item -->
+      <li>
+        <span class="benefits-icon"><img src="/images/landing/benefits/benefits-002.png" alt="example" width="48" height="48" /></span>
+        <div class="benefits-text">
+      	  <h2>Wirusowa Promocja</h2>
+          <p>Facebook jest ultra-popularny.</p>
+        </div>
+      </li>
+      <li class="endbenefits">
+        <span class="benefits-icon"><img src="/images/landing/benefits/benefits-003.png" alt="example" width="48" height="48" /></span>
+        <div class="benefits-text">
+      	  <h2>Większa Sprzedaż</h2>
+          <p>Kupony błyskawicznie pobudzają sprzedaż.</p>
+        </div>
+      </li>
+    
+    </ul>
+    <div class="clear"></div>
+  </div>
+</div>
+<!-- /benefits -->
+
+<!-- demo -->
+<div class="in-demo-container">
+  <div class="in-demo">
+
+   <div class="left">
+     <iframe width="560" height="315" src="http://www.youtube.com/embed/ZnlPgo9TaGo?rel=0" frameborder="0" allowfullscreen></iframe>
+   </div>
+   
+   <div class="right">
+     <h2><a name="demo"><span>1</span>Zobacz video</a></h2>
+	 <p>Realizujemy profesjonalny film opowiadający o Twojej firmie. Może przyjąć formę filmu wizerunkowego lub
+	 zwariowanego filmu wiralowego. Poprowadzimy Cię przez wszystkie etapy &ndash; od scenariusza
+	 po produkcję<br /> i promocję.</p>
+	 <h2><span>2</span>Odpowiedz na pytanie</h2>
+	 <p>Po skończeniu video pojawia się pytanie, na które klient musi odpowiedzieć, żeby dostać kupon rabatowy. Jeśli nie zna odpowiedzi
+	 to pyta swoich znajomych na Facebooku i Twitterze co rozprzestrzenia informację<br /> o Twoim VideoQuizie.</p>
+	 <h2><span>3</span>Wygraj rabat</h2>
+	 <p>Klient wygrywa kupon rabatowy zapisując się przy okazji do Twojego newslettera. Pobudzasz sprzedaż<br /> i rozbudowujesz
+	 swoją listę mailingową!</p>
+   </div>
+  </div>
+</div>
+<!-- /demo -->
+
+<!-- pricing -->
+<div class="in-pricing-container">
+    <h2>Elastyczny Cennik</h2>
+	<h3>49 zł netto za każde 100 kuponów rabatowych <span>+</span> opracowanie scenariusza <span>+</span> produkcja filmu</h3> 
+	<h2>Zniżka 10 zł netto za pierwsze 100 kuponów jeśli zalajkujesz:</h2>
+    <div class="fb-like" data-href="http://facebook.com/filmpoint" data-send="false" data-width="450" data-show-faces="true"></div>
+</div>
+<!-- /pricing -->
+
+<!-- testimonials -->
+<div id="in-testimonials-container">
+  	<ul class="in-testimonials">
+      <!-- testimonial item -->
+      <li> 
+        <span class="testimonial-logo"><img src="/images/landing/testimonials/logo-mepi.jpg" alt="example" width="138" height="52" /></span> 
+        <span class="testimonial-text">
+        &quot;VideoQuiz zwiększył sprzedaż w Mepi.pl o <strong>30%</strong> w ciągu kilku dni.&quot;<br />
+		<span>&ndash; Bartosz Barłowski, <a href="http://mepi.pl">Mepi.pl</a></span>
+        </span>
+      </li>
+      <!-- /testimonial item
+      <li>
+        <span class="testimonial-logo"><img src="images/testimonials/logo-002.gif" alt="example" width="138" height="52" /></span>
+        <span class="testimonial-text">
+        Najepiej wydane pieniądze na reklamę. Zapowiada się u nas <strong>rekordowy grudzień</strong>!<br />
+		<span>&ndash; Jacek Rycharski, Sklep Gosia</span>
+        </span>
+      </li>
+	   -->
+    </ul>
+</div>
+<!-- /testimonials -->
+
+<!-- quote -->
+<div id="in-quote-container">
+  <div class="in-quote">
+    <div class="quote"> 
+      <div class="quote-text">
+        <!-- contact details -->
+        <h2><a name="contact">Zamów Teraz</a></h2>
+        <p>Opowiedz nam o swoim biznesie. My zaproponujemy, co możemy dla Ciebie zrobić.<br /><br />
+          +48 604 099 886<br />
+          <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a><br /><br />
+          Filmpoint Videomarketing<br />
+          ul. Dąbrowskiego 188/1<br />
+		  60-594 Poznań<br />
+		  NIP: 782-246-15-41<br />
+		  REGON: 340576248</p>
+        <!-- /contact details -->
+      </div> 
+        <div class="quote-form">
+		
+		<!-- contact form -->
+		<form id="form6" name="form6" autocomplete="off" enctype="multipart/form-data" method="post" novalidate action="https://filmpoint.wufoo.com/forms/w7x2r7/#public">
+		<fieldset>
+          <div class="form-left">
+            <label for="Field7">Imię Nazwisko <span>*</span></label>
+			<input id="Field7" name="Field7" type="text" class="field text medium" value="" maxlength="255" tabindex="1" onkeyup="" required />
+          </div> 
+          <div class="form-right">
+            <label for="Field4">Email <span>*</span></label>
+		    <input id="Field4" name="Field4" type="email" spellcheck="false" class="field text medium" value="" maxlength="255" tabindex="2" required /> 
+          </div>
+          <label for="Field5">Zapytanie <span>*</span></label>
+		  <textarea id="Field5" name="Field5" class="field textarea medium" spellcheck="true" rows="10" cols="50" tabindex="3" required ></textarea>
+		  <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit"/>
+        </fieldset>
+		
+		<div class="hide">
+			<textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+			<input type="hidden" id="idstamp" name="idstamp" value="zlMkgqmWyt0/ztRD/r+wFCL3lxsHfpGD91YcnZFp5LI=" />
+		</div>
+		
+		</form>
+        <!-- /contact form -->
+      </div> 
+    </div>
+    <div class="screenshots">
+      <!-- screenshots -->
+      <ul class="gallery">
+        <!-- screenshot item -->
+        <li> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-001.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-001.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+        <!-- /screenshot item -->
+        <li class="endscreenshot"> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-002.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-002.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+        <li> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-003.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-003.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+        <li class="endscreenshot"> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-004.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-004.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+        <li> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-005.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-005.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+        <li class="endscreenshot"> 
+          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
+          <a href="images/screenshots/screenshot-006.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-006.jpg" alt="example" width="138" height="76" /></a> 
+        </li>
+      </ul>
+      <!-- /screenshots -->
+    </div>
+  </div>
+</div>
+<!-- /quote -->
+
+<!-- clients -->
+<div id="in-clients-container">
+
+
+
+
+  <div class="in-clients">
+    <h3>Klienci studia filmowego Filmpoint Videomarketing to ambitne firmy różnych branż i wielkości.</h3>
+    <!-- client logos -->
+    <ul>
+      <li><img src="/images/landing/clients/mars-logo.png" alt="example" width="116" height="67" /></li>
+      <li><img src="/images/landing/clients/multikino-logo.png" alt="example" width="116" height="67" /></li>
+      <li><img src="/images/landing/clients/nokia-logo.png" alt="example" width="116" height="67" /></li>
+      <li><img src="/images/landing/clients/sferis-logo.png" alt="example" width="116" height="67" /></li>
+      <li><img src="/images/landing/clients/vitalia-logo.png" alt="example" width="116" height="67" /></li>
+      <li><img src="/images/landing/clients/maxroy-logo.png" alt="example" width="116" height="67" /></li>
+      <li class="endclients"><img src="/images/landing/clients/undp-logo.png" alt="example" width="116" height="67" /></li>
+    </ul>
+    <!-- /client logos -->
+  </div>
+</div>
+<!-- /clients -->
+
+<!-- footer -->
+<div id="ge-footer-container">
+  <div class="ge-footer"> 
+    <div class="ge-calltoaction">
+      <!-- call to action -->
+      <h4>Skontaktuj się do 15 listopada, a kilka pomysłów na scenariusz dostaniesz za darmo!</h4>
+      <p>Promocja dotyczy wszystkich klientów, którzy złożą zamówienie na VideoQuiz poprzez powyższy formularz kontaktowy, <br />
+	  emailem: <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a> lub telefonicznie: +48 604 099 886. Jesteśmy dostępni 24/7.</p>
+      <!-- /call to action -->
+    </div> 
+    <!-- call to action button -->
+    <span class="ge-calltoaction-button"><a href="#contact">Zamów Teraz</a></span>
+    <!-- /call to action button -->
+    <div class="clear"></div>
+    <div class="ge-copyright"> 
+      <!-- copyright -->
+      <ul class="copyright">
+        <li class="copyrightstart"><%= raw t("footer") %></li>
+		<li class=""><a href="http://filmpoint.pl">Strona Główna Filmpoint</a></li>
+		<li class=""><%= link_to "Panel Administracyjny", quizzes_path %></li>
+      </ul>
+      <!-- /copyright -->
+      <!-- social -->
+      <ul class="socialmedia"> 
+        <li><a href="http://facebook.com/filmpoint"><img src="/images/landing/social/icon-facebook.png" alt="Facebook" width="16" height="16" /></a></li>
+        <li><a href="http://vimeo.com/filmpoint"><img src="/images/landing/social/icon-vimeo.png" alt="Vimeo" width="16" height="16" /></a></li>
+      </ul>
+      <!-- /social -->
+    </div> 
+  </div>
+</div>
+<!-- /footer -->
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$(".gallery a[rel^='prettyPhoto']").prettyPhoto({animationSpeed:'fast',slideshow:10000, theme: 'autopilot'});
+});
+</script>
+
+<!-- google analytics -->
+
+		<script type="text/javascript">var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-22756989-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li class="current"><a href="/quizzes">Quizy</a></li>
+  </ul>
+</nav>
+          
+<!-- The content -->
+<section id="content">
+
+  <h2>Wszystkie Quizy</h2>
+
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Quiz</th>
+        <th>Klient</th>
+        <th>Kupony</th>
+        <th>Data</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @quizzes.each do |q| %>
+      <tr>
+        <td><%= q.name %></td>
+        <td><%= q.customer.name %></td>
+        <td><%= "87/100" %></td>
+        <td><%= q.created_at %></td>
+        <td>
+          <span class="button-group">
+            <%= link_to "Pokaż", q, :class=>"button icon arrowright" %>
+            <%= link_to "Edytuj", edit_quiz_path(q), :class=>"button icon edit" %>
+            <%= link_to "Usuń", "", :class=>"button icon remove danger" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</section>
+

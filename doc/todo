@@ -1,0 +1,40 @@
+- answers jako nested form
+- szerokość dopasowana do fejsa
+- facebook meta test / facebook thumb
+
+=============
+
+- generowanie kodów / +100 i wysyłanie ich po kolei winnersom
+- eksport danych do csv
+- eksport kodów do csv
+
+- zablokowanie zakladki reward do czasu poprawnej odpowiedzi
+	- http://flowplayer.org/tools/demos/tabs/wizard.html
+- komunikat gdy klikat zakladke reward ale nie odpowiedzial na pytanie
+
+- gdy gracz wybral zla odpowiedz -> przycisk robi sie czerwony - bg img z napisem try again
+
+- blokada - winner nie moze wygrac wielu kodow wpisujac ten sam mail
+	- ajax komunikaty gdy wpisal mail (gdy juz dostal kod - fail, inaczej - success)
+- mail z kodem do winnersa gdy wpisze mail
+- email field - walidacja, żeby wpisywane maile były popranwe (bez polskich znaków, kropka w domenie)
+
+
+
+later
+- ikonka info
+- dodaj klienta
+- angielska wersja jezykowa do wyboru
+- jwplayer + google anal + musisz obejrzec video + automatyczny redirect do nastepnej zakladki
+- arcade game - szansa na wiekszy rabat ???
+- samodzielne zakladanie i adminiostrowanie kontem przez klienta
+- samodzielnie kupowanie paypalem wiekszego limitu kuponów / większej ilości wygenerowanych kuponów
+- gdy gracz wybral zla odpowiedz -> musi spróbować ponownie, ale jutro
+- losowe wybieranie pytań
+
+
+design aplikacji
+design strony sprzedażowej
+
+model biznesowy:
+- free app + 29$/ 100 kuponów

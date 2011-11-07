@@ -1,0 +1,48 @@
+<!--
+
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li class="current"><%= link_to "Quiz: #{@quiz.name}", @quiz %></li>
+    <li><%= link_to "Podgląd", preview_quiz_path(@quiz) %></li>
+    <li><%= link_to "Edytuj", edit_quiz_path(@quiz) %></li>
+  </ul>
+</nav>
+          
+<!-- The content -->
+<section id="content">
+
+<h2>Quiz: <%= @quiz.name %></h2>
+
+<%= link_to "Wygeneruj 100 nowych kuponów", "", :class => "button icon loop" %>
+<%= link_to "Pobierz emaile", "", :class => "button icon arrowdown" %>
+<%= link_to "Pobierz kupony", "", :class => "button icon arrowdown" %>
+
+<h2>Kupony (77/100):</h2>
+
+ <table class="datatable">
+    <thead>
+      <tr>
+        <th>Kupon</th>
+        <th>Email</th>
+        <th>Data odebrania</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>123ssas</td>
+        <td>asdasd@wp.pl</td>
+        <td>12.10.2011 13:33</td>
+      </tr>
+      <tr>
+        <td>123ssas</td>
+        <td>Kupon nieodebrany</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</section>
+

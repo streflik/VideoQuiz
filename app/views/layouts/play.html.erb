@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t("app") %>: <%= @quiz.name %> - <%= @quiz.reward %></title>
+  <%= stylesheet_link_tag "reset", "play" %>
+  <%#= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+
+  <!-- include the Tools -->
+  <script src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script>
+ 
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=239856742727148";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="play">
+  <%= yield %>
+</div>
+
+<!-- This JavaScript snippet activates those tabs -->
+<script>
+
+// perform JavaScript after the document is scriptable.
+$(function() {
+	// setup ul.tabs to work as tabs for each div directly under div.panes
+	$("ul.tabs").tabs("div.panes > div");
+});
+</script>
+
+<!-- facebook meta tags -->
+
+<meta property="og:title" content="<%= @quiz.name %> - <%= @quiz.reward %>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content=""/> <!-- todo -->
+<meta property="og:url" content="<%= @quiz.landing_page %>"/> <!-- nie jestem pewien czy nie nadpisuje meta -->
+<meta property="og:site_name" content="VideoQuiz"/>
+<meta property="og:description" content="<%= t('fb.description', :reward => @quiz.reward) %>"/>
+
+</body>
+</html>

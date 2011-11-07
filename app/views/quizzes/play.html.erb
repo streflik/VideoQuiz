@@ -1,0 +1,81 @@
+<ul class="tabs">
+	<li><a href="#"><%= t("play.video") %></a></li>
+	<li><a href="#"><%= t("play.question") %></a></li>
+	<li><a href="#"><%= t("play.reward", :reward => @quiz.reward) %></a></li>
+        <p><%= raw t("coupons_left", :number => @quiz.coupons_left) %></p>
+</ul>
+
+<div class="flash">
+</div>
+
+<div class="panes">
+
+<!-- video -->
+
+  <div class="pane video">
+    <iframe width="640" height="360" src="http://www.youtube.com/embed/<%= @quiz.yt_id%>" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+<!-- question -->
+
+  <div class="pane question">
+
+    <h2><%= @quiz.question %></h2>
+
+    <ul>
+      <li><%= link_to "Answer 1" %></li>
+      <li><%= link_to "Answer 2" %></li>
+      <li><%= link_to "Answer 3" %></li>
+    </ul>
+
+    <div class="share">
+      <h3><%= t("play.share") %></h3>  
+
+<div class="centerer">
+
+<div class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @quiz.landing_page %>" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+
+<div class="fb-like" data-href="<%= @quiz.landing_page %>" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false"></div>
+
+</div>
+
+    </div>
+
+  </div>
+
+<!-- reward -->
+<!-- pojawia się gdy poprawna odpowiedź -->
+<!-- gdy kliknie bez odpowiedzi poprawnej na tabs to pojawia sie komunikat "musisz poprawnie odpowiedziec!" -->
+
+  <div class="pane reward">
+
+    <h2><%= t("play.winner", :reward => @quiz.reward) %></h2>
+    <p><%= t("play.newsletter") %></p>
+   
+    <%= simple_form_for([@quiz, Win.new]) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="inputs">
+        <%= f.input :email, :autofocus => true, :label => false, :input_html => {:value => t("play.default_mail")} %>
+      </div>
+
+      <div class="actions">
+        <%= f.button :submit, t("play.send_coupon") %>
+      </div>
+    <% end %>
+
+<div class="like">
+<h3><%= t("play.like") %></h3>
+
+<div class="fb-like" data-href="<%= @quiz.fb_page %>" data-send="false" data-width="450" data-show-faces="true"></div>
+
+</div>
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
