@@ -2,8 +2,7 @@
 
 <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :name %>
+    <div class="first"><%= f.input :name %></div>
     <%= f.association :customer, :label_method => :name, :value_method => :id, 
 	:collection => @customers, :prompt => false %>
     <%= f.input :yt_id %>
@@ -12,11 +11,8 @@
     <%= f.input :fb_page %>
     <%= f.input :landing_page %>
     <%= f.input :question %>
-    # answers
-  </div>
+    <div class="last"># answers</div>
 
-  <div class="actions">
     <%= f.button :submit %>
-  </div>
 
 <% end %>

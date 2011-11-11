@@ -1,8 +1,8 @@
 <ul class="tabs">
-	<li><a href="#"><%= t("play.video") %></a></li>
-	<li><a href="#"><%= t("play.question") %></a></li>
-	<li><a href="#"><%= t("play.reward", :reward => @quiz.reward) %></a></li>
-        <p><%= raw t("coupons_left", :number => @quiz.coupons_left) %></p>
+	<li><a href="#">Zobacz video</a></li>
+	<li><a href="#">Odpowiedz na pytanie</a></li>
+	<li><a href="#">Wygraj <%= @quiz.reward %></a></li>
+        <p>Zostało: <span class="number"><%= @quiz.coupons_left %></span> kuponów</p>
 </ul>
 
 <div class="flash">
@@ -29,7 +29,7 @@
     </ul>
 
     <div class="share">
-      <h3><%= t("play.share") %></h3>  
+      <h3>Problem? Zapytaj teraz swoich znajomych:</h3>  
 
 <div class="centerer">
 
@@ -49,23 +49,23 @@
 
   <div class="pane reward">
 
-    <h2><%= t("play.winner", :reward => @quiz.reward) %></h2>
-    <p><%= t("play.newsletter") %></p>
+    <h2>Gratulacje! Wygrałeś <%= @quiz.reward %>!</h2>
+    <p>Zapisz się do newslettera poniżej, aby natychmiast dostać kupon:</p>
    
     <%= simple_form_for([@quiz, Win.new]) do |f| %>
       <%= f.error_notification %>
 
       <div class="inputs">
-        <%= f.input :email, :autofocus => true, :label => false, :input_html => {:value => t("play.default_mail")} %>
+        <%= f.input :email, :autofocus => true, :label => false, :input_html => {:value => "Wpisz twój email" } %>
       </div>
 
       <div class="actions">
-        <%= f.button :submit, t("play.send_coupon") %>
+        <%= f.button :submit, "Wyślij TERAZ mój kupon" %>
       </div>
     <% end %>
 
 <div class="like">
-<h3><%= t("play.like") %></h3>
+<h3>Polub nas na Facebooku:</h3>
 
 <div class="fb-like" data-href="<%= @quiz.fb_page %>" data-send="false" data-width="450" data-show-faces="true"></div>
 

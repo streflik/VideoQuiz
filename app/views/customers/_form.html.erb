@@ -1,0 +1,17 @@
+<%= simple_form_for(@customer) do |f| %>
+
+    <%= f.error_notification %>
+
+    <div class="first"><%= f.input :first_name %></div>
+    <%= f.input :last_name %>
+    <% unless @current_action == "new" %><div class="last"><% end %>
+    <%= f.input :email, :autofocus => true %>
+    <% unless @current_action == "new" %></div><% end %>
+    <% if @current_action == "new" %>
+    <%= f.input :password, :hint => "leave it blank if you don't want to change it", :required => false %>
+    <div class="last"><%= f.input :password_confirmation, :required => false %></div>
+    <% end %>
+
+    <%= f.button :submit %>
+
+<% end %>

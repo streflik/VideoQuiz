@@ -1,16 +1,11 @@
-<!-- Secondary navigation -->
-<nav id="secondary">
-  <ul>
-    <li><%= link_to "Quiz: #{@quiz.name}", @quiz %></li>
-    <li><%= link_to "Podgląd", play_quiz_path(@quiz) %></li>
-    <li class="current"><%= link_to "Edytuj", edit_quiz_path(@quiz) %></li>
-  </ul>
-</nav>
+<% title "Edytuj" %>
+
+<%= render :partial => "quizzes/shared/nav" %>
           
 <!-- The content -->
 <section id="content">
 
-<h2>Edytuj Quiz</h2>
+<h2><%= yield(:title) %></h2>
 
 <%= render 'form' %>
 

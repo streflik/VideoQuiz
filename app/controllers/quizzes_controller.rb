@@ -4,7 +4,6 @@ class QuizzesController < ApplicationController
   before_filter :verify_admin, :except => [:play]
   before_filter :find_quiz, :except => [:new, :create, :index]
   before_filter :find_customers, :only => [:new, :create, :edit, :update]
-  layout "admin", :except => [:play]
 
   def play
     render :layout => "play"

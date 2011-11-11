@@ -1,14 +1,16 @@
+<% title "Quizy" %>
+
 <!-- Secondary navigation -->
 <nav id="secondary">
   <ul>
-    <li class="current"><a href="/quizzes">Quizy</a></li>
+    <li class="current"><a href="/quizzes"><%= yield(:title) %></a></li>
   </ul>
 </nav>
           
 <!-- The content -->
 <section id="content">
 
-  <h2>Wszystkie Quizy</h2>
+  <h2><%= yield(:title) %></h2>
 
   <table class="datatable">
     <thead>

@@ -38,6 +38,10 @@ http://github.com/necolas/css3-github-buttons
     *display: inline; 
 }
 
+.logincontainer .button {
+  margin-left:35%
+} 
+
 .button:hover,
 .button:focus,
 .button:active,

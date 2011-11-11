@@ -1,14 +1,16 @@
+<% title "Klienci" %>
+
 <!-- Secondary navigation -->
 <nav id="secondary">
   <ul>
-    <li class="current"><a href="/customers">Klienci</a></li>
+    <li class="current"><a href="/customers"><%= yield(:title)%></a></li>
   </ul>
 </nav>
           
 <!-- The content -->
 <section id="content">
 
-  <h2>Wszyscy Klienci</h2>
+  <h2><%= yield(:title)%></h2>
 
   <table class="datatable">
     <thead>

@@ -1,27 +1,24 @@
-<!-- Secondary navigation -->
-<nav id="secondary">
-  <ul>
-    <li><%= link_to "Quiz: #{@quiz.name}", @quiz %></li>
-    <li class="current"><%= link_to "Podgląd", preview_quiz_path(@quiz) %></li>
-    <li><%= link_to "Edytuj", edit_quiz_path(@quiz) %></li>
-  </ul>
-</nav>
+<% title "Podgląd" %>
+
+<%= render :partial => "quizzes/shared/nav" %>
           
 <!-- The content -->
 <section id="content">
 
 <div class="tab" id="maintab" style="display: block; height:500px">
 
-<h2>Podgląd</h2>
+<h2><%= yield(:title) %></h2>
 
 <div class="column left third">
   <h3>Instrukcje</h3>
   <p>Wklej poniższy kod na dowolnej stronie internetowej.</p>
-  <pre>&lt;iframe src="<%= play_quiz_url(@quiz) %>" width="640" height="450px"&gt;</pre>
+  <pre>&lt;iframe src="<%= play_quiz_url(@quiz) %>" width="640" height="392"&gt;</pre>
 </div>
 
 <div class="column right twothird">
-  <iframe src="<%= play_quiz_path(@quiz) %>" width="640" height="450"></iframe>
+  <div style="padding-left:40px">
+    <iframe src="<%= play_quiz_path(@quiz) %>" width="640" height="392"></iframe>
+  </div>
 </div>
 
 </div>

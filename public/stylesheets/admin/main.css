@@ -23,12 +23,18 @@ body {
   min-height: 100%;
 }
 
+
+
 #stars {
   background: url(/images/admin/stars.png);
+/*
   background: -moz-radial-gradient(bottom 45deg, circle farthest-corner, rgba(38, 52, 77, 1) 0%, rgba(38, 52, 77, 0) 100%), url(/images/admin/stars.png);
   background: -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 1200, from(rgba(38, 52, 77, 1)), to(rgba(38, 52, 77, 0))), url(/images/admin/stars.png);
-  min-height: 100%;
+*/
+  min-height: 120%;
 }
+
+
 
 #container {
   min-height: 100%;
@@ -71,7 +77,7 @@ header {
   float: left;
   height: 95px;
   text-indent: -9999px;
-  width: 225px;
+  width: 250px;
 }
 
 #userinfo {
@@ -275,7 +281,6 @@ nav#secondary ul li.current a {
 }
 
 #livesearch strong {
-  font-weight: bold;
   margin-left: 10px;
 }
 
@@ -293,16 +298,22 @@ form section {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #eee;
   padding: 13px 0;
+  width:50%
 }
 
-form section:first-child { border-top: none }
-form section:last-child { border-bottom: none }
+.logincontainer form section {
+  width:100%
+} 
 
-form section > div {
+form .first section { border-top: none }
+form .last section { border-bottom: none }
+
+form section > input {
   color: #404040;
   font-size: 11px;
   margin-left: 35%;
   position: relative;
+  display:block
 }
 
 form section > label {
@@ -316,7 +327,7 @@ form section > label {
   width: 30%;
 }
 
-form section label small {
+form section small {
   color: #999;
   display: block;
   font-size: 11px;
@@ -324,9 +335,10 @@ form section label small {
   line-height: 13px;
   margin-top: 3px;
   text-transform: none;
+    margin-left: 35%;
 }
 
-form input[type="text"], form input[type="password"], form textarea {
+form input[type="text"], form input[type="email"], form input[type="password"], form textarea {
   border-radius: 3px;
   border: 1px solid #c9c9c9;
   color: #404040;
@@ -334,7 +346,7 @@ form input[type="text"], form input[type="password"], form textarea {
   height: 28px;
   margin-bottom: 3px;
   padding: 0 6px;
-  width: 95%;
+  width: 60%;
   
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -372,29 +384,21 @@ section div label.error {
 
 select {
   cursor: pointer;
-  width: 100%;
-}
-
-.cmf-skinned-select {
-  background: url(../img/select.png) right no-repeat;
-  border: 1px solid #c3c3c3;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px #ccc;
-  height: 28px;
-  margin-left: 0;
-  padding: 5px;
-  
-  -moz-border-radius: 3px;
-  -moz-box-shadow: 0 1px 2px #ccc;
-  -webkit-border-radius: 3px;
-  -webkit-box-shadow: 0 1px 2px #ccc;
-}
-
-.cmf-skinned-text {
+  width: 35%;
+  color: #404040;
   font-size: 11px;
+  margin-left: 35%;
+  position: relative;
+  display:block;
+  padding: 5px;
+  border: 1px solid #c3c3c3;
+
+}
+
+.datetime select {
+  width: auto;
   margin-left: 0;
-  padding-left: 9px;
-  padding-top: 7px;
+  display:inline;
 }
 
 /* Notifications */

@@ -1,14 +1,16 @@
+<% title "Dodaj Quiz" %>
+
 <!-- Secondary navigation -->
 <nav id="secondary">
   <ul>
-    <li class="current"><%= link_to "Dodaj Quiz", new_quiz_path %></li>
+    <li class="current"><%= link_to yield(:title), new_quiz_path %></li>
   </ul>
 </nav>
           
 <!-- The content -->
 <section id="content">
 
-<h2>Dodaj Quiz</h2>
+<h2><%= yield(:title) %></h2>
 
 <%= render 'form' %>
 
