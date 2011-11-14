@@ -1,14 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.2.11'
+gem 'mysql2'
 gem "simple_form"
-gem 'devise', "= 1.4.2"
+gem 'devise'
 gem "paperclip", "~> 2.3"
+gem "cancan"
+gem "will_paginate"
+gem "resque"
+gem "fastercsv"
 
 # Use unicorn as the web server
 # gem 'unicorn'

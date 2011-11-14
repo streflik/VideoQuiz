@@ -10,9 +10,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031133241) do
+ActiveRecord::Schema.define(:version => 20111114160617) do
 
-  create_table "customers", :force => true do |t|
+  create_table "questions", :force => true do |t|
+    t.integer  "quiz_id"
+    t.string   "text"
+    t.string   "answer_1"
+    t.string   "answer_2"
+    t.string   "answer_3"
+    t.string   "answer_4"
+    t.integer  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "quizzes", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "yt_id"
+    t.string   "reward"
+    t.datetime "reward_exp"
+    t.string   "fb_page"
+    t.string   "landing_page"
+    t.integer  "coupons_left"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "codes"
+    t.integer  "wins_count",   :default => 0
+  end
+
+  create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
@@ -27,30 +54,19 @@ ActiveRecord::Schema.define(:version => 20111031133241) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "role"
   end
 
-  add_index "customers", ["email"], :name => "index_customers_on_email", :unique => true
-  add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
-
-  create_table "quizzes", :force => true do |t|
-    t.integer  "customer_id"
-    t.string   "name"
-    t.string   "yt_id"
-    t.string   "question"
-    t.string   "reward"
-    t.datetime "reward_exp"
-    t.string   "fb_page"
-    t.string   "landing_page"
-    t.integer  "coupons_left"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "users", ["email"], :name => "index_customers_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
+  add_index "users", ["role"], :name => "index_users_on_role"
 
   create_table "wins", :force => true do |t|
     t.integer  "quiz_id"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "code"
   end
 
 end

@@ -7,33 +7,31 @@
 
 <h2><%= yield(:title) %></h2>
 
-<%= link_to "Wygeneruj 100 nowych kuponów", "", :class => "button icon loop" %>
-<%= link_to "Pobierz emaile", "", :class => "button icon arrowdown" %>
-<%= link_to "Pobierz kupony", "", :class => "button icon arrowdown" %>
+  <%= link_to "Wygeneruj 100 nowych kuponów", generate_codes_quiz_path(@quiz), :class => "button icon loop" %>
+  <%= link_to "Pobierz emaile", get_emails_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
+  <%= link_to "Pobierz kupony", get_winners_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
 
-<h2>Kupony (77/100):</h2>
+  <h2>Wykorzystane Kupony (<%= @quiz.wins_count %>/<%= @quiz.codes.size + @quiz.wins_count %>):</h2>
 
- <table class="datatable">
+  <table class="datatable">
     <thead>
-      <tr>
-        <th>Kupon</th>
-        <th>Email</th>
-        <th>Data odebrania</th>
-      </tr>
+    <tr>
+      <th>Kupon</th>
+      <th>Email</th>
+      <th>Data odebrania</th>
+    </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td>123ssas</td>
-        <td>asdasd@wp.pl</td>
-        <td>12.10.2011 13:33</td>
-      </tr>
-      <tr>
-        <td>123ssas</td>
-        <td>Kupon nieodebrany</td>
-        <td></td>
-      </tr>
+    <% @quiz.wins.each do |c| %>
+        <tr>
+          <td><%= c.code %></td>
+          <td><%= c.email %></td>
+          <td><%= l c.created_at %></td>
+        </tr>
+    <% end %>
     </tbody>
+
   </table>
 
 

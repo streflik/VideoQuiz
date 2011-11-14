@@ -115,11 +115,11 @@ margin:0 auto
 
 /* panes question */
 
-.question li {
+#question_content li {
 float:left;
 }
 
-.question li a {
+#question_content li a {
 display:block;
 width:200px;
 padding:50px 0;
@@ -128,7 +128,7 @@ background:#eee;
 text-align:center
 }
 
-.question li:last-child a {
+#question_content li:last-child a {
 margin-right:0;
 }
 

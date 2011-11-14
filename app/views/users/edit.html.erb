@@ -12,6 +12,8 @@
 
 <h2><%= yield(:title)%></h2>
 
-<%= render 'form' %>
-
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+      <%= render 'form' %>
+      
 </section>

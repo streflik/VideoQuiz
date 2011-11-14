@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +13,10 @@ class Customer < ActiveRecord::Base
 
   def name
     first_name + " " + last_name
+  end
+
+  def admin?
+    role == "ADMIN"
   end
 
 end

@@ -1,0 +1,6 @@
+E-mail,Kod,Data wygranej
+<%= FasterCSV.generate do |csv|
+    @wins.each do |win|
+        csv << [win.email, win.code, win.created_at]
+    end
+end %>
