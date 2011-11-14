@@ -119,11 +119,11 @@ margin:5px 0
 
 /* panes question */
 
-.question li {
+#question_content li {
 float:left;
 }
 
-.question li a {
+#question_content li a {
 display:block;
 width:200px;
 padding:50px 0;
@@ -132,32 +132,32 @@ background:#eee;
 text-align:center
 }
 
-.question li:last-child a {
+#question_content  li:last-child a {
 margin-right:0;
 }
 
 /* panes question */
 
-.reward h2 {
+.pane_reward h2 {
 color:green
 }
 
-.reward form {
+.pane_reward form {
 text-align:center;
 margin:20px 0
 }
 
-.reward form label {
+.pane_reward form label {
 }
 
-.reward form input.string {
+.pane_reward form input.string {
 width:300px;
 text-align:center;
 font-size:20px;
 padding:5px;
 }
 
-.reward form input.button {
+.pane_reward form input.button {
 margin:10px 0 0 0;
 font-size:16px;
 padding: 5px

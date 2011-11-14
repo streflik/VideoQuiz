@@ -1,9 +1,13 @@
+require 'fastercsv'
 class QuizzesController < ApplicationController
 
-  before_filter :authenticate_customer!, :except => [:play]
-  before_filter :verify_admin, :except => [:play]
+  before_filter :authenticate_user!, :except => [:play]
   before_filter :find_quiz, :except => [:new, :create, :index]
   before_filter :find_customers, :only => [:new, :create, :edit, :update]
+  layout "admin", :except => [:play]
+  protect_from_forgery :except => [:get_questions, :check_answer]
+
+  #load_and_authorize_resource :except => :pay
 
   def play
     render :layout => "play"
@@ -16,23 +20,24 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
-  def new 
+  def new
     @quiz = Quiz.new
+    @question = @quiz.questions.build
   end
 
   def create
-    @quiz = Quiz.new
-    @quiz.attributes = params[:quiz]
+    @quiz = Quiz.new params[:quiz]
+    @quiz.codes ||= []
     if @quiz.save
       redirect_to(@quiz, :notice => t("created"))
     else
       render :action => "new"
-    end    
+    end
   end
 
   def edit
   end
- 
+
   def update
     if @quiz.update_attributes(params[:quiz])
       redirect_to(@quiz, :notice => t("updated"))
@@ -46,14 +51,66 @@ class QuizzesController < ApplicationController
     redirect_to(admin_path, :notice => t("deleted"))
   end
 
-private
+  def generate_codes
+    @quiz.generate_codes
+    redirect_to @quiz
+  end
+
+  def get_questions
+    @question = @quiz.questions.first
+    render :partial => 'show_questions'
+  end
+
+  def check_answer
+    @question = @quiz.questions.find params[:question_id]
+    if @question.correct.to_s == params[:answer]
+
+      #render :json=>{:response=>"ok"}
+
+
+    else
+      return render :js => "$('#looser').show();"
+    end
+  end
+
+  def get_emails
+    respond_to do |f|
+      f.csv { render :text=>@quiz.wins.map(&:email).join(";") }
+    end
+  end
+
+  def get_winners
+    @wins = @quiz.wins
+    respond_to :csv
+  end
+
+
+  def reward
+    if params[:email] && params[:email] =~ /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
+      if @quiz.codes.any? && code = @quiz.codes.shift
+        @quiz.save
+        if @quiz.wins.exists?(:email => params[:email]) && @win = @quiz.wins.create(:email=> params[:email], :code => code)
+          Resque.enqueue DeliverReward, @win.id
+          render :json => {:response => "ok"}
+        else
+          #taki email juz jest w bazie!
+        end
+      else
+        #nie ma kodow
+      end
+    else
+      #zly adres email
+    end
+  end
+
+  private
 
   def find_quiz
-    @quiz = Quiz.find(params[:id])  
+    @quiz = Quiz.find(params[:id])
   end
 
   def find_customers
-    @customers = Customer.all
+    @customers = User.all
   end
 
 end

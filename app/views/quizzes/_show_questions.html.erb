@@ -1,0 +1,18 @@
+<h2><%= @question.text %></h2>
+
+<ul id="answer_links">
+  <li><%= link_to @question.answer_1, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>1) %></li>
+  <li><%= link_to @question.answer_2, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>2) %></li>
+  <li><%= link_to @question.answer_3, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>3) %></li>
+  <li><%= link_to @question.answer_4, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>4) %></li>
+</ul>
+
+
+<script type="text/javascript">
+    $("#answer_links a").live("click", function() {
+        $.post($(this).attr("href"), function(data) {
+            //alert(data['response']);
+        });
+        return false;
+    })
+</script>

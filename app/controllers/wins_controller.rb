@@ -1,18 +1,21 @@
 class WinsController < ApplicationController
 
  def create
-    @win = Win.create(params[:win]) do |c|
-      c.quiz_id = params[:quiz_id]
-    end
-    if @win.save
-      # zaktualizowanie liczby dostępnych kuponów
-      @win.quiz.update_attribute :coupons_left, @win.quiz.coupons_left - 1
-      # wysłanie do winnersa maila z kuponem
-        # todo
-      redirect_to @win.quiz # todo: ajax notify thanks
-    else
-      redirect_to @win.quiz # todo: ajax notify fail
-    end
+    @quiz = Quiz.find params[:quiz_id]
+   if @quiz.codes.any? && code = @quiz.codes.shift
+        @win = @quiz.wins.create params[:win] do |win|
+          win.code = code
+        end
+        @quiz.save
+        if @win.save
+          Resque.enqueue DeliverReward, @win.id
+          render :json => {:response => "ok"}
+        else
+          #taki email juz jest w bazie lub niepoprawny email lub brak
+        end
+      else
+        #nie ma kodow
+      end
   end
 
 end

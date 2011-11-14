@@ -7,11 +7,12 @@
 <title>VideoQuiz - Admin</title>
 
     <%= stylesheet_link_tag "admin/reset", "admin/visualize", "admin/datatables", "admin/buttons", "admin/checkboxes", "admin/inputtags", "admin/main" %>
-   
     <!--[if lt IE 9]>
     <%= stylesheet_link_tag "admin/ie" %>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+  <%= csrf_meta_tag %>
+
 
 </head>
 <body>
@@ -28,7 +29,7 @@
             <!-- User info -->
             <div id="userinfo">
               <div class="intro">
-                Witaj <%= current_customer.name %><br/>
+                Witaj <%= current_user.name %><br/>
                 Pomoc: kontakt@filmpoint.pl | 604 099 886
               </div>
             </div>
@@ -57,22 +58,22 @@
                 </li>
                 
                 <li>
-                  <a href="/customers">
+                  <a href="<%= users_path%>">
                     <span class="icon tables"></span>
-                    <span class="badge"><%= Customer.count %></span>
+                    <span class="badge"><%= User.count %></span>
                     Klienci
                   </a>
                 </li>
 
                 <li>
-                  <a href="/customers/new">
+                  <a href="<%= new_user_path%>">
                     <span class="icon pencil"></span>
                     Dodaj Klienta
                   </a>
                 </li>
                 
                 <li>
-                  <a href="/customers/<%= current_customer.id %>/edit">
+                  <a href="<%= users_path(current_user)%>">
                     <span class="icon anchor"></span>
                     Edytuj Profil
                   </a>
@@ -91,6 +92,9 @@
       </div>
     </div>
 
-<%= javascript_include_tag "admin/excanvas", "admin/jquery", "admin/jquery.visualize", "admin/jquery.datatables", "admin/jquery.placeholder", "admin/jquery.selectskin", "admin/jquery.checkboxes", "admin/jquery.wymeditor", "admin/jquery.validate", "admin/jquery.inputtags", "admin/notifications", "admin/application" %>
+<%= javascript_include_tag "admin/excanvas", "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js", "admin/jquery.visualize","rails.js", "admin/jquery.datatables", "admin/jquery.placeholder", "admin/jquery.selectskin", "admin/jquery.checkboxes", "admin/jquery.wymeditor", "admin/jquery.validate", "admin/jquery.inputtags", "admin/notifications", "admin/application" %>
+
+    <%= yield :js %>
+
 </body>
 </html>

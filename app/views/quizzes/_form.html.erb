@@ -1,18 +1,30 @@
 <%= simple_form_for(@quiz) do |f| %>
 
-<%= f.error_notification %>
+    <%= f.error_notification %>
 
-    <div class="first"><%= f.input :name %></div>
-    <%= f.association :customer, :label_method => :name, :value_method => :id, 
-	:collection => @customers, :prompt => false %>
-    <%= f.input :yt_id %>
-    <%= f.input :reward %>
-    <%= f.input :reward_exp %>
-    <%= f.input :fb_page %>
-    <%= f.input :landing_page %>
-    <%= f.input :question %>
-    <div class="last"># answers</div>
+    <div class="inputs">
+      <%= f.input :name %>
+      <%= f.association :user, :label_method => :name, :value_method => :id,
+                        :collection => @customers, :prompt => false %>
+      <%= f.input :yt_id %>
+      <%= f.input :reward %>
+      <%= f.input :reward_exp %>
+      <%= f.input :fb_page %>
+      <%= f.input :landing_page %>
+      <hr/>
+      <p>Questions</p>
+      <%= f.simple_fields_for :questions, @question do |q| %>
+          <%= q.input :text %>
+          <%= q.input :answer_1 %>
+          <%= q.input :answer_2 %>
+          <%= q.input :answer_3 %>
+          <%= q.input :answer_4 %>
+      <% end %>
+      # answers
+    </div>
 
-    <%= f.button :submit %>
+    <div class="actions">
+      <%= f.button :submit %>
+    </div>
 
 <% end %>

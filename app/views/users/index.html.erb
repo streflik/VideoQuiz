@@ -3,7 +3,7 @@
 <!-- Secondary navigation -->
 <nav id="secondary">
   <ul>
-    <li class="current"><a href="/customers"><%= yield(:title)%></a></li>
+    <li class="current"><a href="<%= users_path%>"><%= yield(:title)%></a></li>
   </ul>
 </nav>
           
@@ -22,13 +22,13 @@
     </thead>
 
     <tbody>
-    <% @customers.each do |c| %>
+    <% @users.each do |c| %>
       <tr>
         <td><%= c.name %></td>
         <td><%= c.email %></td>
         <td>
           <span class="button-group">
-            <%= link_to "Edytuj", edit_customer_path(c), :class=>"button icon edit" %>
+            <%= link_to "Edytuj", edit_user_path(c), :class=>"button icon edit" %>
             <%= link_to "Usuń", "", :class=>"button icon remove danger" %>
           </span>
         </td>

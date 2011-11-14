@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  play:
+    default_mail: "john@example.com"
+    send_coupon: "Save"

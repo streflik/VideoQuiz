@@ -237,3 +237,6 @@ pl:
 
       full_messages:
         format: "%{attribute} %{message}"
+  play:
+    default_mail: "jan.kowalski@gmail.com"
+    send_coupon: "Wyślij"

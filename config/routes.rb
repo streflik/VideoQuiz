@@ -1,16 +1,28 @@
 Videoquiz::Application.routes.draw do
 
-  devise_for :customers, :path => "/",  :path_names => { :sign_up => 'sign_up', :sign_in => 'sign_in', :sign_out => 'sign_out'}
+  require "resque/server"
 
-  resources :customers
+  devise_for :users, :path => "/"#,  :path_names => { :sign_up => 'sign_up', :sign_in => 'sign_in', :sign_out => 'sign_out'}
+
+  resources :users
 
   resources :quizzes do
+    member do
+      get :generate_codes
+      post :get_questions
+      post :check_answer
+      get :check_answer
+      get :get_emails
+      get :get_winners
+    end
     resources :wins
     member do
       get 'play'
       get 'preview'
    end
   end
+
+  mount Resque::Server.new, :at => "/resque"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
