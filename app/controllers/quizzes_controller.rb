@@ -69,7 +69,8 @@ class QuizzesController < ApplicationController
 
 
     else
-      return render :js => "$('#looser').show();"
+      cookies["ucc_#{@quiz.id}"] = { :value => @question.id, :expires => 1.day.from_now }
+      return render :js => "$('.pane_questions').hide();$('.pane_reward').show();$('#looser').show();"
     end
   end
 

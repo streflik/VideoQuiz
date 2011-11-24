@@ -30,12 +30,12 @@
             <!-- Logo -->
             <h1 id="logo">VideoQuiz Admin</h1>
           
-	    <% if customer_signed_in? %>
+	    <% if user_signed_in? %>
 
             <!-- User info -->
             <div id="userinfo">
               <div class="intro">
-                Witaj <%= current_customer.name %> | <%= link_to "Wyloguj", destroy_customer_session_path, :method => :delete %><br/>
+                Witaj <%= current_user.name %> | <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %><br/>
                 Pomoc: kontakt@filmpoint.pl | 604 099 886
               </div>
             </div>
@@ -47,7 +47,7 @@
           <!-- The application "window" -->
           <div id="application">
           
-          <% if customer_signed_in? %>
+          <% if user_signed_in? %>
 
             <!-- Primary navigation -->
             <nav id="primary">

@@ -13,6 +13,7 @@ gem "cancan"
 gem "will_paginate"
 gem "resque"
 gem "fastercsv"
+gem "capistrano"
 
 # Use unicorn as the web server
 # gem 'unicorn'
