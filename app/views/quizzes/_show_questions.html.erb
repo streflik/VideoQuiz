@@ -1,3 +1,5 @@
+
+<% unless cookies["ucc_#{@quiz.id}"]%>
 <h2><%= @question.text %></h2>
 
 <ul id="answer_links">
@@ -16,3 +18,7 @@
         return false;
     })
 </script>
+<% else%>
+   <h2>Wykorzystałeś już swoją szansę. Spróbuj jutro.</h2>
+
+<% end%>

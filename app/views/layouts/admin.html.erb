@@ -29,7 +29,7 @@
             <!-- User info -->
             <div id="userinfo">
               <div class="intro">
-                Witaj <%= current_user.name %><br/>
+                Witaj <%= current_user.name %> | <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %><br/>
                 Pomoc: kontakt@filmpoint.pl | 604 099 886
               </div>
             </div>
