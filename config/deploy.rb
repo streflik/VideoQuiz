@@ -1,8 +1,8 @@
 set :application, "VideoQuiz"
 
-set :deploy_to, "/home/videoquiz/www/videoquiz/"
+set :deploy_to, "/home/ovlplatform/www/videoquiz/"
 set :deploy_via, :remote_cache
-set :user, "videoquiz"
+set :user, "ovlplatform"
 set :use_sudo, false
 
 set :scm, :git
@@ -12,10 +12,10 @@ set :branch, "master"
 set :git_enable_submodules, 1
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "videoquiz.megiteam.pl"                          # Your HTTP server, Apache/etc
-role :app, "videoquiz.megiteam.pl"                          # This may be the same as your `Web` server
-role :db,  "videoquiz.megiteam.pl", :primary => true # This is where Rails migrations will run
-role :db,  "videoquiz.megiteam.pl"
+role :web, "ovlplatform.megiteam.pl"                          # Your HTTP server, Apache/etc
+role :app, "ovlplatform.megiteam.pl"                          # This may be the same as your `Web` server
+role :db,  "ovlplatform.megiteam.pl", :primary => true # This is where Rails migrations will run
+role :db,  "ovlplatform.megiteam.pl"
 
 namespace :deploy do
   task :start, :roles => :app do
