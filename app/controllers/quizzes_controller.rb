@@ -7,7 +7,8 @@ class QuizzesController < ApplicationController
   layout "admin", :except => [:play]
   protect_from_forgery :except => [:get_questions, :check_answer]
 
-  #load_and_authorize_resource :except => :pay
+
+  load_and_authorize_resource :except => [:get_questions, :check_answer, :reward, :play]
 
   def play
     render :layout => "play"
@@ -17,7 +18,6 @@ class QuizzesController < ApplicationController
   end
 
   def index
-    @quizzes = Quiz.all
   end
 
   def new

@@ -1,7 +1,7 @@
 <nav id="secondary">
   <ul>
     <li <%= is_current?(:controller => 'sessions', :action => 'new') %>><%= link_to "Logowanie", new_user_session_path %><li>
-    <li <%= is_current?(:controller => 'registrations', :action => 'new') %>><%= link_to "Rejestracja", new_user_registration_path %></li>
+    <!--<li <%#= is_current?(:controller => 'registrations', :action => 'new') %>><%#= link_to "Rejestracja", new_user_registration_path %></li>-->
     <!-- <li><a href="#"><%= link_to "Przypomnij Hasło" %></a></li> -->
   </ul>
 </nav>

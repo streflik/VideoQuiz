@@ -3,7 +3,7 @@
 <!-- Secondary navigation -->
 <nav id="secondary">
   <ul>
-    <li class="current"><%= link_to yield(:title), edit_customer_path(@customer) %></li>
+    <li class="current"><%= link_to yield(:title), edit_user_path(@user) %></li>
   </ul>
 </nav>
           
@@ -12,8 +12,7 @@
 
 <h2><%= yield(:title)%></h2>
 
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
+
       <%= render 'form' %>
       
 </section>

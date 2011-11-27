@@ -45,18 +45,19 @@
                 <li>
                   <a href="/quizzes">
                     <span class="icon dashboard"></span>
-                    <span class="badge"><%= Quiz.count %></span>
+                    <span class="badge"><%= Quiz.accessible_by(current_ability).count %></span>
                     Quizy
                   </a>
                 </li>
-
+                <% if can? :create, Quiz%>
                 <li>
                   <a href="/quizzes/new">
                     <span class="icon pencil"></span>
                     Dodaj Quiz
                   </a>
                 </li>
-                
+                    <% end%>
+                <% if can? :read, User%>
                 <li>
                   <a href="<%= users_path%>">
                     <span class="icon tables"></span>
@@ -64,21 +65,21 @@
                     Klienci
                   </a>
                 </li>
-
+                    <% end%>
+                <% if can? :create, User%>
                 <li>
                   <a href="<%= new_user_path%>">
                     <span class="icon pencil"></span>
                     Dodaj Klienta
                   </a>
                 </li>
-                
+                    <% end%>
                 <li>
-                  <a href="<%= users_path(current_user)%>">
+                  <a href="<%= edit_user_path(current_user)%>">
                     <span class="icon anchor"></span>
                     Edytuj Profil
                   </a>
                 </li>
-   
               </ul>
             
             </nav>
