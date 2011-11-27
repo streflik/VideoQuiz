@@ -1,8 +1,8 @@
 set :application, "VideoQuiz"
 
-set :deploy_to, "/home/ovlplatform/www/videoquiz/"
+set :deploy_to, "/home/videoquiz/www/videoquiz/"
 set :deploy_via, :remote_cache
-set :user, "ovlplatform"
+set :user, "videoquiz"
 set :use_sudo, false
 
 set :scm, :git
@@ -12,14 +12,14 @@ set :branch, "master"
 set :git_enable_submodules, 1
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "ovlplatform.megiteam.pl"                          # Your HTTP server, Apache/etc
-role :app, "ovlplatform.megiteam.pl"                          # This may be the same as your `Web` server
-role :db,  "ovlplatform.megiteam.pl", :primary => true # This is where Rails migrations will run
-role :db,  "ovlplatform.megiteam.pl"
+role :web, "videoquiz.megiteam.pl"                          # Your HTTP server, Apache/etc
+role :app, "videoquiz.megiteam.pl"                          # This may be the same as your `Web` server
+role :db,  "videoquiz.megiteam.pl", :primary => true # This is where Rails migrations will run
+role :db,  "videoquiz.megiteam.pl"
 
 namespace :deploy do
   task :start, :roles => :app do
-    run "restart-app videoquiz"
+    run "restart-app videoquiz1"
   end
 
   task :stop, :roles => :app do
@@ -28,7 +28,7 @@ namespace :deploy do
 
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "restart-app videoquiz"
+    run "restart-app videoquiz1"
   end
 
   desc "Symlink shared resources on each release"
@@ -55,3 +55,6 @@ end
 
 after 'deploy:update_code', 'bundler:symlink_bundled_gems'
 after 'deploy:update_code', 'bundler:install'
+
+        require './config/boot'
+        require 'airbrake/capistrano'
