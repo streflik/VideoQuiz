@@ -7,9 +7,9 @@
 
 <h2><%= yield(:title) %></h2>
 
-  <%= link_to "Wygeneruj 100 nowych kuponów", generate_codes_quiz_path(@quiz), :class => "button icon loop" %>
-  <%= link_to "Pobierz emaile", get_emails_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
-  <%= link_to "Pobierz kupony", get_winners_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
+  <%= link_to "Wygeneruj 100 nowych kuponów", generate_codes_quiz_path(@quiz), :class => "button icon loop" if can? :generate_codes, @quiz%>
+  <%= link_to "Pobierz dane zwycięzców", get_winners_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
+  <%= link_to "Pobierz kody", get_codes_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
 
   <h2>Wykorzystane Kupony (<%= @quiz.wins_count %>/<%= @quiz.codes.size + @quiz.wins_count %>):</h2>
 

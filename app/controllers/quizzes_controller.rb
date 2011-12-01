@@ -51,7 +51,7 @@ class QuizzesController < ApplicationController
 
   def generate_codes
     @quiz.generate_codes
-    redirect_to @quiz
+    render :action=>:show
   end
 
   def get_questions
@@ -72,10 +72,11 @@ class QuizzesController < ApplicationController
     end
   end
 
-  def get_emails
+  def get_codes
     respond_to do |f|
-      f.csv { render :text=>@quiz.wins.map(&:email).join(";") }
+      f.csv { render :text=>@quiz.codes.join(";") }
     end
+
   end
 
   def get_winners

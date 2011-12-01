@@ -12,7 +12,7 @@ class Ability
     if user.user?
       #can :manage, Quiz
       can :manage, Quiz, :user_id => user.id
-      cannot :destroy, Quiz
+      cannot [:destroy,:generate_codes], Quiz
       can :edit, User, :id=>user.id
     end
 

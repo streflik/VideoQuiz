@@ -12,7 +12,7 @@ Videoquiz::Application.routes.draw do
       post :get_questions
       post :check_answer
       get :check_answer
-      get :get_emails
+      get :get_codes
       get :get_winners
     end
     resources :wins

@@ -5,7 +5,8 @@
   <%= f.input :last_name %>
   <%= f.input :email %>
   <div class="last"><%= f.input :role, :as=>:select, :collection=>["ADMIN", "USER"] if can?(:manage, @user) %></div>
- 
+  <%= f.input :password%>
+  <%= f.input :password_confirmation%>
  <%= f.button :submit 	%>
 
 <% end %>

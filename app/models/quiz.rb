@@ -4,7 +4,7 @@ class Quiz < ActiveRecord::Base
   has_many :questions
   has_many :wins
 
-  attr_accessible :user_id, :name, :yt_id, :questions_attributes, :reward, :reward_exp, :fb_page, :landing_page, :instruction, :reward_short, :custom_css
+  attr_accessible :user_id, :name, :yt_id, :questions_attributes, :reward, :reward_exp, :fb_page, :landing_page, :instruction, :reward_short, :custom_css, :codes
 
   validates :user_id, :name, :yt_id, :reward, :reward_exp, :reward_short, :fb_page, :landing_page, :instruction, :presence => true
 
