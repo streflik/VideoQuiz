@@ -77,15 +77,13 @@
     $(function() {
       var params = { allowScriptAccess: "always", rel: 0 };
       var atts = { id: "myytplayer" };
-      swfobject.embedSWF("http://www.youtube.com/apiplayer?version=3&enablejsapi=1&playerapiid=ytplayer&controls=0",
-        "ytapiplayer", "560", "315", "8", null, null, params, atts);
+      swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
+                "ytapiplayer", "560", "315", "8", null, null, params, atts);
     });
   });
 
   function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById("myytplayer");
-    ytplayer.cueVideoById("<%=  @quiz.yt_id%>");
-    ytplayer.seekTo(200);
     ytplayer.addEventListener('onStateChange', 'goToQuestions');
   }
   function goToQuestions(state) {
