@@ -48,22 +48,25 @@
 
   <div id="reward_content">
 
-  </div>
-
   <!-- -------------------------------------------------------------------- przegrana -->
 
   <div id="looser" style="display:none;">
-    <h2>Zła odpowiedź :-(<br/>Spróbuj ponownie jutro.</h2>
+    <div class="looser_content">
+      <h2>Zła odpowiedź :-(<br/>Spróbuj ponownie jutro.</h2>
+     </div>
+     <%= render 'problem' %>
   </div>
 
-  <%= render 'problem' %>
+  </div>
 
 </div>
 
 <!-- -------------------------------------------------------------------- wykorzystana szansa -->
 
 <div class="pane" id="fail">
-  <h2>Wykorzystano już dzisiejszą szansę.<br/>Spróbuj ponownie jutro.</h2>
+  <div class="fail_content">
+    <h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>
+  </div>
   <%= render 'problem' %>
 </div>
 
@@ -77,12 +80,12 @@
       swfobject.embedSWF("http://www.youtube.com/apiplayer?version=3&enablejsapi=1&playerapiid=ytplayer&controls=0",
         "ytapiplayer", "560", "315", "8", null, null, params, atts);
     });
-
   });
 
   function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById("myytplayer");
     ytplayer.cueVideoById("<%=  @quiz.yt_id%>");
+    ytplayer.seekTo(200);
     ytplayer.addEventListener('onStateChange', 'goToQuestions');
   }
   function goToQuestions(state) {

@@ -1,4 +1,3 @@
-
 <% unless cookies["ucc_#{@quiz.id}"]%>
 <h2><%= @question.text %></h2>
 
@@ -7,7 +6,6 @@
   <li><%= link_to @question.answer_2, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>2), :class => "btn"  %></li>
   <li><%= link_to @question.answer_3, check_answer_quiz_url(@quiz, :question_id=> @question.id, :answer=>3), :class => "btn"  %></li>
 </ul>
-
 
 <script type="text/javascript">
     $("#answer_links a").live("click", function() {
@@ -18,5 +16,5 @@
     })
 </script>
 <% else%>
-   <h2>Wykorzystałeś już swoją szansę. Spróbuj ponownie jutro.</h2>
+  <h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>
 <% end%>

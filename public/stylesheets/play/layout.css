@@ -3,6 +3,7 @@ font-family:Arial, san-serif;
 color:#fff;
 line-height:1em;
 font-size:15px;
+overflow:hidden
 }
 
 strong {
@@ -167,15 +168,13 @@ width:450px
 
 /* fixed height */
 
-#question_content {
-height:300px;
+#question_content, .looser_content, .fail_content {
+height:320px;
 }
 
-#reward_content {
-height:260px;
+.reward_content {
+height:280px;
 }
-
-
 
 /* clear */
 
