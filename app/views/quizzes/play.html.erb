@@ -1,9 +1,9 @@
 <!-- zakladki -->
 
 <ul id="tabs">
-  <li class="first current">ZOBACZ<br />VIDEO</li>
-  <li class="second">ODPOWIEDZ NA<br />PYTANIE</li>
-  <li class="third">WYGRAJ<br />RABAT</li>
+  <li class="first current">ZOBACZ<br/>VIDEO</li>
+  <li class="second">ODPOWIEDZ NA<br/>PYTANIE</li>
+  <li class="third">WYGRAJ<br/>RABAT</li>
 </ul>
 
 <div class="clear"></div>
@@ -15,13 +15,13 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
   <div class="player">
-  <div id="ytapiplayer">
-    Potrzebujesz Flash Player i włączonej obsługi Java Script.
+    <div id="ytapiplayer">
+      Potrzebujesz Flash Player i włączonej obsługi Java Script.
+    </div>
   </div>
-  </div>
-  
+
   <div class="fb-like" data-href="<%= @quiz.landing_page %>" data-send="false" data-layout="button_count" data-width="60" data-show-
-  faces="false"></div>
+       faces="false"></div>
 
   <% unless @quiz.name == "CyfrowaSzkoła.pl" %>
     <h3><strong>POSPIESZ SIĘ</strong> ZOSTAŁO TYLKO <span><%= @quiz.codes.size - @quiz.wins_count %></span> KUPONÓW</h3>
@@ -35,23 +35,12 @@
 
   <div id="question_content">
 
-    <!-- Krzychu - temp, trzeba podmienić normalnum kodem -->
- 
-    <h2>Na jakiej pozycji grał szef?</h2>
-
-    <ul id="answer_links">
-      <li><a class="btn" href="">W ataku</a></li>
-      <li><a class="btn" href="">Na bramce</a></li>
-      <li><a class="btn" href="">W obronie</a></li>
-    </ul>
-
   </div>
 
   <%= render 'problem' %>
-  
-</div>  
 
 </div>
+
 
 <!-- -------------------------------------------------------------------- wygrana -->
 
@@ -59,77 +48,53 @@
 
   <div id="reward_content">
 
-    <!-- Krzychu - temp, trzeba podmienić normalnum kodem -->
-
-    <h2>Gratulacje, prawidłowa odpowiedź! :-)</h2>
-    <p>Twoja wygrana to <strong><%= @quiz.reward %></strong>. 
-    Jest aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong>.</p> 
-    <p><%= @quiz.instruction %></p>    
-
-    <% if @quiz.name == "CyfrowaSzkoła.pl" %>
-      <a class="btn" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>  
-    <% else %>
-      <!-- później to zrobimy: newsletter form -->
-    <% end %>
-
-  <div class="clear"></div>
-
-  <div class="share fb-page">
-  <h3><strong>LUBISZ NAS?</strong> DOŁĄCZ DO NAS NA FACEBOOKU:</h3>
-  <div class="fb-like" data-href="<%= @quiz.fb_page %>" data-send="false" data-layout="button_standard" data-width="450" data-show-faces="true"></div>
-  </div> 
-
   </div>
-  
+
   <!-- -------------------------------------------------------------------- przegrana -->
-  
+
   <div id="looser" style="display:none;">
-    <h2>Zła odpowiedź :-(<br />Spróbuj ponownie jutro.</h2>
-    <%= render 'problem' %>
+    <h2>Zła odpowiedź :-(<br/>Spróbuj ponownie jutro.</h2>
   </div>
+
+  <%= render 'problem' %>
 
 </div>
 
 <!-- -------------------------------------------------------------------- wykorzystana szansa -->
 
 <div class="pane" id="fail">
-  <h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>
+  <h2>Wykorzystano już dzisiejszą szansę.<br/>Spróbuj ponownie jutro.</h2>
   <%= render 'problem' %>
 </div>
 
 <!-- -------------------------------------------------------------------- js -->
 
 <script type="text/javascript">
+  $(document).ready(function() {
     $(function() {
-        var params = { allowScriptAccess: "always", rel: 0 };
-        var atts = { id: "myytplayer" };
-        swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
-                "ytapiplayer", "560", "315", "8", null, null, params, atts);
-    });
-</script>
-
-<script type="text/javascript">
-    $("#question2").live("click", function() {
-        $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
-//         alert(data);
-            $("#question_content").html(data);
-        });
+      var params = { allowScriptAccess: "always", rel: 0 };
+      var atts = { id: "myytplayer" };
+      swfobject.embedSWF("http://www.youtube.com/apiplayer?version=3&enablejsapi=1&playerapiid=ytplayer&controls=0",
+        "ytapiplayer", "560", "315", "8", null, null, params, atts);
     });
 
-    function onYouTubePlayerReady(playerId) {
-        ytplayer = document.getElementById("myytplayer");
-        ytplayer.addEventListener('onStateChange', 'goToQuestions');
-    }
-    function goToQuestions(state) {
-        if (state == 0) {
-            $(".pane_video").hide();
-            $(".pane_questions").show();
-            $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
-//         alert(data);
-                $("#question_content").html(data);
-            });
-        }
+  });
 
+  function onYouTubePlayerReady(playerId) {
+    ytplayer = document.getElementById("myytplayer");
+    ytplayer.cueVideoById("<%=  @quiz.yt_id%>");
+    ytplayer.addEventListener('onStateChange', 'goToQuestions');
+  }
+  function goToQuestions(state) {
+    if (state == 0) {
+      $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
+        $("#question_content").html(data);
+      });
+    $("#video.pane").hide();
+    $("ul#tabs .current").removeClass("current");
+    $("ul#tabs .second").addClass("current");
+    $("#question.pane").show();
     }
+  }
 </script>
 
