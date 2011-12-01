@@ -11,8 +11,21 @@
 
 <div class="column left third">
   <h3>Instrukcje</h3>
-  <p>Wklej poniższy kod na dowolnej stronie internetowej.</p>
+  <p>1. Wklej poniższy kod na dowolnej stronie internetowej.</p>
   <pre>&lt;iframe src="<%= play_quiz_url(@quiz) %>" width="640" height="470" frameborder="0"&gt;&lt;/iframe&gt;</pre>
+
+  <p>2. Wklej te Facebook Meta Tagi do sekcji "head" strony gdzie umieścisz VideoQuiz i gdzie mają linkować
+     Facebook Likes. Oczywiście możesz dowolnie zmienić te parametry.</p>
+
+<pre>
+&lt;meta property="og:title" content="<%= @quiz.reward %> - <%= @quiz.name %>"/&gt;<br />
+&lt;meta property="og:type" content="article"/&gt;<br />
+&lt;meta property="og:url" content="<%= @quiz.landing_page %>"/&gt;<br />
+&lt;meta property="og:image" content="http://www.filmpoint.pl/filmpoint-logo-for-fb.png"/&gt;<br />
+&lt;meta property="og:site_name" content="<%= @quiz.name %>"/&gt;<br />
+&lt;meta property="og:description" content="Wygraj <%= @quiz.reward %> oglądając krótkie video i odpowiadając na proste pytanie."/&gt;
+</pre>
+
 </div>
 
 <div class="column right twothird">

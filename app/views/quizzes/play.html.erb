@@ -3,7 +3,8 @@
 <ul id="tabs">
   <li class="first current">ZOBACZ<br />VIDEO</li>
   <li class="second">ODPOWIEDZ NA<br />PYTANIE</li>
-  <li class="third">WYGRAJ<br />RABAT</li>
+  <li class="third">WYGRAJ<br /><%= @quiz.reward_short %></li>
+</li>
 </ul>
 
 <div class="clear"></div>
@@ -72,14 +73,14 @@
       <!-- później to zrobimy: newsletter form -->
     <% end %>
 
+  </div>
+
   <div class="clear"></div>
 
   <div class="share fb-page">
   <h3><strong>LUBISZ NAS?</strong> DOŁĄCZ DO NAS NA FACEBOOKU:</h3>
   <div class="fb-like" data-href="<%= @quiz.fb_page %>" data-send="false" data-layout="button_standard" data-width="450" data-show-faces="true"></div>
   </div> 
-
-  </div>
   
   <!-- -------------------------------------------------------------------- przegrana -->
   

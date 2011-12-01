@@ -8,10 +8,12 @@
                         :collection => @customers, :prompt => false %>
       <%= f.input :yt_id %>
       <%= f.input :reward %>
+      <%= f.input :reward_short %>
       <%= f.input :reward_exp %>
       <%= f.input :instruction %>
       <%= f.input :fb_page %>
       <%= f.input :landing_page %>
+      <%= f.input :custom_css %>
    
       <%= f.simple_fields_for :questions, @question do |q| %>
           <%= q.input :text %>
