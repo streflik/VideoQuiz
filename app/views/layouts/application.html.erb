@@ -13,11 +13,6 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<%= javascript_include_tag "admin/excanvas", "admin/jquery", "admin/jquery.visualize", "admin/jquery.datatables", "admin/jquery.placeholder", "admin/jquery.selectskin", "admin/jquery.checkboxes", "admin/jquery.inputtags", "admin/application" %>
-
-<%#= javascript_include_tag :defaults %>
-<%#= javascript_include_tag "prototype.js" %>
-
 </head>
 <body>
 
@@ -52,45 +47,51 @@
             <!-- Primary navigation -->
             <nav id="primary">
               <ul>
+
                 <li <%= is_current?(:controller => 'quizzes', :action => 'index') %> >
                   <a href="/quizzes">
                     <span class="icon dashboard"></span>
-                    <span class="badge"><%= Quiz.count %></span>
+                    <span class="badge"><%= Quiz.accessible_by(current_ability).count %></span>
                     Quizy
                   </a>
                 </li>
 
+                <% if can? :create, Quiz%>
                 <li <%= is_current?(:controller => 'quizzes', :action => 'new') %> >
                   <a href="/quizzes/new">
                     <span class="icon pencil"></span>
                     Dodaj Quiz
                   </a>
                 </li>
-                
-                <li <%= is_current?(:controller => 'customers', :action => 'index') %> >
-                  <a href="/customers">
+                <% end %>               
+ 
+                <% if can? :read, User%>
+                <li <%= is_current?(:controller => 'users', :action => 'index') %> >
+                  <a href="/users">
                     <span class="icon tables"></span>
-                    <span class="badge"><%= Customer.count %></span>
+                    <span class="badge"><%= User.count %></span>
                     Klienci
                   </a>
                 </li>
+		<% end %>
 
-                <li <%= is_current?(:controller => 'customers', :action => 'new') %> >
-                  <a href="/customers/new">
+                <% if can? :create, User %>
+                <li <%= is_current?(:controller => 'users', :action => 'new') %> >
+                  <a href="/users/new">
                     <span class="icon pencil"></span>
                     Dodaj Klienta
                   </a>
                 </li>
-                
-                <li <%= is_current?(:controller => 'customers', :action => 'edit') %> >
-                  <a href="/customers/<%= current_customer.id %>/edit">
+                <% end %>               
+ 
+                <li <%= is_current?(:controller => 'users', :action => 'edit') %> >
+                  <a href="/users/<%= current_user.id %>/edit">
                     <span class="icon anchor"></span>
                     Edytuj Profil
                   </a>
                 </li>
    
               </ul>
-            
             </nav>
 
            <% end %>
@@ -104,5 +105,10 @@
         </div>
       </div>
     </div>
+
+<%= javascript_include_tag "admin/excanvas", "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js", "admin/jquery.visualize","rails.js", "admin/jquery.datatables", "admin/jquery.placeholder", "admin/jquery.selectskin", "admin/jquery.checkboxes", "admin/jquery.wymeditor", "admin/jquery.validate", "admin/jquery.inputtags", "admin/notifications", "admin/application" %>
+
+    <%= yield :js %>
+
 </body>
 </html>

@@ -23,8 +23,6 @@ body {
   min-height: 100%;
 }
 
-
-
 #stars {
   background: url(/images/admin/stars.png);
 /*
@@ -338,7 +336,7 @@ form section small {
     margin-left: 35%;
 }
 
-form input[type="text"], form input[type="email"], form input[type="password"], form textarea {
+form input[type="text"], form input[type="number"], form input[type="email"], form input[type="password"], form textarea {
   border-radius: 3px;
   border: 1px solid #c9c9c9;
   color: #404040;

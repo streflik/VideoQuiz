@@ -4,9 +4,7 @@ class QuizzesController < ApplicationController
   before_filter :authenticate_user!, :except => [:play]
   before_filter :find_quiz, :except => [:new, :create, :index]
   before_filter :find_customers, :only => [:new, :create, :edit, :update]
-  layout "admin", :except => [:play]
   protect_from_forgery :except => [:get_questions, :check_answer]
-
 
   load_and_authorize_resource :except => [:get_questions, :check_answer, :reward, :play]
 
@@ -66,7 +64,6 @@ class QuizzesController < ApplicationController
     if @question.correct.to_s == params[:answer]
 
       #render :json=>{:response=>"ok"}
-
 
     else
       cookies["ucc_#{@quiz.id}"] = { :value => @question.id, :expires => 1.day.from_now }

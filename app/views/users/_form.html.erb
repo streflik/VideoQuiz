@@ -1,9 +1,11 @@
 <%= simple_form_for @user do |f| %>
-    <%= f.error_notification%>
-  <div class="first"> <%= f.input :first_name, :autofocus => true %></div>
+
+  <%= f.error_notification%>
+  <div class="first"><%= f.input :first_name, :autofocus => true %></div>
   <%= f.input :last_name %>
   <%= f.input :email %>
-    <%= f.input :role, :as=>:select, :collection=>["ADMIN", "USER"] if can?(:manage,@user)%>
+  <div class="last"><%= f.input :role, :as=>:select, :collection=>["ADMIN", "USER"] if can?(:manage, @user) %></div>
+ 
+ <%= f.button :submit 	%>
 
-  <%= f.button :submit, "Dodaj", :class=>"primary" %>
-  <% end %>
+<% end %>

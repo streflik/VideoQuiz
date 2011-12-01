@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>VideoQuiz: <%= @quiz.name %> - <%= @quiz.reward %></title>
+  <title><%= @quiz.name %> - <%= @quiz.reward %></title>
   <%= stylesheet_link_tag "play/reset", "play/layout" %>
   <%#= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -21,15 +21,6 @@
 <div class="play">
   <%= yield %>
 </div>
-
-<!-- This JavaScript snippet activates those tabs -->
-<script>
-// perform JavaScript after the document is scriptable.
-$(function() {
-	// setup ul.tabs to work as tabs for each div directly under div.panes
-	$("ul.tabs").tabs("div.panes > div");
-});
-</script>
 
 </body>
 </html>

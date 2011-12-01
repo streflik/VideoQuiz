@@ -4,13 +4,12 @@ class Quiz < ActiveRecord::Base
   has_many :questions
   has_many :wins
 
-  attr_accessible :user_id, :name, :yt_id, :questions_attributes, :reward, :reward_exp, :fb_page, :landing_page, :coupons_left
+  attr_accessible :user_id, :name, :yt_id, :questions_attributes, :reward, :reward_exp, :fb_page, :landing_page, :instruction
 
-  validates :user_id, :name, :yt_id, :reward, :reward_exp, :fb_page, :landing_page,  :presence => true
+  validates :user_id, :name, :yt_id, :reward, :reward_exp, :fb_page, :landing_page, :instruction, :presence => true
 
   accepts_nested_attributes_for :questions
   serialize :codes, Array
-
 
   def generate_codes(quantity = 100)
     quantity.times{self.codes << SecureRandom.hex(3)}

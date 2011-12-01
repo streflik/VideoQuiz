@@ -9,7 +9,6 @@ class CreateQuizzes < ActiveRecord::Migration
       t.datetime :reward_exp
       t.string :fb_page
       t.string :landing_page
-      t.integer :coupons_left
       t.timestamps
     end
   end

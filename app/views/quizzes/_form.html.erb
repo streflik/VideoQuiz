@@ -3,25 +3,23 @@
     <%= f.error_notification %>
 
     <div class="inputs">
-      <%= f.input :name %>
+      <div class="first"><%= f.input :name %></div>
       <%= f.association :user, :label_method => :name, :value_method => :id,
                         :collection => @customers, :prompt => false %>
       <%= f.input :yt_id %>
       <%= f.input :reward %>
       <%= f.input :reward_exp %>
+      <%= f.input :instruction %>
       <%= f.input :fb_page %>
       <%= f.input :landing_page %>
-      <hr/>
-      <p>Questions</p>
+   
       <%= f.simple_fields_for :questions, @question do |q| %>
           <%= q.input :text %>
           <%= q.input :answer_1 %>
           <%= q.input :answer_2 %>
           <%= q.input :answer_3 %>
-          <%= q.input :answer_4 %>
-          <%= q.input :correct %>
+          <div class="last"><%= q.input :correct %></div>
       <% end %>
-      # answers
     </div>
 
     <div class="actions">

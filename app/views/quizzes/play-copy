@@ -1,0 +1,113 @@
+<!-- zakladki -->
+
+<!-- video -->
+
+<div class="pane_video">
+</div>
+
+<!-- pytanie -->
+
+<div class="pane_questions">
+</div>
+
+<!-- wygrana -->
+
+<div class="pane_reward">
+
+</div>
+
+
+
+
+
+
+
+
+
+<!--
+
+
+<ul class="tabs">
+  <!--<li><a href="#"><%#= t("play.video") %></a></li>-->
+  <!--<li><a href="#" id="question2"><%#= t("play.question") %></a></li>-->
+  <!--<li><a href="#"><%#= t("play.reward", :reward => @quiz.reward) %></a></li>-->
+  <p><%= raw t("coupons_left", :number => @quiz.coupons_left) %></p>
+</ul>
+
+<div class="panes">
+
+  <!-- video -->
+
+  <div class="pane_video">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <div id="ytapiplayer">
+      You need Flash player 8+ and JavaScript enabled to view this video.
+    </div>
+  </div>
+
+  <!-- question -->
+
+  <div class="pane_questions">
+
+    <div id="question_content">
+    </div>
+
+  </div>
+
+  <!-- reward -->
+  <!-- pojawia się gdy poprawna odpowiedź -->
+  <!-- gdy kliknie bez odpowiedzi poprawnej na tabs to pojawia sie komunikat "musisz poprawnie odpowiedziec!" -->
+
+  <div class="pane_reward">
+
+    <div id="reward_content">
+    </div>
+
+    <div id="looser" style="display:none;">
+      Try again later!
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(function() {
+        var params = { allowScriptAccess: "always", rel: 0 };
+        var atts = { id: "myytplayer" };
+        swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
+                "ytapiplayer", "640", "360", "8", null, null, params, atts);
+    });
+</script>
+
+<script type="text/javascript">
+    $("#question2").live("click", function() {
+        $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
+//         alert(data);
+            $("#question_content").html(data);
+        });
+    });
+
+    function onYouTubePlayerReady(playerId) {
+        ytplayer = document.getElementById("myytplayer");
+        ytplayer.addEventListener('onStateChange', 'goToQuestions');
+    }
+    function goToQuestions(state) {
+        if (state == 0) {
+            $(".pane_video").hide();
+            $(".pane_questions").show();
+            $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
+//         alert(data);
+                $("#question_content").html(data);
+            });
+        }
+
+    }
+
+</script>
+
+
+-->

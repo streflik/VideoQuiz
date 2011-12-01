@@ -9,11 +9,49 @@ pl:
   created: "Utworzono."
   deleted: "Usunięto."
 
+  simple_form:
+    "yes": 'Tak'
+    "no": 'Nie'
+    required:
+      text: 'wymagane'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Popraw błędy:"
+    # Labels and hints examples
+    labels:
+      quiz:
+        name: 'Nazwa'
+        user: 'Klient'
+        yt_id: 'YouTube ID'
+        question: 'Pytanie'
+        reward: 'Nagroda'
+        reward_exp: 'Wygaśnięcie nagrody'
+        instruction: "Instrukcja odbioru"
+        fb_page: 'FB Page'
+        landing_page: 'Landing Page'
+        questions:
+          text: "Pytanie"
+          answer_1: "Odpowiedź 1"
+          answer_2: "Odpowiedź 2"
+          answer_3: "Odpowiedź 3" 
+          correct: "Poprawna"
+      user:
+        first_name: "Imię"
+        last_name: "Nazwisko"
+        role: "Rola"
+        password: "Hasło"
+        password_confirmation: "Potwierdź hasło"
+    hints:
+      password: 'Minimum 6 znaków.'
+
   date:
     formats:
       default: "%d-%m-%Y"
       short: "%d %b"
-      long: "%B %d, %Y"
+      long: "%d-%m-%Y"
 
     day_names:
       - niedziela
@@ -69,7 +107,7 @@ pl:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"
       short: "%d %b %H:%M"
-      long: "%B %d, %Y %H:%M"
+      long: "%d-%m-%Y %H:%M"
     am: "przed południem"
     pm: "po południu"
 

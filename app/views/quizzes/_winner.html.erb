@@ -1,6 +1,6 @@
-<h2><%= t("play.winner", :reward => @quiz.reward) %></h2>
+<h2>Brawo</h2>
 
-<p><%= t("play.newsletter") %></p>
+<p>Zapisz się do newslettera żeby otrzymać></p>
 
 <%= simple_form_for([@quiz, Win.new]) do |f| %>
     <%= f.error_notification %>
@@ -9,15 +9,9 @@
       <%= f.input :email, :autofocus => true, :label => false, :input_html => {:placeholder => t("play.default_mail")} %>
     </div>
 
-
     <div class="actions">
       <%= f.button :submit, t("play.send_coupon") %>
     </div>
 <% end %>
 
-<div class="like">
-  <h3><%= t("play.like") %></h3>
 
-  <div class="fb-like" data-href="<%= @quiz.fb_page %>" data-send="false" data-width="450" data-show-faces="true"></div>
-
-</div>

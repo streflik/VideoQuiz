@@ -1,162 +1,166 @@
 body {
-font-family: Arial, sans-serif;
-font-size:14px;
-color:#333;
+font-family:Arial, san-serif;
+color:#fff;
 line-height:1em;
-overflow:hidden;
-background-color:#fff
+font-size:15px
 }
 
-.play {
-width:640px;
+strong {
+font-weight:bold
 }
 
-/* tab pane styling */
+/* panes */
 
-/* initially all panes are hidden */ 
-.panes .pane {
-	display:none;				
-	border-top:0;
-        width:640px;
-	height:360px;
-        float:left
+.pane {;
+  width:630px;
+  height:405px;
+  background:#0c84b0;
+  box-shadow: 5px 5px 0 5px #0e5877;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  margin:0 0 50px 0
 }
 
-/* root element for tabs  */
-ul.tabs { 
-	list-style:none; 
-	margin:0 !important; 
-	padding:0;		
-	width:100%;
-        float:left;
-        font-size:12px
+/* tabs */
+
+#tabs {
+display:block
 }
 
-/* single tab */
-ul.tabs li { 
-	float:left;	 
-	text-indent:0;
-	padding:0;
-	margin:0 !important;
-	list-style-image:none !important; 
+#tabs li {
+color:#c5c5c5;
+float:left;
+width:150px;
+padding:10px 0;
+background:#979797;
+display:block;
+margin:0 15px 0 0;
+text-align:center;
+font-weight:bold;
+box-shadow: 10px 0px #4d4d4d;
+border-radius: 10px;
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
 }
 
-/* link inside the tab. uses a background image */
-ul.tabs a { 
-	display:block;
- padding:10px;
- color:#999
+#tabs li.current {
+color:#fff;
+background:#0c84b0;
+box-shadow: 10px 0px #0e5877;
 }
 
-ul.tabs a:active, ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
-  background:yellow;	
-	cursor:default !important; 
-	outline:none;	
- color: red
+/* video */
+
+#video .player {
+width:560px;
+height:315px;
+float:left;
+margin:35px 35px 20px 35px;
+box-shadow: 3px 3px 7px #333;
 }
 
-/* coupons counter */
-
-ul.tabs p {
-	display:block;
- padding:10px 10px 10px 0;
-float:right;
-color:#999
+#video .fb-like {
+width:60px;
+float:left;
+margin:0 0 0 35px
 }
 
-ul.tabs p .number {
-color:red
+#video h3 {
+text-align:right;
+margin: 0 35px 0 0;
 }
 
-/* panes formatting */
-
-p {
-text-align:center
+#video h3 span {
+font-weight:bold;
+font-size:20px;
 }
+
+/* pytanie */
+
+#question  .btn {
+background:#ff7f00;
+}
+
+#question .btn:hover {
+background:#E73C00
+}
+
+/* wygrana */
+
+#coupon p {
+text-align:center;
+line-height:1.5em
+}
+
+#coupon .btn {
+background: #00bf00;
+margin-top:20px;
+font-size:20px;
+font-weight:bold
+}
+
+#coupon .btn:hover {
+background:#039b03
+}
+
+/* przyciski */
+
+.btn {
+display:block;
+margin:5px 20%;
+float:left;
+width:60%;
+text-align:center;
+padding:10px;
+border-radius: 10px;
+color:#fff;
+text-decoration:none;
+box-shadow:1px 1px #333
+}
+
+/* naglowki */
 
 h2 {
-font-size:20px;
-font-weight:bold;
 text-align:center;
-padding:40px 0 20px 0
-}
-
-h3 {
+font-size: 28px;
 font-weight:bold;
-margin:10px 0 15px 0;
-font-size:14px
+margin:60px auto 30px;
+display:block;
+float:left;
+width:100%;
+letter-spacing:1px;
+line-height:1.2em;
+text-shadow:1px 1px #333
 }
 
 /* share */
 
-.share {
+.share h3 {
 text-align:center;
-width:340px;
-margin:0 auto
-}
-
-.share .centerer {
-width:130px;
-margin:0 auto
-}
-
-.share .centerer div {
-width:65px;
-float:left
-}
-
-/* like */
-
-.like {
-text-align:center;
-width:450px;
-margin:0 auto
-}
-
-/* panes question */
-
-#question_content li {
-float:left;
-}
-
-#question_content li a {
+margin:35px auto 20px;
 display:block;
-width:200px;
-padding:50px 0;
-margin:10px 0 20px 10px;
-background:#eee;
-text-align:center
+float:left;
+width:100%
 }
 
-#question_content li:last-child a {
-margin-right:0;
+.share .fb-like {
+width:60px;
+margin:0 auto;
+display:block
 }
 
-/* panes question */
-
-.reward h2 {
-color:green
+.share.fb-page .fb-like {
+width:450px
 }
 
-.reward form {
-text-align:center;
-margin:20px 0
-}
+/* clear */
 
-.reward form label {
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
-
-.reward form input.string {
-width:300px;
-text-align:center;
-font-size:20px;
-padding:5px;
-}
-
-.reward form input.button {
-margin:10px 0 0 0;
-font-size:16px;
-padding: 5px
-}
-
 
