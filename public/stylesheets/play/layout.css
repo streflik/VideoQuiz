@@ -27,6 +27,11 @@ font-weight:bold
 display:block
 }
 
+#question.pane, #coupon.pane, #fail.pane{
+    display:none;
+}
+
+
 #tabs li {
 color:#c5c5c5;
 float:left;

@@ -1,7 +1,7 @@
 require 'fastercsv'
 class QuizzesController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:play]
+  before_filter :authenticate_user!, :except => [:play, :get_questions, :check_answer, :reward]
   before_filter :find_quiz, :except => [:new, :create, :index]
   before_filter :find_customers, :only => [:new, :create, :edit, :update]
   protect_from_forgery :except => [:get_questions, :check_answer]
@@ -67,7 +67,8 @@ class QuizzesController < ApplicationController
 
     else
       cookies["ucc_#{@quiz.id}"] = { :value => @question.id, :expires => 1.day.from_now }
-      return render :js => "$('.pane_questions').hide();$('.pane_reward').show();$('#looser').show();"
+      render :js => "$('#question.pane').hide();    $('ul#tabs .current').removeClass('current');
+      $('ul#tabs .third').addClass('current');$('#coupon.pane').show();$('#coupon.pane #looser').show();"
     end
   end
 
