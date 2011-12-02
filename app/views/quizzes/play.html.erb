@@ -75,7 +75,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $(function() {
-      var params = { allowScriptAccess: "always", rel: 0 };
+      var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
       var atts = { id: "myytplayer" };
       swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
                 "ytapiplayer", "560", "315", "8", null, null, params, atts);
