@@ -34,6 +34,7 @@ display:block
 
 
 #tabs li {
+background:#d3d3d3;
 color:#666;
 float:left;
 width:150px;
@@ -55,9 +56,6 @@ border-bottom-right-radius: 0;
 
 #tabs li.current {
 color:#fff;
-box-shadow: 10px 0px #0e5877;
--webkit-box-shadow: 10px 0px #0e5877;
--moz-box-shadow: 10px 0px #0e5877;
 }
 
 /* video */
@@ -197,12 +195,14 @@ color:#fff
 background:#0c84b0;
 }
 
-#tabs li {
-background:#d3d3d3;
-}
-
 .pane {
 box-shadow: 5px 5px 0 5px #0e5877;
 -webkit-box-shadow: 5px 5px 0 5px #0e5877;
 -moz-box-shadow: 5px 5px 0 5px #0e5877;
+}
+
+#tabs li.current {
+box-shadow: 10px 0px #0e5877;
+-webkit-box-shadow: 10px 0px #0e5877;
+-moz-box-shadow: 10px 0px #0e5877;
 }

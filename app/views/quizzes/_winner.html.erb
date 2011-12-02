@@ -1,8 +1,8 @@
 <div class="reward_content">
 
 <h2>Gratulacje, prawidłowa odpowiedź! :-)</h2>
-<p>Wygrana to <strong><%= @quiz.reward %></strong>.
-Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong>.</p>
+<p>Wygrana to <strong><%= @quiz.reward %></strong>&nbsp;
+Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
 <p><%= @quiz.instruction %></p>
 
 <% if @quiz.name == "CyfrowaSzkoła.pl" %>
