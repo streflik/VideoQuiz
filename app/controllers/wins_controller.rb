@@ -9,7 +9,7 @@ class WinsController < ApplicationController
         @quiz.save
         if @win.save
           #Resque.enqueue DeliverReward, @win.id
-          UserMailer.reward(win_id).deliver
+          UserMailer.reward(@win.id).deliver
           render :js=> "$('#coupon.pane').hide();$('#finish.pane').show();"
         else
           render :js=> "alert('Podany adres jest już w naszej bazie');"
