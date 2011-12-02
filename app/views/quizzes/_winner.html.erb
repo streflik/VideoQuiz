@@ -6,7 +6,7 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong>.</p>
 <p><%= @quiz.instruction %></p>
 
 <% if @quiz.name == "CyfrowaSzkoła.pl" %>
-  <a class="btn" target="_blank" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>
+  <a class="btn" target="_parent" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>
 <% else %>
 
 <%= simple_form_for([@quiz, Win.new]) do |f| %>
