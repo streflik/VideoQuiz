@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "from@example.com"
+  default :from => "GetVideoQuiz <info@getvideoquiz.com>"
    #TODO: adres maila
 
   def reward(win_id)

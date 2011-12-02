@@ -9,7 +9,7 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
   <a class="btn" target="_parent" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>
 <% else %>
 
-<%= simple_form_for([@quiz, Win.new]) do |f| %>
+<%= simple_form_for [@quiz, Win.new], :remote=>true do |f| %>
     <%= f.error_notification %>
 
       <%= f.input :email, :autofocus => true, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>

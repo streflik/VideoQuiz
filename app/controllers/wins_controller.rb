@@ -8,13 +8,14 @@ class WinsController < ApplicationController
         end
         @quiz.save
         if @win.save
-          Resque.enqueue DeliverReward, @win.id
-          render :json => {:response => "ok"}
+          #Resque.enqueue DeliverReward, @win.id
+          UserMailer.reward(win_id).deliver
+          render :js=> "$('#coupon.pane').hide();$('#finish.pane').show();"
         else
-          #taki email juz jest w bazie lub niepoprawny email lub brak
+          render :js=> "alert('Podany adres jest już w naszej bazie');"
         end
       else
-        #nie ma kodow
+        render :js=> "alert('Przykro nam ale kody rabatowe skończyły się');"
       end
   end
 

@@ -85,24 +85,27 @@ class QuizzesController < ApplicationController
   end
 
 
-  def reward
-    if params[:email] && params[:email] =~ /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-      if @quiz.codes.any? && code = @quiz.codes.shift
-        @quiz.save
-        if @quiz.wins.exists?(:email => params[:email]) && @win = @quiz.wins.create(:email=> params[:email], :code => code)
-          Resque.enqueue DeliverReward, @win.id
-          render :json => {:response => "ok"}
-        else
-          #taki email juz jest w bazie!
-        end
-      else
-        #nie ma kodow
-      end
-    else
-      #zly adres email
-    end
-  end
-
+  #def reward
+  #  if params[:email] && params[:email] =~ /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
+  #    if @quiz.codes.any? && code = @quiz.codes.shift
+  #      @quiz.save
+  #      if @quiz.wins.exists?(:email => params[:email]) && @win = @quiz.wins.create(:email=> params[:email], :code => code)
+  #        Resque.enqueue DeliverReward, @win.id
+          #UserMailer.reward(win_id).deliver
+          #render :js=> "$('#coupon.pane').hide();$('#finish.pane').show();"
+        #else
+        #  render :js=> "alert('Podany adres jest już w naszej bazie');"
+        #end
+      #else
+      #  render :js=> "alert('Przykro nam ale kody rabatowe skończyły się');"
+      #
+      #end
+    #else
+    #  render :js=> "alert('Podany adres nie jest poprawnym adresem email');"
+    #
+    #end
+  #end
+  #
   private
 
   def find_quiz
