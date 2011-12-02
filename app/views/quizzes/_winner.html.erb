@@ -12,13 +12,9 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
 <%= simple_form_for([@quiz, Win.new]) do |f| %>
     <%= f.error_notification %>
 
-    <div class="inputs">
-      <%= f.input :email, :autofocus => true, :label => false, :input_html => {:placeholder => t("play.default_mail")} %>
-    </div>
+      <%= f.input :email, :autofocus => true, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>
+      <%= f.button :submit, "Dostań Kupon TERAZ!", :class=>"submit" %>
 
-    <div class="actions">
-      <%= f.button :submit, "Wyślij Kupon TERAZ!", :class=>"btn" %>
-    </div>
 <% end %>
 
 <% end %>
