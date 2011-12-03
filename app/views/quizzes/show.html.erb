@@ -11,7 +11,7 @@
   <%= link_to "Pobierz dane zwycięzców", get_winners_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
   <%= link_to "Pobierz kody", get_codes_quiz_url(@quiz, :format=>:csv), :class => "button icon arrowdown" %>
 
-  <h2>Wykorzystane Kupony (<%= @quiz.wins_count %>/<%= @quiz.codes.size %>):</h2>
+  <h2>Wykorzystane Kupony (<%= @quiz.wins_count %>/<%= @quiz.codes.size + @quiz.wins_count  %>):</h2>
 
   <table class="datatable">
     <thead>
