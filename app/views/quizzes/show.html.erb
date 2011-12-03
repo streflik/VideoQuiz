@@ -27,7 +27,7 @@
         <tr>
           <td><%= c.code %></td>
           <td><%= c.email %></td>
-          <td><%= l c.created_at %></td>
+          <td><%= l(c.created_at, :format => :long) %></td>
         </tr>
     <% end %>
     </tbody>

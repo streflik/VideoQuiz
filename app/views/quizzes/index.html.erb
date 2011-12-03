@@ -27,7 +27,7 @@
         <tr>
           <td><%= q.name %></td>
           <td><%= q.user.name %></td>
-          <td><%= q.created_at %></td>
+          <td><%= l(q.created_at, :format => :long) %></td>
           <td>
           <span class="button-group">
             <%= link_to "Pokaż", q, :class=>"button icon arrowright" %>
