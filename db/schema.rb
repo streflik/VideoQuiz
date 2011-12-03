@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115160618) do
+ActiveRecord::Schema.define(:version => 20111115160619) do
 
   create_table "questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(:version => 20111115160618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "codes"
-    t.integer  "wins_count",   :default => 0
+    t.integer  "wins_count",    :default => 0
     t.string   "instruction"
     t.string   "reward_short"
     t.text     "custom_css"
+    t.string   "company_name"
+    t.string   "company_email"
   end
 
   create_table "users", :force => true do |t|

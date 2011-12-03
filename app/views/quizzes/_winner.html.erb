@@ -12,8 +12,8 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
 <%= simple_form_for [@quiz, Win.new], :remote=>true do |f| %>
     <%= f.error_notification %>
 
-      <%= f.input :email, :autofocus => true, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>
-      <%= f.button :submit, "Dostań Kupon TERAZ!", :class=>"submit" %>
+      <%= f.input :email, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>
+      <%= f.button :submit, "Wyślij Kupon TERAZ!", :class=>"submit" %>
 
 <% end %>
 

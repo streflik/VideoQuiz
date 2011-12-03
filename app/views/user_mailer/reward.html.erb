@@ -1,3 +1,14 @@
-<!--#TODO: tekst maila-->
-Witaj,
-mail z kodem bla bla   twoj kod: <%= @win.code %>
+<p>Witaj!</p>
+
+<p>Twoja wygrana to <%= @win.quiz.reward %> w <%= @win.quiz.company_name %>.<br />
+Kupon można wykorzystać do <%= l(@quiz.reward_exp, :format => :long) %>.</p>
+
+<p>Przy składaniu zamówienia, podaj kod <strong><%= @win.code %></strong>.</p>
+
+<p>W przypadku problemów, skontaktuj się z <%= @win.quiz.company_name %>:<br /> 
+<%= @win.quiz.company_email %>.</p>
+
+<p>---</p>
+
+<p>VideoQuiz by <a href="http://filmpoint.pl">Filmpoint.pl</a></p>
+

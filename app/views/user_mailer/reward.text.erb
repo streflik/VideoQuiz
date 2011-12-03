@@ -1,3 +1,14 @@
-UserMailer#reward
+Witaj!
 
-<%= @greeting %>, find me in app/views/app/views/user_mailer/reward.text.erb
+Twój kupon to <%= @win.quiz.reward %> w <%= @win.quiz.company_name %>.
+Kupon można wykorzystać do <%= l(@quiz.reward_exp, :format => :long) %>
+
+Przy składaniu zamówienia, podaj kod <%= @win.code %>.
+
+W przypadku problemów, skontaktuj się z <%= @win.quiz.company_name %>: 
+<%= @win.quiz.company_email %>.
+
+---
+
+VideoQuiz by Filmpoint.pl
+

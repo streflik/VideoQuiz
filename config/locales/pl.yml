@@ -23,7 +23,9 @@ pl:
     # Labels and hints examples
     labels:
       quiz:
-        name: 'Nazwa'
+        name: 'Nazwa quizu'
+        company_mame: "Nazwa firmy"
+        company_email: "Email firmy"
         user: 'Klient'
         yt_id: 'YouTube ID'
         question: 'Pytanie'

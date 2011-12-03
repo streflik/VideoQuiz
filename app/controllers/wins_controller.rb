@@ -15,7 +15,7 @@ class WinsController < ApplicationController
           render :js=> "alert('Podany adres jest już w naszej bazie');"
         end
       else
-        render :js=> "alert('Przykro nam ale kody rabatowe skończyły się');"
+        render :js=> "alert('Przykro nam, ale kody rabatowe skończyły się');"
       end
   end
 
