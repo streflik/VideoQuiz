@@ -1,7 +1,7 @@
 Witaj!
 
 Twój kupon to <%= @win.quiz.reward %> w <%= @win.quiz.company_name %>.
-Kupon można wykorzystać do <%= l(@quiz.reward_exp, :format => :long) %>
+Kupon można wykorzystać do <%= l(@win.quiz.reward_exp, :format => :long) %>
 
 Przy składaniu zamówienia, podaj kod <%= @win.code %>.
 

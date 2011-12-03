@@ -49,7 +49,7 @@ namespace :bundler do
 
   desc "Install for production"
   task :install, :roles => :app do
-    run "cd #{release_path} && bundle install"
+    run "cd #{release_path} && bundle install && rake db:migrate"
   end
 
 end

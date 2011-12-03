@@ -1,7 +1,7 @@
 <p>Witaj!</p>
 
 <p>Twoja wygrana to <%= @win.quiz.reward %> w <%= @win.quiz.company_name %>.<br />
-Kupon można wykorzystać do <%= l(@quiz.reward_exp, :format => :long) %>.</p>
+Kupon można wykorzystać do <%= l(@win.quiz.reward_exp, :format => :long) %>.</p>
 
 <p>Przy składaniu zamówienia, podaj kod <strong><%= @win.code %></strong>.</p>
 

@@ -31,6 +31,12 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
 </div>
 
   </div>
+<script type="text/javascript">
+  $("#new_win").live("submit", function(){
+    $.post("/quizzes/<%=@quiz.id%>/wins",$("#new_win").serialize());
+   return false;
+  })
+</script>
 
 
 
