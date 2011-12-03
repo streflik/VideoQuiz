@@ -20,8 +20,9 @@
     </div>
   </div>
 
-  <div class="fb-like" data-href="<%= @quiz.landing_page %>" data-send="false" data-layout="button_count" data-width="60" data-show-
-       faces="false"></div>
+  <div class="fb-like">
+    <a name="fb_share" type="button_count" share_url="<%= @quiz.landing_page %>"></a> 
+  </div>
 
   <% unless @quiz.name == "CyfrowaSzkoła.pl" %>
     <h3><strong>POSPIESZ SIĘ</strong> ZOSTAŁO TYLKO <span><%= @quiz.codes.size  %></span> KUPONÓW</h3>

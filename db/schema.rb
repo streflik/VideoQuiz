@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115160619) do
+ActiveRecord::Schema.define(:version => 20111115160620) do
 
   create_table "questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20111115160619) do
     t.text     "custom_css"
     t.string   "company_name"
     t.string   "company_email"
+    t.string   "google_anal"
   end
 
   create_table "users", :force => true do |t|
