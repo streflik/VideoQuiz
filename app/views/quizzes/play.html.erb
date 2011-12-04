@@ -21,11 +21,11 @@
   </div>
 
   <div class="fb-like">
-    <a name="fb_share" type="button_count" share_url="<%= @quiz.landing_page %>"></a> 
+    <a name="fb_share" type="button_count" share_url="<%= @quiz.landing_page %>">Udostępnij</a> 
   </div>
 
   <% unless @quiz.name == "CyfrowaSzkoła.pl" %>
-    <h3><strong>POSPIESZ SIĘ</strong> ZOSTAŁO TYLKO <span><%= @quiz.codes.size  %></span> KUPONÓW</h3>
+    <h3>ZOSTAŁO TYLKO <span><%= @quiz.codes.size  %></span> KUPONÓW</h3>
   <% end %>
 
 </div>

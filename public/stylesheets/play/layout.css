@@ -71,7 +71,7 @@ box-shadow: 3px 3px 7px #333;
 }
 
 #video .fb-like {
-width:60px;
+width:120px;
 float:left;
 margin:0 0 0 35px
 }
@@ -188,7 +188,7 @@ width:100%
 }
 
 .share .fb-like {
-width:60px;
+width:120px;
 margin:0 auto;
 display:block
 }
