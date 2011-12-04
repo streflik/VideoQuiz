@@ -28,7 +28,7 @@ font-weight:bold
 display:block
 }
 
-#question.pane, #coupon.pane, #fail.pane{
+#question.pane, #coupon.pane, #fail.pane, #finish.pane{
     display:none;
 }
 
