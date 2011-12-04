@@ -1,12 +1,11 @@
 class UserMailer < ActionMailer::Base
-  default :from => "GetVideoQuiz <info@getvideoquiz.com>"
+  default :from => "VideoQuiz <#{@win.quiz.company_email}>"
    #TODO: adres maila
 
   def reward(win_id)
     @win = Win.find(win_id)
 
-
     mail :to => @win.email,
-         :subject => "Kod rabatowy w quizie #{@win.quiz.name}"
+         :subject => "Kod rabatowy w VideoQuizie #{@win.quiz.name}"
   end
 end

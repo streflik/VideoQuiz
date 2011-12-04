@@ -3,7 +3,8 @@
 <p>Twoja wygrana to <%= @win.quiz.reward %> w <%= @win.quiz.company_name %>.<br />
 Kupon można wykorzystać do <%= l(@win.quiz.reward_exp, :format => :long) %>.</p>
 
-<p>Przy składaniu zamówienia, podaj kod <strong><%= @win.code %></strong>.</p>
+<p>Przy składaniu zamówienia, podaj kod <strong style="background-color:yellow"><%= @win.code %></strong>.<br />
+Więcej informacji <a href="<%= @win.quiz.landing_page %>">na stronie z VideoQuizem</a>.</p>
 
 <p>W przypadku problemów, skontaktuj się z <%= @win.quiz.company_name %>:<br /> 
 <%= @win.quiz.company_email %>.</p>
