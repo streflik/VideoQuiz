@@ -21,7 +21,7 @@
 <![endif]-->
 
 <meta name="Description" content="<%= t('description') %>" />
-<meta name="Keywords" content="video, marketing, quiz, videomarketing, videoquiz />
+<meta name="Keywords" content="video quiz, interactive video" />
 
 <!-- fb meta -->
 
@@ -29,7 +29,7 @@
 <meta property="og:type" content="company"/>
 <meta property="og:url" content="http://www.filmpoint.pl/videoquiz"/>
 <meta property="og:image" content="http://www.filmpoint.pl/filmpoint-logo-for-fb.png"/>
-<meta property="og:site_name" content="VideoQuiz | Filmpoint Videomarketing"/>
+<meta property="og:site_name" content="VideoQuiz od Filmpoint.pl"/>
 <meta property="og:description" content="<%= t('description') %>"/>
 
 </head>
@@ -51,13 +51,14 @@
         <div class="in-splash-left">
           <!-- splash text -->
           <h1><%= t('description') %></h1>	 	   
-	  <p>Proste. Niedrogie. Niesamowicie skuteczne w zwiększaniu sprzedaży.<br />
+	  <p>Proste. Niedrogie. Skuteczne w zwiększaniu sprzedaży i zaangażowania.<br />
           Najwyższa jakość od studia filmowego <a href="http://filmpoint.pl">Filmpoint.pl</a>.</p>	   
           <!-- /splash text -->
         </div>
         <!-- splash image -->
     	<span class="in-splash-right">
-	<iframe src="http://player.vimeo.com/video/31538213?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="460" height="279" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe></span>
+          ss
+	</span>
         <!-- /splash image -->
         <!-- splash buttons -->
         <span class="in-splash-buttons">
@@ -77,7 +78,7 @@
     <div class="ge-logo"><a href="http://filmpoint.pl"><img src="images/landing/ge-logo.png" alt="Autopilot" width="250" height="39" /></a></div>
 	<!-- /logo -->
     <!-- phone -->
-    <div class="ge-phone">Zapytaj: +48 604 099 886</div>
+    <div class="ge-phone">Zapytaj o projekt kampanii dla Ciebie: +48 604 099 886</div>
     <!-- /phone -->
   </div>
 </div>
@@ -92,7 +93,7 @@
         <span class="benefits-icon"><img src="/images/landing/benefits/benefits-001.png" alt="example" width="48" height="48" /></span>
         <div class="benefits-text">
       	  <h2>Lepsza Komunikacja</h2>
-          <p>Video najskuteczniej przedstawia ofertę.</p>
+          <p>Przedstawimy Twoją ofertę na video.</p>
         </div>
       </li>
       <!-- /benefit item -->
@@ -100,14 +101,14 @@
         <span class="benefits-icon"><img src="/images/landing/benefits/benefits-002.png" alt="example" width="48" height="48" /></span>
         <div class="benefits-text">
       	  <h2>Wirusowa Promocja</h2>
-          <p>Facebook jest ultra-popularny.</p>
+          <p>Zintegrujemy z Facebook Likes</p>
         </div>
       </li>
       <li class="endbenefits">
         <span class="benefits-icon"><img src="/images/landing/benefits/benefits-003.png" alt="example" width="48" height="48" /></span>
         <div class="benefits-text">
       	  <h2>Większa Sprzedaż</h2>
-          <p>Kupony błyskawicznie pobudzają sprzedaż.</p>
+          <p>Ustawimy system do kuponów rabatowych.</p>
         </div>
       </li>
     
@@ -122,20 +123,17 @@
   <div class="in-demo">
 
    <div class="left">
-     <iframe width="560" height="315" src="http://www.youtube.com/embed/ZnlPgo9TaGo?rel=0" frameborder="0" allowfullscreen></iframe>
+     <iframe src="http://localhost:3000/quizzes/4/play" width="640" height="470" frameborder="0"></iframe>
    </div>
    
    <div class="right">
-     <h2><a name="demo"><span>1</span>Zobacz video</a></h2>
-	 <p>Realizujemy profesjonalny film opowiadający o Twojej firmie. Może przyjąć formę filmu wizerunkowego lub
-	 zwariowanego filmu wiralowego. Poprowadzimy Cię przez wszystkie etapy &ndash; od scenariusza
-	 po produkcję<br /> i promocję.</p>
-	 <h2><span>2</span>Odpowiedz na pytanie</h2>
-	 <p>Po skończeniu video pojawia się pytanie, na które klient musi odpowiedzieć, żeby dostać kupon rabatowy. Jeśli nie zna odpowiedzi
-	 to pyta swoich znajomych na Facebooku i Twitterze co rozprzestrzenia informację<br /> o Twoim VideoQuizie.</p>
-	 <h2><span>3</span>Wygraj rabat</h2>
-	 <p>Klient wygrywa kupon rabatowy zapisując się przy okazji do Twojego newslettera. Pobudzasz sprzedaż<br /> i rozbudowujesz
-	 swoją listę mailingową!</p>
+     <h2><a name="demo"><span>1</span>Video</a></h2>
+	 <p>Realizujemy film opowiadający o Twojej firmie i produktach. Może przyjąć formę klasycznego filmu promocyjnego, 
+         pożytecznego filmu edukacyjnego lub zabawnego filmu wiralowego.</p>
+	 <h2><span>2</span>Pytanie</h2>
+	 <p>Po obejrzeniu video pojawia się pytanie, na które klient musi poprawnie odpowiedzieć, żeby dostać kupon rabatowy.</p>
+	 <h2><span>3</span>Kupon</h2>
+	 <p>Klient wygrywa kupon rabatowy zapisując się przy okazji do Twojego newslettera. Pobudzasz sprzedaż, zwiększasz zaangażowanie klientów, rozbudowujesz swoją listę mailingową!</p>
    </div>
   </div>
 </div>
@@ -144,14 +142,14 @@
 <!-- pricing -->
 <div class="in-pricing-container">
     <h2>Elastyczny Cennik</h2>
-	<h3><strike>99 zł</strike> 49 zł netto za każde 100 kuponów rabatowych <span>+</span> opracowanie scenariusza <span>+</span> produkcja filmu</h3> 
-	<h2>Dodatkowa zniżka 10 zł netto za pierwsze 100 kuponów jeśli zalajkujesz:</h2>
+	<h3>Kampanie oparte o VideoQuiz są aktualnie dostępne na indywidualne zamówienie. Zapraszamy do kontaktu.</h3> 
+	<h2>Rabaty dla naszych fanów na Facebooku :)</h2>
     <div class="fb-like" data-href="http://facebook.com/filmpoint" data-send="false" data-width="450" data-show-faces="true"></div>
 </div>
 <!-- /pricing -->
 
 <!-- testimonials -->
-<div id="in-testimonials-container">
+<div id="in-testimonials-container" class="hide">
   	<ul class="in-testimonials">
       <!-- testimonial item -->
       <li> 
@@ -181,9 +179,10 @@
       <div class="quote-text">
         <!-- contact details -->
         <h2><a name="contact">Zamów Teraz</a></h2>
-        <p>Opowiedz nam o swoim biznesie. My zaproponujemy, co możemy dla Ciebie zrobić.<br /><br />
+        <p>Opowiedz nam o swoim biznesie. Zaproponujemy<br />w czym możemy pomóc.<br /><br />
+          <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a><br />
           +48 604 099 886<br />
-          <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a><br /><br />
+          <br />
           Filmpoint Videomarketing<br />
           ul. Dąbrowskiego 188/1<br />
 		  60-594 Poznań<br />
@@ -197,7 +196,7 @@
 		<form id="form6" name="form6" autocomplete="off" enctype="multipart/form-data" method="post" novalidate action="https://filmpoint.wufoo.com/forms/w7x2r7/#public">
 		<fieldset>
           <div class="form-left">
-            <label for="Field7">Imię Nazwisko <span>*</span></label>
+            <label for="Field7">Imię i Nazwisko <span>*</span></label>
 			<input id="Field7" name="Field7" type="text" class="field text medium" value="" maxlength="255" tabindex="1" onkeyup="" required />
           </div> 
           <div class="form-right">
@@ -218,47 +217,12 @@
         <!-- /contact form -->
       </div> 
     </div>
-    <div class="screenshots">
-      <!-- screenshots -->
-      <ul class="gallery">
-        <!-- screenshot item -->
-        <li> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-001.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-001.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-        <!-- /screenshot item -->
-        <li class="endscreenshot"> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-002.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-002.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-        <li> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-003.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-003.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-        <li class="endscreenshot"> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-004.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-004.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-        <li> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-005.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-005.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-        <li class="endscreenshot"> 
-          <span class="in-screenshots-view"><img src="/images/landing/in-screenshot-view.png" alt="view" width="19" height="19" /></span> 
-          <a href="images/screenshots/screenshot-006.jpg" rel="prettyPhoto[gallery]"><img src="/images/landing/screenshots/thumbnail-006.jpg" alt="example" width="138" height="76" /></a> 
-        </li>
-      </ul>
-      <!-- /screenshots -->
-    </div>
   </div>
 </div>
 <!-- /quote -->
 
 <!-- clients -->
 <div id="in-clients-container">
-
-
-
 
   <div class="in-clients">
     <h3>Klienci studia filmowego Filmpoint Videomarketing to ambitne firmy różnych branż i wielkości.</h3>
@@ -282,9 +246,9 @@
   <div class="ge-footer"> 
     <div class="ge-calltoaction">
       <!-- call to action -->
-      <h4>Do 30 listopada pierwsze 100 kuponów w promocyjnej cenie 49 zł netto!</h4>
-      <p>Promocja dotyczy wszystkich klientów, którzy złożą zamówienie na VideoQuiz poprzez powyższy formularz kontaktowy, <br />
-	  emailem: <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a> lub telefonicznie: +48 604 099 886. Jesteśmy dostępni 24/7.</p>
+      <h4>Bezpłatny pierwszy projekt kampanii!</h4>
+      <p>Skontaktuj się z nami, a pierwszy pomysł otrzymasz bezpłatnie w ciągu 24 godzin.<br />
+	  Wyślij mail: <a href="mailto:kontakt@filmpoint.pl">kontakt@filmpoint.pl</a> lub zadzwón: +48 604 099 886. Jesteśmy dostępni 24/7.</p>
       <!-- /call to action -->
     </div> 
     <!-- call to action button -->

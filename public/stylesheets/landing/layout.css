@@ -221,7 +221,7 @@ body, html{
 }
 
 .ge-phone{
-	width:353px;
+	width:553px;
 	height:35px;
 	position:relative;
 	float:right;
@@ -334,7 +334,7 @@ ul.in-more{
 }
 
 .in-demo  .right {
-   width:310px
+   width:270px
 }
 
 .in-demo .right h2 {
@@ -462,6 +462,11 @@ ul.in-testimonials{
 	height:320px;
 	margin:0px auto;
 	padding-top:35px;
+}
+
+.quote {
+	width: 700px;
+        margin:0 auto
 }
 
 .quote-text{
