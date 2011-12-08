@@ -29,7 +29,8 @@ pl:
         user: 'Klient'
         yt_id: 'YouTube ID'
         question: 'Pytanie'
-        reward: 'Nagroda'
+        reward: 'Nagroda - pełna'
+        reward_shor: 'Nagroda - skrót'
         google_anal: 'Google Analytics ID'
         reward_exp: 'Wygaśnięcie nagrody'
         instruction: "Instrukcja odbioru"
