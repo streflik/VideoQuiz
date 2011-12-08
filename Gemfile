@@ -15,7 +15,7 @@ gem "resque"
 gem "fastercsv"
 gem "capistrano"
 gem "airbrake"
-gem "SystemTimer"
+#gem "SystemTimer"
 
 # Use unicorn as the web server
 # gem 'unicorn'

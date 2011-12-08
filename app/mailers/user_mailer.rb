@@ -6,6 +6,7 @@ class UserMailer < ActionMailer::Base
 
     mail :to => @win.email,
          :subject => "Kod rabatowy w VideoQuizie #{@win.quiz.name}",
-	:from => "VideoQuiz <#{@win.quiz.company_email}>"
+	       :from => "VideoQuiz <info@getvideoquiz.com>" ,
+         :reply_to => @win.quiz.company_email
   end
 end
