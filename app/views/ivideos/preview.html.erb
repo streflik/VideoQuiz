@@ -1,0 +1,44 @@
+<% title "Podgląd" %>
+
+<%= render :partial => "quizzes/shared/nav" %>
+          
+<!-- The content -->
+<section id="content">
+
+  <div class="tab" id="maintab" style="display: block; height:550px">
+
+<h2><%= yield(:title) %></h2>
+
+<div class="column left third">
+  <h3>Instrukcje</h3>
+  <p>1. Wklej poniższy kod na dowolnej stronie internetowej.</p>
+  <pre>&lt;iframe src="<%= play_quiz_url(@ivideo) %>" width="640" height="470" frameborder="0"&gt;&lt;/iframe&gt;</pre>
+
+  <p>2. Wklej te Facebook Meta Tagi do sekcji "head" strony gdzie umieścisz VideoQuiz i gdzie mają linkować
+     Facebook Likes. Oczywiście możesz dowolnie zmienić te parametry.</p>
+
+<pre>
+&lt;meta property="og:title" content="Wygraj <%= @ivideo.reward %> - <%= @ivideo.name %>"/&gt;<br />
+&lt;meta property="og:type" content="article"/&gt;<br />
+&lt;meta property="og:url" content="<%= @ivideo.landing_page %>"/&gt;<br />
+&lt;meta property="og:image" content="http://www.filmpoint.pl/filmpoint-logo-for-fb.png"/&gt;<br />
+&lt;meta property="og:site_name" content="<%= @ivideo.name %>"/&gt;<br />
+&lt;meta property="og:description" content="VideoQuiz! Wygraj <%= @ivideo.reward %> oglądając krótkie video i odpowiadając na proste pytanie."/&gt;
+</pre>
+
+</div>
+
+<div class="column right twothird">
+  <div style="padding-left:40px">
+    <iframe src="<%= play_quiz_path(@ivideo) %>" width="640" height="470" frameborder="0"></iframe>
+  </div>
+</div>
+
+</div>
+
+
+</section>
+
+
+
+

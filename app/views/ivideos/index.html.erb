@@ -1,0 +1,44 @@
+<% title "iFilmy" %>
+
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li class="current"><a href="/quizzes"><%= yield(:title) %></a></li>
+  </ul>
+</nav>
+
+<!-- The content -->
+<section id="content">
+
+  <h2><%= yield(:title) %></h2>
+
+  <table class="datatable">
+    <thead>
+    <tr>
+      <th>iFilm</th>
+      <th>Klient</th>
+      <th>Data</th>
+      <th>Akcje</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @ivideos.each do |q| %>
+        <tr>
+          <td><%= q.name %></td>
+          <td><%= q.user.name %></td>
+          <td><%= l(q.created_at, :format => :long) %></td>
+          <td>
+          <span class="button-group">
+            <%= link_to "Pokaż", q, :class=>"button icon arrowright" %>
+            <%= link_to "Edytuj", edit_quiz_path(q), :class=>"button icon edit" %>
+            <%= link_to "Usuń", "", :class=>"button icon remove danger" %>
+          </span>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</section>
+

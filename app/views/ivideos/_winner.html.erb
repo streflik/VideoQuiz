@@ -1,0 +1,43 @@
+<div class="reward_content">
+
+<h2>Gratulacje, prawidłowa odpowiedź! :-)</h2>
+<p>Wygrana to <strong><%= @ivideo.reward %></strong>&nbsp;
+Aktywna do <strong><%= l(@ivideo.reward_exp, :format => :long) %></strong></p>
+<p><%= @ivideo.instruction %></p>
+
+<% if @ivideo.name == "CyfrowaSzkoła.pl" %>
+  <a class="btn" target="_parent" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>
+<% else %>
+
+<%= simple_form_for [@ivideo, Win.new], :remote=>true do |f| %>
+    <%= f.error_notification %>
+
+      <%= f.input :email, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>
+      <%= f.button :submit, "Wyślij Kupon TERAZ!", :class=>"submit" %>
+
+<% end %>
+
+<% end %>
+
+</div>
+
+<div class="clear"></div>
+
+  <div class="share fb-page">
+  <h3><strong>LUBISZ NAS?</strong> DOŁĄCZ DO NAS NA FACEBOOKU:</h3>
+
+<div class="fb-like">
+<iframe src="//www.facebook.com/plugins/like.php?href=<%= @ivideo.fb_page %>&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=260842760622698" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
+</div>
+
+  </div>
+
+<script type="text/javascript">
+  $("#new_win").live("submit", function(){
+    $.post("/quizzes/<%=@ivideo.id%>/wins",$("#new_win").serialize());
+   return false;
+  })
+</script>
+
+
+

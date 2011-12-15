@@ -1,0 +1,5 @@
+$("#reward_content").html('<%= escape_javascript(render :partial=> "winner")%>');
+$("#question.pane").hide();
+$("ul#tabs .current").removeClass("current");
+$("ul#tabs .third").addClass("current");
+$("#coupon.pane").show();

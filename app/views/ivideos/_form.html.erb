@@ -1,0 +1,35 @@
+<%= simple_form_for(@ivideo) do |f| %>
+
+    <%= f.error_notification %>
+
+    <div class="inputs">
+      <div class="first"><%= f.input :name %></div>
+      <%= f.input :company_name %>
+      <%= f.input :company_email %>
+      <%= f.association :user, :label_method => :name, :value_method => :id,
+                        :collection => @customers, :prompt => false %>
+      <%= f.input :yt_id %>
+      <%= f.input :reward %>
+      <%= f.input :reward_short %>
+      <%= f.input :reward_exp %>
+      <%= f.input :instruction %>
+      <%= f.input :fb_page %>
+      <%= f.input :landing_page %>
+      <%= f.input :google_anal %>
+      <%= f.input :custom_css %>
+      <div id="questions">
+      <%= f.simple_fields_for :questions, @question do |q| %>
+          <%= q.input :text %>
+          <%= q.input :answer_1 %> <%= q.input :video1%>
+          <%= q.input :answer_2 %> <%= q.input :video2%>
+          <%= q.input :answer_3 %> <%= q.input :video3%>
+          <div class="last"><%= q.input :correct %></div>
+      <% end %>
+      </div>
+    </div>
+  <%= add_question_link("Dodaj Pytanie", f)%>
+    <div class="actions">
+      <%= f.button :submit %>
+    </div>
+
+<% end %>

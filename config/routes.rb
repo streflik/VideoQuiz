@@ -22,6 +22,8 @@ Videoquiz::Application.routes.draw do
    end
   end
 
+  resources :ivideos
+
   mount Resque::Server.new, :at => "/resque"
 
   # The priority is based upon order of creation:

@@ -56,14 +56,33 @@
                   </a>
                 </li>
 
-                <% if can? :create, Quiz%>
+                 <% if can? :create, Quiz%>
                 <li <%= is_current?(:controller => 'quizzes', :action => 'new') %> >
                   <a href="/quizzes/new">
                     <span class="icon pencil"></span>
                     Dodaj Quiz
                   </a>
                 </li>
-                <% end %>               
+                <% end %>
+
+                <li <%= is_current?(:controller => 'ivideos', :action => 'index') %> >
+                  <a href="/ivideos">
+                    <span class="icon dashboard"></span>
+                    <span class="badge"><%= Ivideo.accessible_by(current_ability).count %></span>
+                    iFilm
+                  </a>
+                </li>
+
+                 <% if can? :create, Ivideo%>
+                <li <%= is_current?(:controller => 'ivideos', :action => 'new') %> >
+                  <a href="/ivideos/new">
+                    <span class="icon pencil"></span>
+                    Dodaj iFilm
+                  </a>
+                </li>
+                <% end %>
+
+
  
                 <% if can? :read, User%>
                 <li <%= is_current?(:controller => 'users', :action => 'index') %> >

@@ -1,0 +1,112 @@
+<!-- zakladki -->
+
+<ul id="tabs">
+  <li class="first current">ZOBACZ<br />FILM DO KOŃCA</li>
+  <li class="second">ODPOWIEDZ<br />NA PYTANIE</li>
+  <li class="third">WYGRAJ<br /><%= @ivideo.reward_short %></li>
+</ul>
+
+<div class="clear"></div>
+
+<!-- -------------------------------------------------------------------- video -->
+
+<div class="pane" id="video">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+  <div class="player">
+    <div id="ytapiplayer">
+      Potrzebujesz Flash Player i włączonej obsługi Java Script.
+    </div>
+  </div>
+
+  <div class="fb-like">
+    <a name="fb_share" type="button_count" share_url="<%= @ivideo.landing_page %>">Udostępnij</a>
+  </div>
+
+  <% unless @ivideo.name == "CyfrowaSzkoła.pl" %>
+    <h3>ZOSTAŁO TYLKO <span><%= @ivideo.codes.size  %></span> KUPONÓW</h3>
+  <% end %>
+
+</div>
+
+<!-- -------------------------------------------------------------------- pytanie -->
+
+<div class="pane" id="question">
+
+  <div id="question_content">
+
+  </div>
+
+  <%= render 'problem' %>
+
+</div>
+
+
+<!-- -------------------------------------------------------------------- wygrana -->
+
+<div class="pane" id="coupon">
+
+  <div id="reward_content">
+
+  <!-- -------------------------------------------------------------------- przegrana -->
+
+  <div id="looser" style="display:none;">
+    <div class="looser_content">
+      <h2>Zła odpowiedź :-(<br/>Spróbuj ponownie jutro.</h2>
+     </div>
+     <%= render 'problem' %>
+  </div>
+
+  </div>
+
+</div>
+
+<!-- -------------------------------------------------------------------- wykorzystana szansa -->
+
+<div class="pane" id="fail">
+  <div class="fail_content">
+    <h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>
+  </div>
+  <%= render 'problem' %>
+</div>
+
+<!-- -------------------------------------------------------------------- koniec -->
+
+<div class="pane" id="finish">
+  <div class="finish_content">
+    <h2>Sprawdź teraz swój email.<br />
+        Właśnie wysłaliśmy kupon rabatowy.<br />
+        Miłych zakupów :-)</h2>
+  </div>
+</div>
+
+<!-- -------------------------------------------------------------------- js -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(function() {
+      var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
+      var atts = { id: "myytplayer" };
+      swfobject.embedSWF("http://www.youtube.com/e/<%=  @ivideo.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
+                "ytapiplayer", "560", "315", "8", null, null, params, atts);
+    });
+  });
+
+  function onYouTubePlayerReady(playerId) {
+    ytplayer = document.getElementById("myytplayer");
+    ytplayer.addEventListener('onStateChange', 'goToQuestions');
+  }
+  function goToQuestions(state) {
+    if (state == 0) {
+      $.post("<%= get_questions_quiz_url(@ivideo)%>", function(data) {
+        $("#question_content").html(data);
+      });
+    $("#video.pane").hide();
+    $("ul#tabs .current").removeClass("current");
+    $("ul#tabs .second").addClass("current");
+    $("#question.pane").show();
+    }
+  }
+</script>
+

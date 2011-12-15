@@ -1,0 +1,8 @@
+<!-- Secondary navigation -->
+<nav id="secondary">
+  <ul>
+    <li <%= is_current?(:controller => 'quizzes', :action => 'show') %>><%= link_to "Quiz: #{@ivideo.name}", @ivideo %></li>
+    <li <%= is_current?(:controller => 'quizzes', :action => 'preview') %>><%= link_to "Podgląd", preview_quiz_path(@ivideo) %></li>
+    <li <%= is_current?(:controller => 'quizzes', :action => 'edit') %>><%= link_to "Edytuj", edit_quiz_path(@ivideo) %></li>
+  </ul>
+</nav>

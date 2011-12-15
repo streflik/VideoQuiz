@@ -1,0 +1,39 @@
+<% title "Qiuz: #{@ivideo.name}" %>
+
+<%= render :partial => "quizzes/shared/nav" %>
+          
+<!-- The content -->
+<section id="content">
+
+<h2><%= yield(:title) %></h2>
+
+  <%= link_to "Wygeneruj 100 nowych kuponów", generate_codes_quiz_path(@ivideo), :class => "button icon loop" if can? :generate_codes, @ivideo%>
+  <%= link_to "Pobierz dane zwycięzców", get_winners_quiz_url(@ivideo, :format=>:csv), :class => "button icon arrowdown" %>
+  <%= link_to "Pobierz kody", get_codes_quiz_url(@ivideo, :format=>:csv), :class => "button icon arrowdown" %>
+
+  <h2>Wykorzystane Kupony (<%= @ivideo.wins_count %>/<%= @ivideo.codes.size + @ivideo.wins_count  %>):</h2>
+
+  <table class="datatable">
+    <thead>
+    <tr>
+      <th>Kupon</th>
+      <th>Email</th>
+      <th>Data odebrania</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @ivideo.wins.each do |c| %>
+        <tr>
+          <td><%= c.code %></td>
+          <td><%= c.email %></td>
+          <td><%= l(c.created_at, :format => :long) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+
+</section>
+
