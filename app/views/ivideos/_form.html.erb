@@ -19,11 +19,14 @@
       <%= f.input :custom_css %>
       <div id="questions">
       <%= f.simple_fields_for :questions, @question do |q| %>
+          <div class="question">
           <%= q.input :text %>
           <%= q.input :answer_1 %> <%= q.input :video1%>
           <%= q.input :answer_2 %> <%= q.input :video2%>
           <%= q.input :answer_3 %> <%= q.input :video3%>
-          <div class="last"><%= q.input :correct %></div>
+          <%= q.input :_destroy, :as=>:hidden, :input_html => {:class=>"destroy"} %>
+          <%= link_to_function "Usuń", "$(this).parent('.question').hide();$(this).parent('.question').find('.destroy').val('true');" %>
+          </div>
       <% end %>
       </div>
     </div>
