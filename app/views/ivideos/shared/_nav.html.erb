@@ -2,7 +2,7 @@
 <nav id="secondary">
   <ul>
     <li <%= is_current?(:controller => 'ivideos', :action => 'show') %>><%= link_to "Quiz: #{@ivideo.name}", @ivideo %></li>
-    <li <%= is_current?(:controller => 'ivideos', :action => 'preview') %>><%= link_to "Podgląd", preview_quiz_path(@ivideo) %></li>
+    <li <%= is_current?(:controller => 'ivideos', :action => 'preview') %>><%= link_to "Podgląd", preview_ivideo_path(@ivideo) %></li>
     <li <%= is_current?(:controller => 'ivideos', :action => 'edit') %>><%= link_to "Edytuj", edit_ivideo_path(@ivideo) %></li>
   </ul>
 </nav>

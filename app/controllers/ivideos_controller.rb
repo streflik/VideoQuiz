@@ -40,6 +40,10 @@ class IvideosController < ApplicationController
   end
 
   def play
+    render :layout => "play_ivideo"
+  end
+
+  def preview
 
   end
 

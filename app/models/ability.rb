@@ -16,6 +16,9 @@ class Ability
       can :edit, User, :id=>user.id
     end
 
+    can :play, Ivideo
+    can :play, Quiz
+
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

@@ -1,6 +1,6 @@
 <% title "Podgląd" %>
 
-<%= render :partial => "quizzes/shared/nav" %>
+<%= render :partial => "ivideos/shared/nav" %>
           
 <!-- The content -->
 <section id="content">
@@ -12,7 +12,7 @@
 <div class="column left third">
   <h3>Instrukcje</h3>
   <p>1. Wklej poniższy kod na dowolnej stronie internetowej.</p>
-  <pre>&lt;iframe src="<%= play_quiz_url(@ivideo) %>" width="640" height="470" frameborder="0"&gt;&lt;/iframe&gt;</pre>
+  <pre>&lt;iframe src="<%= play_ivideo_url(@ivideo) %>" width="640" height="470" frameborder="0"&gt;&lt;/iframe&gt;</pre>
 
   <p>2. Wklej te Facebook Meta Tagi do sekcji "head" strony gdzie umieścisz VideoQuiz i gdzie mają linkować
      Facebook Likes. Oczywiście możesz dowolnie zmienić te parametry.</p>
@@ -30,7 +30,7 @@
 
 <div class="column right twothird">
   <div style="padding-left:40px">
-    <iframe src="<%= play_quiz_path(@ivideo) %>" width="640" height="470" frameborder="0"></iframe>
+    <iframe src="<%= play_ivideo_path(@ivideo) %>" width="640" height="470" frameborder="0"></iframe>
   </div>
 </div>
 

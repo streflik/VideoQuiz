@@ -22,7 +22,12 @@ Videoquiz::Application.routes.draw do
    end
   end
 
-  resources :ivideos
+  resources :ivideos do
+    member do
+      get :preview
+      get :play
+    end
+  end
 
   mount Resque::Server.new, :at => "/resque"
 

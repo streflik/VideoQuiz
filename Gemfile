@@ -5,7 +5,8 @@ gem 'rails', '3.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+#gem 'mysql2'
+gem "pg"
 gem "simple_form"
 gem 'devise'
 gem "paperclip", "~> 2.3"
@@ -15,6 +16,7 @@ gem "resque"
 gem "fastercsv"
 gem "capistrano"
 gem "airbrake"
+
 #gem "SystemTimer"
 
 # Use unicorn as the web server
