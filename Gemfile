@@ -6,7 +6,12 @@ gem 'rails', '3.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'mysql2'
-gem "pg"
+group :production do
+  gem 'pg'
+end
+group :development do
+  gem "mysql2"
+end
 gem "simple_form"
 gem 'devise'
 gem "paperclip", "~> 2.3"
