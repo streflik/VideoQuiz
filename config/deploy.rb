@@ -1,3 +1,4 @@
+#encoding: utf-8
 set :application, "VideoQuiz"
 
 set :deploy_to, "/home/videoquiz/www/videoquiz/"

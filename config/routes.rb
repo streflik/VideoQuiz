@@ -1,3 +1,4 @@
+#encoding: utf-8
 Videoquiz::Application.routes.draw do
 
   require "resque/server"

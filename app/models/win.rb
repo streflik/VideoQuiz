@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Win < ActiveRecord::Base
 
   belongs_to :quiz, :counter_cache => true

@@ -1,3 +1,4 @@
+#encoding: utf-8
 module IvideosHelper
 
     def add_question_link(name, form)
