@@ -18,6 +18,9 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
+    <div id="ytapiplayer2">
+      Potrzebujesz Flash Player i włączonej obsługi Java Script.
+    </div>
   </div>
 
   <div class="fb-like">
@@ -37,6 +40,7 @@
   <div id="question_content">
 
   </div>
+
 
   <%= render 'problem' %>
 
@@ -88,14 +92,21 @@
     $(function() {
       var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
       var atts = { id: "myytplayer" };
-      swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
+      swfobject.embedSWF("http://www.youtube.com/e/<%=  @quiz.yt_id%>?enablejsapi=1&playerapiid=myytplayer",
                 "ytapiplayer", "560", "315", "8", null, null, params, atts);
     });
   });
 
   function onYouTubePlayerReady(playerId) {
-    ytplayer = document.getElementById("myytplayer");
-    ytplayer.addEventListener('onStateChange', 'goToQuestions');
+    ytplayer = document.getElementById(playerId);
+      if(playerId=="myytplayer2"){
+          ytplayer.start();
+          ytplayer.stop();
+      }   else {
+          ytplayer.loadPlaylist("GchEVSx9XEA","12d-5Azr6PI");
+//          ytplayer.addEventListener('onStateChange', 'goToQuestions');
+
+      }
   }
   function goToQuestions(state) {
     if (state == 0) {

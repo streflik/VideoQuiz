@@ -8,6 +8,18 @@
 
 <div class="clear"></div>
 
+
+<!-- -------------------------------------------------------------------- pytania -->
+
+<div class="pane" id="questions">
+
+
+      <%= render :partial => "show_question", :collection => @ivideo.questions%>
+
+    <%= render 'problem' %>
+
+    </div>
+
 <!-- -------------------------------------------------------------------- video -->
 
 <div class="pane" id="video">
@@ -24,52 +36,8 @@
     <a name="fb_share" type="button_count" share_url="<%= @ivideo.landing_page %>">Udostępnij</a>
   </div>
 
-  <% unless @ivideo.name == "CyfrowaSzkoła.pl" %>
-    <h3>ZOSTAŁO TYLKO <span><%= @ivideo.codes.size  %></span> KUPONÓW</h3>
-  <% end %>
-
 </div>
 
-<!-- -------------------------------------------------------------------- pytanie -->
-
-<div class="pane" id="question">
-
-  <div id="question_content">
-
-  </div>
-
-  <%= render 'problem' %>
-
-</div>
-
-
-<!-- -------------------------------------------------------------------- wygrana -->
-
-<div class="pane" id="coupon">
-
-  <div id="reward_content">
-
-  <!-- -------------------------------------------------------------------- przegrana -->
-
-  <div id="looser" style="display:none;">
-    <div class="looser_content">
-      <h2>Zła odpowiedź :-(<br/>Spróbuj ponownie jutro.</h2>
-     </div>
-     <%= render 'problem' %>
-  </div>
-
-  </div>
-
-</div>
-
-<!-- -------------------------------------------------------------------- wykorzystana szansa -->
-
-<div class="pane" id="fail">
-  <div class="fail_content">
-    <h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>
-  </div>
-  <%= render 'problem' %>
-</div>
 
 <!-- -------------------------------------------------------------------- koniec -->
 
@@ -84,20 +52,55 @@
 <!-- -------------------------------------------------------------------- js -->
 
 <script type="text/javascript">
+
   $(document).ready(function() {
-    $(function() {
+    $.cookie("pll_ivgvq",null);
+
+      $("#answer_links a").live("click", function() {
+        $.cookie("pll_ivgvq", $.cookie("pll_ivgvq")+";"+$(this).data("video-id"));
+        question = $(this).parents(".question");
+        next = $("#questions .question").eq(question.index()+1);
+        question.hide();
+
+//        next = $(".question:first-child ~ .question").first();
+        if($(next).length > 0){
+          $(next).show();
+        }
+        else{
+//          list =  $.cookie("pll_ivgvq").split(";").slice(1);
+//          alert(list);
+          $("#questions").hide();
+        $("#video.pane").show();
+//          ytplayer = document.getElementById("myytplayer");
+//          ytplayer.loadPlaylist(list);
+
+
+        }
+        return false;
+      });
+
+
+
       var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
       var atts = { id: "myytplayer" };
-      swfobject.embedSWF("http://www.youtube.com/e/<%=  @ivideo.yt_id%>?enablejsapi=1&playerapiid=ytplayer",
+      swfobject.embedSWF("http://www.youtube.com/e/<%= @ivideo.yt_id%>?enablejsapi=1&version=3&playerapiid=ytplayer",
                 "ytapiplayer", "560", "315", "8", null, null, params, atts);
+//        swfobject.embedSWF("http://www.youtube.com/e/ySBaYMESb8o?enablejsapi=1&playerapiid=myytplayer2",
+//                "ytapiplayer2", "560", "315", "8", null, null, params,  { id: "myytplayer2" });
     });
-  });
+
 
   function onYouTubePlayerReady(playerId) {
+    list =  $.cookie("pll_ivgvq").split(";").slice(1);
+//    alert(list);
+//    $("#questions").hide();
+//    $("#video.pane").show();
     ytplayer = document.getElementById("myytplayer");
-    ytplayer.addEventListener('onStateChange', 'goToQuestions');
-  }
-  function goToQuestions(state) {
+    ytplayer.loadPlaylist(list);
+
+      }
+
+          function goToQuestions(state) {
     if (state == 0) {
       $.post("<%= get_questions_quiz_url(@ivideo)%>", function(data) {
         $("#question_content").html(data);
@@ -108,5 +111,48 @@
     $("#question.pane").show();
     }
   }
+
+  /**
+   * jQuery Cookie plugin
+   *
+   * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+   * Dual licensed under the MIT and GPL licenses:
+   * http://www.opensource.org/licenses/mit-license.php
+   * http://www.gnu.org/licenses/gpl.html
+   *
+   */
+  jQuery.cookie = function (key, value, options) {
+
+    // key and at least value given, set cookie...
+    if (arguments.length > 1 && String(value) !== "[object Object]") {
+      options = jQuery.extend({}, options);
+
+      if (value === null || value === undefined) {
+        options.expires = -1;
+      }
+
+      if (typeof options.expires === 'number') {
+        var days = options.expires, t = options.expires = new Date();
+        t.setDate(t.getDate() + days);
+      }
+
+      value = String(value);
+
+      return (document.cookie = [
+        encodeURIComponent(key), '=',
+        options.raw ? value : encodeURIComponent(value),
+        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+        options.path ? '; path=' + options.path : '',
+        options.domain ? '; domain=' + options.domain : '',
+        options.secure ? '; secure' : ''
+      ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+  };
+
 </script>
 

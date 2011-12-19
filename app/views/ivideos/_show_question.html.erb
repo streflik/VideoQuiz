@@ -1,0 +1,12 @@
+<div class="question">
+<h2><%= show_question.text %></h2>
+
+<ul id="answer_links">
+  <li><%= link_to show_question.answer_1, "#", :class => "btn", "data-video-id"=> show_question.video1 %></li>
+  <li><%= link_to show_question.answer_2, "#", :class => "btn", "data-video-id"=> show_question.video2  %></li>
+  <li><%= link_to show_question.answer_3, "#", :class => "btn", "data-video-id"=> show_question.video3  %></li>
+</ul>
+  </div>
+
+
+
