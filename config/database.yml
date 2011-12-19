@@ -21,7 +21,6 @@ development:
 test:
   adapter: postgresql
   encoding: utf8
-  reconnect: false
   database: videoquiz_base_test
   pool: 5
   username: root
