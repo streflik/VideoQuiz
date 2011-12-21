@@ -11,7 +11,7 @@
 
 <!-- -------------------------------------------------------------------- pytania -->
 
-<div class="pane" id="questions">
+<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie%>>
 
 
       <%= render :partial => "show_question", :collection => @ivideo.questions%>
@@ -22,7 +22,7 @@
 
 <!-- -------------------------------------------------------------------- video -->
 
-<div class="pane" id="video">
+<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie%>>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
@@ -30,6 +30,10 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
+  </div>
+
+  <div id="buttons_menu">
+    <a href="#" class="once_again">Jeszcze raz</a>
   </div>
 
   <div class="fb-like">
@@ -56,22 +60,25 @@
   $(document).ready(function() {
     $.cookie("pll_ivgvq",null);
 
+
+
       $("#answer_links a").live("click", function() {
         $.cookie("pll_ivgvq", $.cookie("pll_ivgvq")+";"+$(this).data("video-id"));
         question = $(this).parents(".question");
         next = $("#questions .question").eq(question.index()+1);
         question.hide();
-
-//        next = $(".question:first-child ~ .question").first();
         if($(next).length > 0){
           $(next).show();
         }
         else{
-//          list =  $.cookie("pll_ivgvq").split(";").slice(1);
-//          alert(list);
           $("#questions").hide();
-        $("#video.pane").show();
-//          ytplayer = document.getElementById("myytplayer");
+
+          $("#video.pane").addClass("answers").show();
+          $("#buttons_menu").show();
+
+//
+//          list =  $.cookie("pll_ivgvq").split(";").slice(1);
+//
 //          ytplayer.loadPlaylist(list);
 
 
@@ -83,32 +90,56 @@
 
       var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
       var atts = { id: "myytplayer" };
-      swfobject.embedSWF("http://www.youtube.com/e/<%= @ivideo.yt_id%>?enablejsapi=1&version=3&playerapiid=ytplayer",
-                "ytapiplayer", "560", "315", "8", null, null, params, atts);
+      if('<%= @ivideo.welcome_movie.present? %>' == "true"){
+      swfobject.embedSWF("http://www.youtube.com/e/<%= @ivideo.welcome_movie%>?enablejsapi=1&version=3&playerapiid=welcome_player",
+                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
+      }
 //        swfobject.embedSWF("http://www.youtube.com/e/ySBaYMESb8o?enablejsapi=1&playerapiid=myytplayer2",
 //                "ytapiplayer2", "560", "315", "8", null, null, params,  { id: "myytplayer2" });
+
+
+    $("#buttons_menu .once_again").live("click", function(){
+      $("#video.pane.answers").removeClass("answers");
+      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
+      $.cookie("pll_ivgvq",null);
+
+
+    });
+
     });
 
 
   function onYouTubePlayerReady(playerId) {
+    ytplayer = document.getElementById(playerId);
+//    if(!$("#video.pane").hasClass("answers")){
+      ytplayer.addEventListener('onStateChange', 'goToQuestions');
+
+//    }else{
     list =  $.cookie("pll_ivgvq").split(";").slice(1);
-//    alert(list);
-//    $("#questions").hide();
-//    $("#video.pane").show();
-    ytplayer = document.getElementById("myytplayer");
+      list.push("<%= @ivideo.end_movie%>");
+
     ytplayer.loadPlaylist(list);
+//    }
 
       }
 
           function goToQuestions(state) {
+//            alert("dd");
     if (state == 0) {
-      $.post("<%= get_questions_quiz_url(@ivideo)%>", function(data) {
-        $("#question_content").html(data);
-      });
+
+      if(!$.cookie("pll_ivgvq")){
+        $("#questions .question").first().show();
+      }
+//      if($("#video.pane").hasClass("answers")){
+//
+//      }
+//      $.post("<%#= get_questions_quiz_url(@ivideo)%>", function(data) {
+//        $("#question_content").html(data);
+//      });
     $("#video.pane").hide();
-    $("ul#tabs .current").removeClass("current");
-    $("ul#tabs .second").addClass("current");
-    $("#question.pane").show();
+//    $("ul#tabs .current").removeClass("current");
+//    $("ul#tabs .second").addClass("current");
+    $("#questions.pane").show();
     }
   }
 

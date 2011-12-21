@@ -36,12 +36,15 @@ pl:
         instruction: "Instrukcja odbioru"
         fb_page: 'FB Page'
         landing_page: 'Landing Page'
-        questions:
-          text: "Pytanie"
-          answer_1: "Odpowiedź 1"
-          answer_2: "Odpowiedź 2"
-          answer_3: "Odpowiedź 3" 
-          correct: "Poprawna"
+      questions:
+        text: "Pytanie"
+        answer_1: "Odpowiedź 1"
+        answer_2: "Odpowiedź 2"
+        answer_3: "Odpowiedź 3"
+        video1: Video ID 1
+        video2: Video ID 2
+        video3: Video ID 3
+        correct: "Poprawna"
       user:
         first_name: "Imię"
         last_name: "Nazwisko"

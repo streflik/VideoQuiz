@@ -7,8 +7,11 @@
       <%= f.input :company_name %>
       <%= f.input :company_email %>
       <%= f.association :user, :label_method => :name, :value_method => :id,
-                        :collection => @customers, :prompt => false %>
-      <%= f.input :yt_id %>
+                        :collection => @customers, :label => "Klient", :prompt => false %>
+      <%= f.input :welcome_id1 %>
+      <%= f.input :welcome_id2 %>
+      <%= f.input :end_id1 %>
+      <%= f.input :end_id2 %>
       <%= f.input :reward %>
       <%= f.input :reward_short %>
       <%= f.input :reward_exp %>
