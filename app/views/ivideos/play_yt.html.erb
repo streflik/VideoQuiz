@@ -6,7 +6,7 @@
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-    <%= image_tag "screen.png"%>
+    <%= image_tag "screen.jpg"%>
 </div>
 
 
@@ -34,6 +34,7 @@
     </div>
 
     <div class="buttons_menu">
+      <a href="#" class="fb_like">Lubię to</a>
       <a href="#" class="once_again">Jeszcze raz</a>
       <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
     </div>
@@ -45,9 +46,10 @@
 
 <!-- -------------------------------------------------------------------- koniec -->
 <div class="pane" id="finish">
-  <%= image_tag "screen.png"%>
+  <%= image_tag "screen.jpg"%>
 
   <div class="buttons_menu">
+    <a href="#" class="fb_like">Lubię to</a>
     <a href="#" class="once_again">Jeszcze raz</a>
     <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
   </div>
@@ -93,7 +95,7 @@
       var atts = { id: "myytplayer" };
       if('<%= @ivideo.welcome_movie.present? %>' == "true"){
       swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
+                "ytapiplayer", "640", "360", "8", null, null, params, { id: "welcome_player" });
       }
 
     $("#finish.pane, .buttons_menu .once_again").live("click", function(){

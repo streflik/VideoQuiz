@@ -1,111 +1,43 @@
 body {
-font-family:Arial, san-serif;
-color:#fff;
+font-family:Arial, sans-serif;
+color:#555;
+background:#fff;
 line-height:1em;
-font-size:15px;
+font-size:16px;
 overflow:hidden
-}
-
-strong {
-font-weight:bold
 }
 
 /* panes */
 
 .pane {;
-  width:630px;
-  height:405px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-top-left-radius: 0;
-  -moz-border-top-left-radius: 0;
-  margin:0 0 50px 0
+  width:640px;
+  height:400px;
+  border:1px solid #666;
+  margin:10px;
+  padding:5px
 }
 
-#poster img{
-  width:630px;
-  height:405px;
-}
-#finish img{
-  width:630px;
-  height:365px;
+#poster img, #finish img  {
+  width:640px;
+  height:360px;
 }
 
-/* tabs */
-`
-#tabs {
-display:block
-}
-
-#video.pane, #finish.pane{
+#video.pane, #finish.pane, .buttons_menu {
     display:none;
-}
-
-                                                       `
-#tabs li {
-background:#d3d3d3;
-color:#666;
-float:left;
-min-width:130px;
-padding:10px 10px;
-display:block;
-margin:0 15px 0 0;
-text-align:center;
-font-weight:bold;
-box-shadow: 10px 0px #666;
--webkit-box-shadow: 10px 0px #666;
--moz-box-shadow: 10px 0px #666;
-border-radius: 10px;
--moz-border-radius: 10px;
-border-bottom-left-radius: 0;
--moz-border-bottom-left-radius: 0;
-border-bottom-right-radius: 0;
--moz-border-bottom-right-radius: 0;
-}
-
-#tabs li.current {
-color:#fff;
-}
-
-/* video */
-
-#video .player {
-width:560px;
-height:315px;
-float:left;
-margin:35px 35px 20px 35px;
-box-shadow: 3px 3px 7px #333;
--webkit-box-shadow: 3px 3px 7px #333;
--moz-box-shadow: 3px 3px 7px #333;
-}
-
-#video .fb-like {
-width:120px;
-float:left;
-margin:0 0 0 35px
-}
-
-#video h3 {
-text-align:right;
-margin: 0 35px 0 0;
-}
-
-#video h3 span {
-font-weight:bold;
-font-size:20px;
 }
 
 /* pytanie */
 
-#questions  .btn {
-background:#ff7f00;
+h2 {
+  text-align:center;
+  font-size: 28px;
+  margin:60px auto 30px;
+  display:block;
+  float:left;
+  width:100%;
+  letter-spacing:1px;
+  line-height:1.2em;
 }
-
-#questions .btn:hover {
-background:#E73C00
-}
-
-/* przyciski */
 
 .btn {
 display:block;
@@ -117,42 +49,11 @@ padding:10px;
 border-radius: 10px;
 color:#fff;
 text-decoration:none;
-box-shadow:1px 1px #333
+background:#ff7f00;
 }
 
-/* naglowki */
-
-h2 {
-text-align:center;
-font-size: 28px;
-font-weight:bold;
-margin:60px auto 30px;
-display:block;
-float:left;
-width:100%;
-letter-spacing:1px;
-line-height:1.2em;
-text-shadow:1px 1px #333
-}
-
-/* share */
-
-.share h3 {
-text-align:center;
-margin:0 auto 20px;
-display:block;
-float:left;
-width:100%
-}
-
-.share .fb-like {
-width:120px;
-margin:0 auto;
-display:block
-}
-
-.share.fb-page .fb-like {
-width:450px
+.btn:hover {
+background:#E73C00
 }
 
 /* fixed height */
@@ -167,40 +68,3 @@ width:450px
 
 }
 
-.buttons_menu{
-  display: none;
-}
-
-
-/* clear */
-
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-/* default colors */
-
-body {
-color:#fff
-}
-
-.pane, #tabs li.current {
-background:#0c84b0;
-}
-
-.pane {
-box-shadow: 5px 5px 0 5px #0e5877;
--webkit-box-shadow: 5px 5px 0 5px #0e5877;
--moz-box-shadow: 5px 5px 0 5px #0e5877;
-}
-
-#tabs li.current {
-box-shadow: 10px 0px #0e5877;
--webkit-box-shadow: 10px 0px #0e5877;
--moz-box-shadow: 10px 0px #0e5877;
-}
