@@ -25,6 +25,9 @@ overflow:hidden
          margin:         0 auto
 
 }
+#finish.pane img{
+  width: 640px;
+}
 
 /* pytanie */
 
