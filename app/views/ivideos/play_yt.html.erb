@@ -6,7 +6,7 @@
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-    <%= image_tag "screen.jpg"%>
+    <%= image_tag "screen_start.jpg"%>
 </div>
 
 
@@ -32,9 +32,9 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
-
+    <div class="fb-like welcome" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
     <div class="buttons_menu">
-      <a href="#" class="fb_like">Lubię to</a>
+      <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
       <a href="#" class="once_again">Jeszcze raz</a>
       <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
     </div>
@@ -49,7 +49,7 @@
   <%= image_tag "screen.jpg"%>
 
   <div class="buttons_menu">
-    <a href="#" class="fb_like">Lubię to</a>
+    <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
     <a href="#" class="once_again">Jeszcze raz</a>
     <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
   </div>
@@ -149,6 +149,7 @@
       }
       else if(!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq")=="once-again"){
       $("#video.pane").hide();
+      $(".welcome").hide();
       $("#questions.pane").show();
 
 

@@ -17,13 +17,13 @@ overflow:hidden
   padding:5px
 }
 
-#poster img, #finish img  {
-  width:640px;
-  height:360px;
+#video.pane, #finish.pane, .buttons_menu, .question {
+    display:none;
 }
 
-#video.pane, #finish.pane, .buttons_menu {
-    display:none;
+.fb-like.welcome {
+         margin:         0 auto
+
 }
 
 /* pytanie */
@@ -56,15 +56,5 @@ background:#ff7f00;
 background:#E73C00
 }
 
-/* fixed height */
 
-.question {
-  display: none;
-  height:320px;
-}
-
-#questions .question:first-child{
-  display: block;
-
-}
 
