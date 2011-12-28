@@ -1,5 +1,5 @@
 <!-- zakladki -->
-
+<%= javascript_include_tag "flowplayer-3.2.6.min"%>
 <ul id="tabs">
   <li class="first current">ZOBACZ<br />FILM DO KOŃCA</li>
   <li class="second">ODPOWIEDZ<br />NA PYTANIE</li>
@@ -8,10 +8,16 @@
 
 <div class="clear"></div>
 
+<!-- -------------------------------------------------------------------- poster -->
+
+<div class="pane" id="poster">
+    <%= image_tag @ivideo.poster.url%>
+</div>
+
 
 <!-- -------------------------------------------------------------------- pytania -->
 
-<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie%>>
+<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file?%>>
 
 
       <%= render :partial => "show_question", :collection => @ivideo.questions%>
@@ -22,9 +28,10 @@
 
 <!-- -------------------------------------------------------------------- video -->
 
-<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie%>>
+<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie && !@ivideo.poster.file?%>>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
 
   <div class="player">
     <div id="ytapiplayer">
@@ -60,6 +67,33 @@
   $(document).ready(function() {
     $.cookie("pll_ivgvq",null);
 
+    $("#poster.pane").live("click",function(){
+      $(this).hide();
+      $("#video.pane").show();
+    }) ;
+
+    $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
+
+      clip: {
+        url: 'metacafe',
+        // configure clip to use influxis as our provider, it uses our rtmp plugin
+        provider: 'influxis'
+      },
+
+      // streaming plugins are configured under the plugins node
+      plugins: {
+
+        // here is our rtpm plugin configuration
+        influxis: {
+          url: 'flowplayer.rtmp-3.2.3.swf',
+
+          // netConnectionUrl defines where the streams are found
+          netConnectionUrl: 'rtmp://dk2isqp3f.rtmphost.com/flowplayer'
+        }
+      }
+    });
+
+
 
 
       $("#answer_links a").live("click", function() {
@@ -75,28 +109,42 @@
 
           $("#video.pane").addClass("answers").show();
           $("#buttons_menu").show();
-
-//
-//          list =  $.cookie("pll_ivgvq").split(";").slice(1);
-//
-//          ytplayer.loadPlaylist(list);
-
-
         }
         return false;
       });
 
 
 
-      var params = { allowScriptAccess: "always", allowFullScreen: "true", rel: 0 };
+      var params = { allowScriptAccess: "always", autoplay: "true", allowFullScreen: "true", rel: 0 };
       var atts = { id: "myytplayer" };
       if('<%= @ivideo.welcome_movie.present? %>' == "true"){
-      swfobject.embedSWF("http://www.youtube.com/e/<%= @ivideo.welcome_movie%>?enablejsapi=1&version=3&playerapiid=welcome_player",
-                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
-      }
-//        swfobject.embedSWF("http://www.youtube.com/e/ySBaYMESb8o?enablejsapi=1&playerapiid=myytplayer2",
-//                "ytapiplayer2", "560", "315", "8", null, null, params,  { id: "myytplayer2" });
+//      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
+//                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
+       // $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf");
+        $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
 
+          clip: {
+            url: 'metacafe',
+            // configure clip to use influxis as our provider, it uses our rtmp plugin
+            provider: 'influxis'  ,
+            onFinish: goToQuestions()
+          },
+
+
+          // streaming plugins are configured under the plugins node
+          plugins: {
+
+            // here is our rtpm plugin configuration
+            influxis: {
+              url: 'flowplayer.rtmp-3.2.3.swf',
+
+              // netConnectionUrl defines where the streams are found
+              netConnectionUrl: 'rtmp://dk2isqp3f.rtmphost.com/flowplayer'
+            }
+          }
+        });
+
+      }
 
     $("#buttons_menu .once_again").live("click", function(){
       $("#video.pane.answers").removeClass("answers");
@@ -110,37 +158,24 @@
 
 
   function onYouTubePlayerReady(playerId) {
+    alert("fff");
     ytplayer = document.getElementById(playerId);
-//    if(!$("#video.pane").hasClass("answers")){
-      ytplayer.addEventListener('onStateChange', 'goToQuestions');
 
-//    }else{
+
     list =  $.cookie("pll_ivgvq").split(";").slice(1);
-      list.push("<%= @ivideo.end_movie%>");
-
-    ytplayer.loadPlaylist(list);
-//    }
-
+    list.push("<%= @ivideo.end_movie%>");
+    $f().setPlaylist(["honda_accord"]);
       }
 
-          function goToQuestions(state) {
-//            alert("dd");
-    if (state == 0) {
+          function goToQuestions() {
+
 
       if(!$.cookie("pll_ivgvq")){
         $("#questions .question").first().show();
       }
-//      if($("#video.pane").hasClass("answers")){
-//
-//      }
-//      $.post("<%#= get_questions_quiz_url(@ivideo)%>", function(data) {
-//        $("#question_content").html(data);
-//      });
     $("#video.pane").hide();
-//    $("ul#tabs .current").removeClass("current");
-//    $("ul#tabs .second").addClass("current");
     $("#questions.pane").show();
-    }
+
   }
 
   /**

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111221202343) do
+ActiveRecord::Schema.define(:version => 20111227200814) do
 
   create_table "questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20111221202343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "codes"
-    t.integer  "wins_count",    :default => 0
+    t.integer  "wins_count",          :default => 0
     t.string   "instruction"
     t.string   "reward_short"
     t.text     "custom_css"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(:version => 20111221202343) do
     t.string   "end_id1"
     t.string   "end_id2"
     t.string   "movies_type"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   create_table "users", :force => true do |t|

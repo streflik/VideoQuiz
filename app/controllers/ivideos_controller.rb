@@ -41,7 +41,11 @@ class IvideosController < ApplicationController
   end
 
   def play
-    render :layout => "play_ivideo"
+    if @ivideo.movies_type == "YouTube"
+      render :action =>"play_yt", :layout => "play_ivideo"
+    else
+      render :action =>"play_rtmp", :layout => "play_ivideo"
+    end
   end
 
   def preview

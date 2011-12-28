@@ -1,6 +1,7 @@
 #encoding: utf-8
 class Ivideo < Quiz
   default_scope where(:ivideo=>true)
+  has_attached_file :poster
 
 
   def welcome_movie

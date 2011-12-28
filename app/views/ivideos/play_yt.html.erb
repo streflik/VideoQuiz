@@ -1,0 +1,202 @@
+<!-- zakladki -->
+
+
+<div class="clear"></div>
+
+<!-- -------------------------------------------------------------------- poster -->
+
+<div class="pane" id="poster">
+    <%= image_tag @ivideo.poster.url%>
+</div>
+
+
+<!-- -------------------------------------------------------------------- pytania -->
+
+<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file?%>>
+
+
+      <%= render :partial => "show_question", :collection => @ivideo.questions%>
+
+    <%#= render 'problem' %>
+
+    </div>
+
+<!-- -------------------------------------------------------------------- video -->
+
+<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie && !@ivideo.poster.file?%>>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+
+  <div class="player">
+    <div id="ytapiplayer">
+      Potrzebujesz Flash Player i włączonej obsługi Java Script.
+    </div>
+
+    <div class="buttons_menu">
+      <a href="#" class="once_again">Jeszcze raz</a>
+      <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
+    </div>
+  </div>
+  
+
+</div>
+
+
+<!-- -------------------------------------------------------------------- koniec -->
+<div class="pane" id="finish">
+  <%= image_tag @ivideo.poster.url%>
+
+  <div class="buttons_menu">
+    <a href="#" class="once_again">Jeszcze raz</a>
+    <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
+  </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------------------------- js -->
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $.cookie("pll_ivgvq",null);
+
+    $("#poster.pane").live("click",function(){
+      $(this).hide();
+      $("#video.pane").show();
+    }) ;
+
+
+
+      $("#answer_links a").live("click", function() {
+        $.cookie("pll_ivgvq", $.cookie("pll_ivgvq")+";"+$(this).data("video-id"));
+        question = $(this).parents(".question");
+        next = $("#questions .question").eq(question.index()+1);
+        question.hide();
+        if($(next).length > 0){
+          $(next).show();
+        }
+        else{
+          $("#questions").hide();
+
+          $("#video.pane").addClass("answers").show();
+          $(".buttons_menu").show();
+        }
+        return false;
+      });
+
+
+
+      var params = { allowScriptAccess: "always", autoplay: "true", allowFullScreen: "true", rel: 0, wmode: 'opaque' };
+      var atts = { id: "myytplayer" };
+      if('<%= @ivideo.welcome_movie.present? %>' == "true"){
+      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
+                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
+      }
+
+    $("#finish.pane, .buttons_menu .once_again").live("click", function(){
+      if(!$("#finish.pane").is(':visible')){
+      $("#video.pane.answers").removeClass("answers");
+      $("#finish.pane").hide();
+      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
+      $.cookie("pll_ivgvq", null);}
+      else{
+        $("#video.pane.answers").removeClass("answers");
+        $("#finish.pane").hide();
+        $.cookie("pll_ivgvq","once-again");
+        $("#video.pane").show();
+      }
+    });
+
+
+    });
+
+
+  function onYouTubePlayerReady(playerId) {
+    ytplayer = document.getElementById(playerId);
+    ytplayer.addEventListener('onStateChange', 'goToQuestions');
+
+    if($.cookie("pll_ivgvq")=="once-again"){
+      $(".buttons_menu").hide();
+
+      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
+      $.cookie("pll_ivgvq", null)     ;
+
+    } else{
+    ytplayer.loadPlaylist(["<%= @ivideo.welcome_id1 %>"]);
+
+    list =  $.cookie("pll_ivgvq").split(";").slice(1);
+    list.push("<%= @ivideo.end_movie%>");
+    ytplayer.loadPlaylist(list);
+    $.cookie("pll_ivgvq", "finish");
+    }
+      }
+
+          function goToQuestions(state) {
+    if (state == 0) {
+
+
+    if($.cookie("pll_ivgvq")=="finish"){
+        $("#video.pane").hide();
+        $("#questions.pane").hide();
+      $(".buttons_menu").show();
+        $("#finish.pane").show();
+
+      }
+      else if(!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq")=="once-again"){
+      $("#video.pane").hide();
+      $("#questions.pane").show();
+
+
+        $("#questions .question").first().show();
+
+      }
+  }
+          }
+
+  /**
+   * jQuery Cookie plugin
+   *
+   * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+   * Dual licensed under the MIT and GPL licenses:
+   * http://www.opensource.org/licenses/mit-license.php
+   * http://www.gnu.org/licenses/gpl.html
+   *
+   */
+  jQuery.cookie = function (key, value, options) {
+
+    // key and at least value given, set cookie...
+    if (arguments.length > 1 && String(value) !== "[object Object]") {
+      options = jQuery.extend({}, options);
+
+      if (value === null || value === undefined) {
+        options.expires = -1;
+      }
+
+      if (typeof options.expires === 'number') {
+        var days = options.expires, t = options.expires = new Date();
+        t.setDate(t.getDate() + days);
+      }
+
+      value = String(value);
+
+      return (document.cookie = [
+        encodeURIComponent(key), '=',
+        options.raw ? value : encodeURIComponent(value),
+        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+        options.path ? '; path=' + options.path : '',
+        options.domain ? '; domain=' + options.domain : '',
+        options.secure ? '; secure' : ''
+      ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+  };
+
+</script>
+

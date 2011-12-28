@@ -20,6 +20,7 @@
       <%= f.input :landing_page %>
       <%= f.input :google_anal %>
       <%= f.input :custom_css %>
+      <%= f.input :poster%>
       <%= f.input :movies_type, :as=>:select, :collection => ["YouTube", "RTMP"] %>
       <div id="questions">
       <%= f.simple_fields_for :questions, @question do |q| %>
