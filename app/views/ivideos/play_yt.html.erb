@@ -32,7 +32,11 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
+
+    <div id="buyNow"></div>
+
     <div class="fb-like welcome" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+
     <div class="buttons_menu">
       <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
       <a href="#" class="once_again">Jeszcze raz</a>
@@ -56,19 +60,36 @@
 </div>
 
 
+<audio loop="loop" id="music">
+  <source src="/EndCredits.mp3" type="audio/mp3" />
+  Your browser does not support the audio tag.
+</audio>
+
+
 
 
 <!-- -------------------------------------------------------------------- js -->
 
 <script type="text/javascript">
 
+
   $(document).ready(function() {
+
+
+
     $.cookie("pll_ivgvq",null);
 
     $("#poster.pane").live("click",function(){
       $(this).hide();
+      //    Start music playback
+      musicplayer = document.getElementById("music");
+      musicplayer.play();
       $("#video.pane").show();
     }) ;
+
+    $("#buyNow").live("click", function(){
+      window.location = "http://www.gazeta.pl"
+    });
 
 
 
@@ -110,6 +131,9 @@
         $.cookie("pll_ivgvq","once-again");
         $("#video.pane").show();
       }
+       musicplayer = document.getElementById("music");
+       musicplayer.currentTime=0;
+      musicplayer.play();
     });
 
 
@@ -134,16 +158,24 @@
     ytplayer.loadPlaylist(list);
     $.cookie("pll_ivgvq", "finish");
     }
+    $("#buyNow").hide();
+
       }
 
           function goToQuestions(state) {
-    if (state == 0) {
+           if(state == 1 && ytplayer.getPlaylistIndex() == 4){
+        $("#buyNow").show();
+      }
+
+            if (state == 0) {
+
 
 
     if($.cookie("pll_ivgvq")=="finish"){
         $("#video.pane").hide();
         $("#questions.pane").hide();
       $(".buttons_menu").show();
+      document.getElementById("music").pause();
         $("#finish.pane").show();
 
       }

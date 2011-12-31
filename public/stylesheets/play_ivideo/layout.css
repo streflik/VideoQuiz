@@ -17,6 +17,20 @@ overflow:hidden
   padding:5px
 }
 
+#buyNow{
+  position: absolute;
+  top: 52px;
+  right: 42px;
+  width: 178px;
+  height: 65px;
+  z-index: 1000;
+  display: none;
+  cursor: pointer;
+}
+#video.pane .player{
+  position: relative;
+}
+
 #video.pane, #finish.pane, .buttons_menu, .question {
     display:none;
 }
