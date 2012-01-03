@@ -6,27 +6,21 @@
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-    <%= image_tag "screen_start.jpg"%>
+  <%= image_tag "screen_start.jpg" %>
 </div>
 
 
 <!-- -------------------------------------------------------------------- pytania -->
 
-<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file?%>>
+<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file? %>>
 
+  <%= render :partial => "show_question", :collection => @ivideo.questions %>
 
-      <%= render :partial => "show_question", :collection => @ivideo.questions%>
-
-    <%#= render 'problem' %>
-
-    </div>
+</div>
 
 <!-- -------------------------------------------------------------------- video -->
 
-<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie && !@ivideo.poster.file?%>>
-
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-
+<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie && !@ivideo.poster.file? %>>
 
   <div class="player">
     <div id="ytapiplayer">
@@ -43,14 +37,13 @@
       <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
     </div>
   </div>
-  
 
 </div>
 
 
 <!-- -------------------------------------------------------------------- koniec -->
 <div class="pane" id="finish">
-  <%= image_tag "screen.jpg"%>
+  <%= image_tag "screen.jpg" %>
 
   <div class="buttons_menu">
     <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
@@ -61,11 +54,8 @@
 
 
 <audio loop="loop" id="music">
-  <source src="/EndCredits.mp3" type="audio/mp3" />
-  Your browser does not support the audio tag.
+  <source src="/EndCredits.mp3" type="audio/mp3"/>
 </audio>
-
-
 
 
 <!-- -------------------------------------------------------------------- js -->
@@ -75,121 +65,110 @@
 
   $(document).ready(function() {
 
+    $.cookie("pll_ivgvq", null);
+    $.cookie("pll_ivgvqf", null);
 
-
-    $.cookie("pll_ivgvq",null);
-
-    $("#poster.pane").live("click",function(){
+    $("#poster.pane").live("click", function() {
       $(this).hide();
       //    Start music playback
       musicplayer = document.getElementById("music");
       musicplayer.play();
       $("#video.pane").show();
-    }) ;
+    });
 
-    $("#buyNow").live("click", function(){
-      window.location = "http://www.gazeta.pl"
+    $("#buyNow").live("click", function() {
+      list = $.cookie("pll_ivgvq").split(";").slice(1);
+      if (list.indexOf("<%= @ivideo.questions[2].video2%>") > 0 && list.indexOf("<%= @ivideo.questions[3].video2%>") > 0) {
+        window.location = "http://dieta.pl";
+      } else {
+        window.location = "http://dietaifitness.pl";
+      }
     });
 
 
-
-      $("#answer_links a").live("click", function() {
-        $.cookie("pll_ivgvq", $.cookie("pll_ivgvq")+";"+$(this).data("video-id"));
-        question = $(this).parents(".question");
-        next = $("#questions .question").eq(question.index()+1);
-        question.hide();
-        if($(next).length > 0){
-          $(next).show();
-        }
-        else{
-          $("#questions").hide();
-
-          $("#video.pane").addClass("answers").show();
-          $(".buttons_menu").show();
-        }
-        return false;
-      });
-
-
-
-      var params = { allowScriptAccess: "always", autoplay: "true", allowFullScreen: "true", rel: 0, wmode: 'opaque' };
-      var atts = { id: "myytplayer" };
-      if('<%= @ivideo.welcome_movie.present? %>' == "true"){
-      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-                "ytapiplayer", "640", "360", "8", null, null, params, { id: "welcome_player" });
+    $("#answer_links a").live("click", function() {
+      $.cookie("pll_ivgvq", $.cookie("pll_ivgvq") + ";" + $(this).data("video-id"));
+      question = $(this).parents(".question");
+      next = $("#questions .question").eq(question.index() + 1);
+      question.hide();
+      if ($(next).length > 0) {
+        $(next).show();
+      } else {
+        $("#questions").hide();
+        $("#video.pane").addClass("answers").show();
+        $(".buttons_menu").show();
       }
+      return false;
+    });
 
-    $("#finish.pane, .buttons_menu .once_again").live("click", function(){
-      if(!$("#finish.pane").is(':visible')){
-      $("#video.pane.answers").removeClass("answers");
-      $("#finish.pane").hide();
-      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
-      $.cookie("pll_ivgvq", null);}
-      else{
+
+    var params = { allowScriptAccess: "always", autoplay: "true", allowFullScreen: "true", rel: 0, wmode: 'opaque' };
+    var atts = { id: "myytplayer" };
+    if ('<%= @ivideo.welcome_movie.present? %>' == "true") {
+      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
+        "ytapiplayer", "640", "360", "8", null, null, params, { id: "welcome_player" });
+    }
+
+    $("#finish.pane, .buttons_menu .once_again").live("click", function() {
+      if (!$("#finish.pane").is(':visible')) {
         $("#video.pane.answers").removeClass("answers");
         $("#finish.pane").hide();
-        $.cookie("pll_ivgvq","once-again");
+        ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
+        $.cookie("pll_ivgvq", null);
+      }
+      else {
+        $("#video.pane.answers").removeClass("answers");
+        $("#finish.pane").hide();
+        $.cookie("pll_ivgvq", "once-again");
         $("#video.pane").show();
       }
-       musicplayer = document.getElementById("music");
-       musicplayer.currentTime=0;
+      $.cookie("pll_ivgvqf", null);
+      musicplayer = document.getElementById("music");
+      musicplayer.currentTime = 0;
       musicplayer.play();
     });
-
-
-    });
+  });
 
 
   function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById(playerId);
     ytplayer.addEventListener('onStateChange', 'goToQuestions');
 
-    if($.cookie("pll_ivgvq")=="once-again"){
+    if ($.cookie("pll_ivgvq") == "once-again") {
       $(".buttons_menu").hide();
-
       ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
-      $.cookie("pll_ivgvq", null)     ;
-
-    } else{
-    ytplayer.loadPlaylist(["<%= @ivideo.welcome_id1 %>"]);
-
-    list =  $.cookie("pll_ivgvq").split(";").slice(1);
-    list.push("<%= @ivideo.end_movie%>");
-    ytplayer.loadPlaylist(list);
-    $.cookie("pll_ivgvq", "finish");
+      $.cookie("pll_ivgvq", null);
+    } else {
+      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id1 %>"]);
+      list = $.cookie("pll_ivgvq").split(";").slice(1);
+      list.push("<%= @ivideo.end_movie%>");
+      ytplayer.loadPlaylist(list);
+      $.cookie("pll_ivgvqf", "finish");
     }
     $("#buyNow").hide();
+  }
 
-      }
+  function goToQuestions(state) {
+    if (state == 1 && ytplayer.getPlaylistIndex() == 4) {
+      $("#buyNow").show();
+    }
 
-          function goToQuestions(state) {
-           if(state == 1 && ytplayer.getPlaylistIndex() == 4){
-        $("#buyNow").show();
-      }
-
-            if (state == 0) {
-
-
-
-    if($.cookie("pll_ivgvq")=="finish"){
+    if (state == 0) {
+      if ($.cookie("pll_ivgvqf") == "finish") {
         $("#video.pane").hide();
         $("#questions.pane").hide();
-      $(".buttons_menu").show();
-      document.getElementById("music").pause();
+        $(".buttons_menu").show();
+        document.getElementById("music").pause();
         $("#finish.pane").show();
-
       }
-      else if(!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq")=="once-again"){
-      $("#video.pane").hide();
-      $(".welcome").hide();
-      $("#questions.pane").show();
-
-
+      else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
+        $("#video.pane").hide();
+        $(".welcome").hide();
+        $("#questions.pane").show();
         $("#questions .question").first().show();
-
       }
+    }
   }
-          }
 
   /**
    * jQuery Cookie plugin
@@ -229,7 +208,9 @@
 
     // key and possibly options given, get cookie...
     options = value || {};
-    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    var result, decode = options.raw ? function (s) {
+      return s;
+    } : decodeURIComponent;
     return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
   };
 
