@@ -7,7 +7,7 @@ gem 'rails', '3.1'
 
 #gem 'mysql2'
 group :production do
-  #gem 'pg'
+  gem 'pg'
 end
 group :development do
   gem "mysql2"
