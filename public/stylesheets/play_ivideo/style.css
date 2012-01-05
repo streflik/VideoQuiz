@@ -1,0 +1,155 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* D E S I G N */
+
+body {
+background:transparent;
+color:#424242;
+font-family:arial, sans-serif;
+}
+
+.pane {
+width:600px;
+height:329px;
+float:left;
+}
+
+/* B U T T O N S */
+
+.buttons {
+margin:-30px auto 0 auto;
+display:block;
+position:relative;
+}
+
+.buttons a {
+display:block;
+}
+
+.buttons a.start {
+width:216px;
+height:53px;
+margin:0 auto
+}
+
+.buttons a.once_again, .buttons a.fb, .buttons a.offer_for_you {
+float:left;
+height:53px
+}
+
+.buttons a.once_again {
+width:165px;
+margin:0 0 0 18px;
+}
+
+.buttons a.fb {
+width:161px;
+}
+
+.buttons a.offer_for_you {
+width:237px;
+}
+
+/* Q U E S T I O N S */
+
+.question {
+padding:30px 25px 0 25px;
+margin:5px;
+height:259px;
+background-color:#fff;
+background-image:url('/images/vitalia/gradient.png');
+background-repeat:repeat-x;
+}
+
+.number {
+background-image:url('/images/vitalia/question.png');
+background-repeat:no-repeat;
+width:74px;
+height:23px;
+color:#fff;
+text-align:center;
+line-height:24px;
+font-size:15px;
+display:block;
+}
+
+h2 {
+font-size:22px;
+line-height:1.2em;
+margin:5px 0 25px 0
+}
+
+ul li a {
+font-size:18px;
+display:block;
+width:100%;
+height:42px;
+background-image:url('/images/vitalia/gradient_button.png');
+background-repeat:repeat-x;
+margin:0 0 10px 0;
+text-align:center;
+text-decoration:none;
+color:#424242;
+font-weight:bold;
+line-height:42px;
+text-transform:uppercase;
+-moz-border-radius: 3px;
+border-radius: 3px;
+border:1px solid #e1ddd4
+}
+
+ul li a:hover {
+background-image:url('/images/vitalia/gradient_button_hover.png');
+}
+
+/* B U Y N O W */
+
+#video.pane {
+position: relative;
+}
+
+#buyNow {
+  position: absolute;
+  top: 52px;
+  right: 42px;
+  width: 178px;
+  height: 65px;
+  z-index: 1000;
+  display: none;
+  cursor: pointer;
+}
+
+/* F I X */
+
+#video.pane, #finish.pane, .buttons_menu, .question {
+display:none;
+}

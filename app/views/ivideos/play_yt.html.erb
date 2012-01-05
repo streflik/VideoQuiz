@@ -1,21 +1,16 @@
-<!-- zakladki -->
-
-
-<div class="clear"></div>
-
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-  <%= image_tag "screen_start.jpg" %>
+  <%= image_tag "vitalia/start.png" %>
+  <div class="buttons">
+    <a class="start" href="#"><%= image_tag "vitalia/button_start.png" %></a>
+  </div>
 </div>
-
 
 <!-- -------------------------------------------------------------------- pytania -->
 
 <div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file? %>>
-
   <%= render :partial => "show_question", :collection => @ivideo.questions %>
-
 </div>
 
 <!-- -------------------------------------------------------------------- video -->
@@ -26,42 +21,41 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
+  </div>
 
-    <div id="buyNow"></div>
+  <div id="buyNow"></div>
 
-    <div class="fb-like welcome" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
-
-    <div class="buttons_menu">
-      <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
-      <a href="#" class="once_again">Jeszcze raz</a>
-      <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
-    </div>
+  <div class="buttons buttons_menu">
+    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" target="_blank" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
 
 </div>
-
 
 <!-- -------------------------------------------------------------------- koniec -->
-<div class="pane" id="finish">
-  <%= image_tag "screen.jpg" %>
 
-  <div class="buttons_menu">
-    <div class="fb-like" data-href="http://vitalia.pl" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
-    <a href="#" class="once_again">Jeszcze raz</a>
-    <a href="#" class="offer_for_you">Sprawdź ofertę dla Ciebie!</a>
+<div class="pane" id="finish">
+
+  <%= image_tag "vitalia/start.png" %>
+
+  <div class="buttons buttons_menu">
+    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
+
 </div>
 
+<!-- -------------------------------------------------------------------- audio -->
 
 <audio loop="loop" id="music">
-  <source src="/EndCredits.mp3" type="audio/mp3"/>
+  <source src="/vitalia.mp3" type="audio/mp3"/>
 </audio>
-
 
 <!-- -------------------------------------------------------------------- js -->
 
 <script type="text/javascript">
-
 
   $(document).ready(function() {
 
@@ -106,7 +100,7 @@
     var atts = { id: "myytplayer" };
     if ('<%= @ivideo.welcome_movie.present? %>' == "true") {
       swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-        "ytapiplayer", "640", "360", "8", null, null, params, { id: "welcome_player" });
+        "ytapiplayer", "600", "335", "8", null, null, params, { id: "welcome_player" });
     }
 
     $("#finish.pane, .buttons_menu .once_again").live("click", function() {
