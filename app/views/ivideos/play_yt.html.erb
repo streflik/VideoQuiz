@@ -71,13 +71,22 @@
     });
 
     $("#buyNow").live("click", function() {
-      list = $.cookie("pll_ivgvq").split(";").slice(1);
-      if (list.indexOf("<%= @ivideo.questions[2].video2%>") > 0 && list.indexOf("<%= @ivideo.questions[3].video2%>") > 0) {
-        window.location = "http://dieta.pl";
-      } else {
-        window.location = "http://dietaifitness.pl";
-      }
+     window.location = getOfferForYou();
     });
+
+    function getOfferForYou(){
+         list = $.cookie("pll_ivgvq").split(";").slice(1);
+       if(list.indexOf("<%= @ivideo.questions[0].video1%>") >= 0 && list.indexOf("<%= @ivideo.questions[1].video2%>") >= 0 &&
+        (list.indexOf("<%= @ivideo.questions[2].video1%>") >= 0 || list.indexOf("<%= @ivideo.questions[2].video3%>") >= 0) && list.indexOf("<%= @ivideo.questions[3].video1%>") >= 0)
+       {
+         link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/fitness";
+       } else if (list.indexOf("<%= @ivideo.questions[2].video2%>") > 0 && list.indexOf("<%= @ivideo.questions[3].video2%>") > 0) {
+         link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/diet";
+       }else {
+         link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/plusprogram";
+       }
+      return link;
+     }
 
 
     $("#answer_links a").live("click", function() {
@@ -90,6 +99,7 @@
       } else {
         $("#questions").hide();
         $("#video.pane").addClass("answers").show();
+        $("a.offer_for_you").attr("href", getOfferForYou());
         $(".buttons_menu").show();
       }
       return false;
@@ -117,6 +127,8 @@
         $("#video.pane").show();
       }
       $.cookie("pll_ivgvqf", null);
+      $(".buttons_menu").hide();
+
       musicplayer = document.getElementById("music");
       musicplayer.currentTime = 0;
       musicplayer.play();
