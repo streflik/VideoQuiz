@@ -2,6 +2,8 @@
 class Ivideo < Quiz
   default_scope where(:ivideo=>true)
   has_attached_file :poster
+  has_attached_file :poster_end
+  has_attached_file :music
 
 
   def welcome_movie

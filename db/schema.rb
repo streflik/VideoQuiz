@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227200814) do
+ActiveRecord::Schema.define(:version => 20120125204553) do
+
+  create_table "answers", :force => true do |t|
+    t.string   "content"
+    t.string   "video"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -24,7 +31,16 @@ ActiveRecord::Schema.define(:version => 20111227200814) do
     t.string   "video1"
     t.string   "video2"
     t.string   "video3"
+    t.string   "answer_4"
     t.string   "video4"
+    t.string   "answer_5"
+    t.string   "video5"
+    t.string   "answer_6"
+    t.string   "video6"
+    t.string   "answer_7"
+    t.string   "video7"
+    t.string   "answer_8"
+    t.string   "video8"
   end
 
   create_table "quizzes", :force => true do |t|
@@ -35,10 +51,11 @@ ActiveRecord::Schema.define(:version => 20111227200814) do
     t.datetime "reward_exp"
     t.string   "fb_page"
     t.string   "landing_page"
+    t.integer  "coupons_left"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "codes"
-    t.integer  "wins_count",          :default => 0
+    t.integer  "wins_count",              :default => 0
     t.string   "instruction"
     t.string   "reward_short"
     t.text     "custom_css"
@@ -55,6 +72,14 @@ ActiveRecord::Schema.define(:version => 20111227200814) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
+    t.string   "poster_end_file_name"
+    t.string   "poster_end_content_type"
+    t.integer  "poster_end_file_size"
+    t.datetime "poster_end_updated_at"
+    t.string   "music_file_name"
+    t.string   "music_content_type"
+    t.integer  "music_file_size"
+    t.datetime "music_updated_at"
   end
 
   create_table "users", :force => true do |t|

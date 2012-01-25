@@ -21,6 +21,8 @@
       <%= f.input :google_anal %>
       <%= f.input :custom_css %>
       <%= f.input :poster%>
+      <%= f.input :poster_end%>
+      <%= f.input :music%>
       <%= f.input :movies_type, :as=>:select, :collection => ["YouTube", "RTMP"] %>
       <div id="questions">
       <%= f.simple_fields_for :questions, @question do |q| %>
@@ -29,6 +31,11 @@
           <%= q.input :answer_1 %> <%= q.input :video1%>
           <%= q.input :answer_2 %> <%= q.input :video2%>
           <%= q.input :answer_3 %> <%= q.input :video3%>
+          <%= q.input :answer_4 %> <%= q.input :video4%>
+          <%= q.input :answer_5 %> <%= q.input :video5%>
+          <%= q.input :answer_6 %> <%= q.input :video6%>
+          <%= q.input :answer_7 %> <%= q.input :video7%>
+          <%= q.input :answer_8 %> <%= q.input :video8%>
           <%= q.input :_destroy, :as=>:hidden, :input_html => {:class=>"destroy"} %>
           <%= link_to_function "Usuń", "$(this).parent('.question').hide();$(this).parent('.question').find('.destroy').val('true');" %>
           </div>
