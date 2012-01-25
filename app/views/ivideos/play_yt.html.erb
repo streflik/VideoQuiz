@@ -117,7 +117,7 @@
       if (!$("#finish.pane").is(':visible')) {
         $("#video.pane.answers").removeClass("answers");
         $("#finish.pane").hide();
-        ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 || @ivideo.welcome_id1%>"]);
+        ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2.presence || @ivideo.welcome_id1%>"]);
         $.cookie("pll_ivgvq", null);
       }
       else {
@@ -142,7 +142,7 @@
 
     if ($.cookie("pll_ivgvq") == "once-again") {
       $(".buttons_menu").hide();
-      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 || @ivideo.welcome_id1 %>"]);
+      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2.presence || @ivideo.welcome_id1 %>"]);
       $.cookie("pll_ivgvq", null);
     } else {
       ytplayer.loadPlaylist(["<%= @ivideo.welcome_id1 %>"]);
