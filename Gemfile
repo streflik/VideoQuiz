@@ -20,6 +20,7 @@ gem "will_paginate"
 gem "resque"
 gem "fastercsv"
 gem "capistrano"
+gem "aws-s3"
 
 gem "airbrake"
 

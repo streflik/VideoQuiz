@@ -1,7 +1,7 @@
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-  <%= image_tag "vitalia/start.png" %>
+  <%= image_tag @ivideo.poster.url || "vitalia/start.png" %>
   <div class="buttons">
     <a class="start" href="#"><%= image_tag "vitalia/button_start.png" %></a>
   </div>
@@ -37,7 +37,7 @@
 
 <div class="pane" id="finish">
 
-  <%= image_tag "vitalia/start.png" %>
+  <%= image_tag @ivideo.poster.url || "vitalia/start.png"  %>
 
   <div class="buttons buttons_menu">
     <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
