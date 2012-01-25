@@ -49,9 +49,9 @@
 
 <!-- -------------------------------------------------------------------- audio -->
 
-<audio loop="loop" id="music">
-  <source src="/vitalia.mp3" type="audio/mp3"/>
-</audio>
+<!--<audio loop="loop" id="music">-->
+  <!--<source src="/vitalia.mp3" type="audio/mp3"/>-->
+<!--</audio>-->
 
 <!-- -------------------------------------------------------------------- js -->
 
@@ -65,8 +65,8 @@
     $("#poster.pane").live("click", function() {
       $(this).hide();
       //    Start music playback
-      musicplayer = document.getElementById("music");
-      musicplayer.play();
+//      musicplayer = document.getElementById("music");
+//      musicplayer.play();
       $("#video.pane").show();
     });
 
@@ -129,9 +129,9 @@
       $.cookie("pll_ivgvqf", null);
       $(".buttons_menu").hide();
 
-      musicplayer = document.getElementById("music");
-      musicplayer.currentTime = 0;
-      musicplayer.play();
+//      musicplayer = document.getElementById("music");
+//      musicplayer.currentTime = 0;
+//      musicplayer.play();
     });
   });
 
@@ -164,7 +164,7 @@
         $("#video.pane").hide();
         $("#questions.pane").hide();
         $(".buttons_menu").show();
-        document.getElementById("music").pause();
+//        document.getElementById("music").pause();
         $("#finish.pane").show();
       }
       else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
