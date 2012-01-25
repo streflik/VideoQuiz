@@ -4,7 +4,12 @@
   <ul id="answer_links">
     <li><%= link_to show_question.answer_1, "#", "data-video-id"=> show_question.video1 %></li>
     <li><%= link_to show_question.answer_2, "#", "data-video-id"=> show_question.video2  %></li>
-    <li><%= link_to show_question.answer_3, "#", "data-video-id"=> show_question.video3  %></li>
+    <li><%= link_to show_question.answer_3, "#", "data-video-id"=> show_question.video3 if show_question.answer_3.present? %></li>
+    <li><%= link_to show_question.answer_4, "#", "data-video-id"=> show_question.video4 if show_question.answer_4.present?  %></li>
+    <li><%= link_to show_question.answer_5, "#", "data-video-id"=> show_question.video5 if show_question.answer_5.present?  %></li>
+    <li><%= link_to show_question.answer_6, "#", "data-video-id"=> show_question.video6 if show_question.answer_6.present?  %></li>
+    <li><%= link_to show_question.answer_7, "#", "data-video-id"=> show_question.video7 if show_question.answer_7.present?  %></li>
+    <li><%= link_to show_question.answer_8, "#", "data-video-id"=> show_question.video8 if show_question.answer_8.present?  %></li>
   </ul>
 </div>
 
