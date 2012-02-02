@@ -87,8 +87,8 @@
         $("#video.pane").addClass("answers").show();
         $("a.offer_for_you").attr("href", "http://fff.pl");
         $(".buttons_menu").show();
-        list = $.cookie("pll_ivgvq").split(";").slice(4);
-        for (i = 0; i <= 0; i++) {
+        list = $.cookie("pll_ivgvq").split(";").slice(1);
+        for (i = 0; i < list.length; i++) {
           list[i] = {url: 'mp4:' + list[i], duration:200}
         }
         list.push({url: 'mp4:<%= @ivideo.end_movie%>', duration:200});
