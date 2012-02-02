@@ -5,20 +5,20 @@ class Ivideo < Quiz
   has_attached_file :poster,  :storage => :s3,
     :bucket => 'VideoQuiz',
     :s3_credentials => {
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id => "AKIAIAG3RFZGRWEFAAZA",
+      :secret_access_key => "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"
     }
   has_attached_file :poster_end,  :storage => :s3,
     :bucket => 'VideoQuiz',
     :s3_credentials => {
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id => "AKIAIAG3RFZGRWEFAAZA",
+      :secret_access_key => "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"
     }
   has_attached_file :music,  :storage => :s3,
     :bucket => 'VideoQuiz',
     :s3_credentials => {
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id => "AKIAIAG3RFZGRWEFAAZA",
+      :secret_access_key => "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"
     }
 
 

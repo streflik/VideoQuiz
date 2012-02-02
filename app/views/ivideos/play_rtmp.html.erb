@@ -1,182 +1,271 @@
-<!-- zakladki -->
-<%= javascript_include_tag "flowplayer-3.2.6.min"%>
-<ul id="tabs">
-  <li class="first current">ZOBACZ<br />FILM DO KOŃCA</li>
-  <li class="second">ODPOWIEDZ<br />NA PYTANIE</li>
-  <li class="third">WYGRAJ<br /><%= @ivideo.reward_short %></li>
-</ul>
-
-<div class="clear"></div>
-
 <!-- -------------------------------------------------------------------- poster -->
-
-<div class="pane" id="poster">
-    <%= image_tag @ivideo.poster.url%>
-</div>
+<%= javascript_include_tag "flowplayer-3.2.6.min"%>
 
 
 <!-- -------------------------------------------------------------------- pytania -->
 
-<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file?%>>
-
-
-      <%= render :partial => "show_question", :collection => @ivideo.questions%>
-
-    <%= render 'problem' %>
-
-    </div>
+<div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file? %>>
+  <%= render :partial => "show_question", :collection => @ivideo.questions %>
+</div>
 
 <!-- -------------------------------------------------------------------- video -->
 
-<div class="pane" id="video"  <%= "style='display:block'" if @ivideo.welcome_movie && !@ivideo.poster.file?%>>
-
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-
+<div class="pane" id="video"  <%= "style='display:block'" if true %>>
 
   <div class="player">
-    <div id="ytapiplayer">
-      Potrzebujesz Flash Player i włączonej obsługi Java Script.
-    </div>
+    <a id="container" href="mp4:<%= @ivideo.welcome_id1%>">
+     <%= image_tag @ivideo.poster.url%>
+        <!--<div class="buttons">-->
+    <!--<a class="start" href="#"><%#= image_tag "vitalia/button_start.png" %></a>-->
+  <!--</div>-->
+    </a>
   </div>
 
-  <div id="buttons_menu">
-    <a href="#" class="once_again">Jeszcze raz</a>
-  </div>
+  <div id="buyNow"></div>
 
-  <div class="fb-like">
-    <a name="fb_share" type="button_count" share_url="<%= @ivideo.landing_page %>">Udostępnij</a>
+  <div class="buttons buttons_menu">
+    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl/index.php/mid/67/fid/1439&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" target="_blank" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
 
 </div>
-
 
 <!-- -------------------------------------------------------------------- koniec -->
 
 <div class="pane" id="finish">
-  <div class="finish_content">
-    <h2>Sprawdź teraz swój email.<br />
-        Właśnie wysłaliśmy kupon rabatowy.<br />
-        Miłych zakupów :-)</h2>
+
+  <%= image_tag @ivideo.poster.url || "vitalia/start.png"  %>
+
+  <div class="buttons buttons_menu">
+    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl/index.php/mid/67/fid/1439&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
+
 </div>
+
+<!-- -------------------------------------------------------------------- audio -->
+
+<!--<audio loop="loop" id="music">-->
+  <!--<source src="/vitalia.mp3" type="audio/mp3"/>-->
+<!--</audio>-->
 
 <!-- -------------------------------------------------------------------- js -->
 
 <script type="text/javascript">
 
   $(document).ready(function() {
-    $.cookie("pll_ivgvq",null);
 
-    $("#poster.pane").live("click",function(){
-      $(this).hide();
-      $("#video.pane").show();
-    }) ;
+    $.cookie("pll_ivgvq", null);
+    $.cookie("pll_ivgvqf", null);
 
-    $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
+//    $("#poster.pane").live("click", function() {
+//      $(this).hide();
+      //    Start music playback
+//      musicplayer = document.getElementById("music");
+//      musicplayer.play();
+//      $("#video.pane").show();
+        flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
 
-      clip: {
-        url: 'metacafe',
-        // configure clip to use influxis as our provider, it uses our rtmp plugin
-        provider: 'influxis'
-      },
+	plugins:  {
+    controls: null,
+		rtmp: {
+			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+		}
+  },
 
-      // streaming plugins are configured under the plugins node
-      plugins: {
+  clip: {
+		provider: 'rtmp'
+//    streams: [
+//			{ url: 'mp4:01_A.mp4' },
+//			{ url: 'mp4:02_B.mp4' }
+		//]
+	},
+          onBeforeFinish: endClip ,
+          onPlaylistReplace: function(){alert("fgrr");}
 
-        // here is our rtpm plugin configuration
-        influxis: {
-          url: 'flowplayer.rtmp-3.2.3.swf',
 
-          // netConnectionUrl defines where the streams are found
-          netConnectionUrl: 'rtmp://dk2isqp3f.rtmphost.com/flowplayer'
-        }
-      }
+});
+
+
+    $("#buyNow").live("click", function() {
+     window.location = "http://fff.pl";
     });
 
 
 
-
-      $("#answer_links a").live("click", function() {
-        $.cookie("pll_ivgvq", $.cookie("pll_ivgvq")+";"+$(this).data("video-id"));
-        question = $(this).parents(".question");
-        next = $("#questions .question").eq(question.index()+1);
-        question.hide();
-        if($(next).length > 0){
-          $(next).show();
-        }
-        else{
-          $("#questions").hide();
-
-          $("#video.pane").addClass("answers").show();
-          $("#buttons_menu").show();
-        }
-        return false;
-      });
-
-
-
-      var params = { allowScriptAccess: "always", autoplay: "true", allowFullScreen: "true", rel: 0 };
-      var atts = { id: "myytplayer" };
-      if('<%= @ivideo.welcome_movie.present? %>' == "true"){
-//      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-//                "ytapiplayer", "560", "315", "8", null, null, params, { id: "welcome_player" });
-       // $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf");
-        $f("ytapiplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
-
-          clip: {
-            url: 'metacafe',
-            // configure clip to use influxis as our provider, it uses our rtmp plugin
-            provider: 'influxis'  ,
-            onFinish: goToQuestions()
-          },
-
-
-          // streaming plugins are configured under the plugins node
-          plugins: {
-
-            // here is our rtpm plugin configuration
-            influxis: {
-              url: 'flowplayer.rtmp-3.2.3.swf',
-
-              // netConnectionUrl defines where the streams are found
-              netConnectionUrl: 'rtmp://dk2isqp3f.rtmphost.com/flowplayer'
-            }
+    $("#answer_links a").live("click", function() {
+      $.cookie("pll_ivgvq", $.cookie("pll_ivgvq") + ";" + $(this).data("video-id"));
+      question = $(this).parents(".question");
+      next = $("#questions .question").eq(question.index() + 1);
+      question.hide();
+      if ($(next).length > 0) {
+        $(next).show();
+      } else {
+        $("#questions").hide();
+        $("#video.pane").addClass("answers").show();
+        $("a.offer_for_you").attr("href", "http://fff.pl");
+        $(".buttons_menu").show();
+        list = $.cookie("pll_ivgvq").split(";").slice(4);
+          for(i=0;i<=0;i++){
+            list[i]={url: 'mp4:'+list[i], duration:200}
           }
-        });
+        list.push({url: 'mp4:<%= @ivideo.end_movie%>', duration:200});
+//        jwplayer().load(list);
+                flowplayer("container", {src: "/javascripts/flowplayer-3.2.7.swf", wmode: 'opaque'}, {
 
+	plugins:  {
+    controls: null,
+		rtmp: {
+			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+		}
+  },
+                  wmode: 'opaque',
+
+  clip: {
+
+		provider: 'rtmp',
+    streams: list
+//			{ url: 'mp4:01_A.mp4' },
+//			{ url: 'mp4:02_B.mp4' }
+		//]
+	},
+          onFinish: endClip1
+
+
+});
       }
-
-    $("#buttons_menu .once_again").live("click", function(){
-      $("#video.pane.answers").removeClass("answers");
-      ytplayer.loadPlaylist(["<%= @ivideo.welcome_id2 %>"]);
-      $.cookie("pll_ivgvq",null);
-
-
+      return false;
     });
 
+
+//            jwplayer("container").setup({
+//        flashplayer: "/javascripts/player.swf",
+//        file: "<%#= @ivideo.welcome_id1%>",
+//        height: 270,
+//        autostart: true,
+//        repeat: "list",
+//        bufferlength: 0,
+//        provider: "rtmp",
+//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
+//        width: 480
+//    });
+
+//jwplayer().onReady(function(){
+//        if ($.cookie("pll_ivgvq") == "once-again") {
+//        $(".buttons_menu").hide();
+//        jwplayer().load({provider: "rtmp",
+//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
+//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1 %>"});
+//        $.cookie("pll_ivgvq", null);
+//      } else {
+//        jwplayer().load({provider: "rtmp",
+//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",file: "<%#= @ivideo.welcome_id1 %>"});
+//        $.cookie("pll_ivgvqf", "finish");
+//      }
+//      $("#buyNow").hide();
+//    });
+
+     function endClip1(){
+//    if (state == 1 && ytplayer.getPlaylistIndex() == 4) {
+//      $("#buyNow").show();
+//    }
+       alert(this.getClip()['url']);
+    //if ($f().getClip()['url'] == 'mp4:<%= @ivideo.end_movie%>') {
+
+//        if ($.cookie("pll_ivgvqf") == "finish") {
+          $("#video.pane").hide();
+          $("#questions.pane").hide();
+          $(".buttons_menu").show();
+//        document.getElementById("music").pause();
+          $("#finish.pane").show();
+//        }
+//        else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
+//          $("#video.pane").hide();
+//          $(".welcome").hide();
+//          $("#questions.pane").show();
+//          $("#questions .question").first().show();
+//        }
+//    }
+   // }
+     }
+        function endClip(){
+//    if (state == 1 && ytplayer.getPlaylistIndex() == 4) {
+//      $("#buyNow").show();
+//    }
+        if ($.cookie("pll_ivgvqf") == "finish") {
+          $("#video.pane").hide();
+          $("#questions.pane").hide();
+          $(".buttons_menu").show();
+//        document.getElementById("music").pause();
+          $("#finish.pane").show();
+        }
+        else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
+          $("#video.pane").hide();
+          $(".welcome").hide();
+          $("#questions.pane").show();
+          $("#questions .question").first().show();
+        }
+//    }
+    }
+
+//      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
+//        "ytapiplayer", "600", "335", "8", null, null, params, { id: "welcome_player" });
+
+
+    $("#finish.pane, .buttons_menu .once_again").live("click", function() {
+      $("#finish.pane").hide();
+
+      $("#video.pane").show() ;
+              flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
+	plugins:  {
+    controls: null,
+		rtmp: {
+			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+		}
+  },
+
+  clip: {
+		provider: 'rtmp',
+    streams: [
+			{ url: 'mp4:<%= @ivideo.welcome_id2 || @ivideo.welcome_id1%>', duration: 200 }
+		]
+	},
+          onBeforeFinish: endClip ,
+          onPlaylistReplace: function(){alert("fgrr");}
+
+
+});
+//      if (!$("#finish.pane").is(':visible')) {
+//        $("#video.pane.answers").removeClass("answers");
+//        $("#finish.pane").hide();
+//        jwplayer().load({provider: 'rtmp',
+//          streamer: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st',
+//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1%>"});
+        $.cookie("pll_ivgvq", null);
+//      }
+//      else {
+//        $("#video.pane.answers").removeClass("answers");
+//        $("#finish.pane").hide();
+//        $.cookie("pll_ivgvq", "once-again");
+//        $("#video.pane").show();
+//        $(".buttons_menu").hide();
+//        jwplayer().load({provider: "rtmp",
+//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
+//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1 %>"});
+//        $.cookie("pll_ivgvq", null);
+//      }
+//      $.cookie("pll_ivgvqf", null);
+      $(".buttons_menu").hide();
+
     });
+  });
 
 
-  function onYouTubePlayerReady(playerId) {
-    alert("fff");
-    ytplayer = document.getElementById(playerId);
-
-
-    list =  $.cookie("pll_ivgvq").split(";").slice(1);
-    list.push("<%= @ivideo.end_movie%>");
-    $f().setPlaylist(["honda_accord"]);
-      }
-
-          function goToQuestions() {
-
-
-      if(!$.cookie("pll_ivgvq")){
-        $("#questions .question").first().show();
-      }
-    $("#video.pane").hide();
-    $("#questions.pane").show();
-
-  }
 
   /**
    * jQuery Cookie plugin
@@ -216,7 +305,9 @@
 
     // key and possibly options given, get cookie...
     options = value || {};
-    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    var result, decode = options.raw ? function (s) {
+      return s;
+    } : decodeURIComponent;
     return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
   };
 
