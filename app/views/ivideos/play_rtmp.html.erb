@@ -1,6 +1,4 @@
-<!-- -------------------------------------------------------------------- poster -->
-<%= javascript_include_tag "flowplayer-3.2.6.min"%>
-
+<%= javascript_include_tag "flowplayer-3.2.6.min" %>
 
 <!-- -------------------------------------------------------------------- pytania -->
 
@@ -13,11 +11,8 @@
 <div class="pane" id="video"  <%= "style='display:block'" if true %>>
 
   <div class="player">
-    <a id="container" href="mp4:<%= @ivideo.welcome_id1%>">
-     <%= image_tag @ivideo.poster.url%>
-        <!--<div class="buttons">-->
-    <!--<a class="start" href="#"><%#= image_tag "vitalia/button_start.png" %></a>-->
-  <!--</div>-->
+    <a id="container" href="mp4:<%= @ivideo.welcome_id1 %>">
+      <%= image_tag @ivideo.poster.url %>
     </a>
   </div>
 
@@ -35,7 +30,7 @@
 
 <div class="pane" id="finish">
 
-  <%= image_tag @ivideo.poster.url || "vitalia/start.png"  %>
+  <%= image_tag @ivideo.poster.url || "vitalia/start.png" %>
 
   <div class="buttons buttons_menu">
     <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
@@ -45,11 +40,6 @@
 
 </div>
 
-<!-- -------------------------------------------------------------------- audio -->
-
-<!--<audio loop="loop" id="music">-->
-  <!--<source src="/vitalia.mp3" type="audio/mp3"/>-->
-<!--</audio>-->
 
 <!-- -------------------------------------------------------------------- js -->
 
@@ -58,42 +48,31 @@
   $(document).ready(function() {
 
     $.cookie("pll_ivgvq", null);
-    $.cookie("pll_ivgvqf", null);
 
-//    $("#poster.pane").live("click", function() {
-//      $(this).hide();
-      //    Start music playback
-//      musicplayer = document.getElementById("music");
-//      musicplayer.play();
-//      $("#video.pane").show();
-        flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
+    flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
 
-	plugins:  {
-    controls: null,
-		rtmp: {
-			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
-			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
-		}
-  },
+      plugins:  {
+        controls: null,
+        rtmp: {
+          url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+          netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+        }
+      },
 
-  clip: {
-		provider: 'rtmp'
-//    streams: [
-//			{ url: 'mp4:01_A.mp4' },
-//			{ url: 'mp4:02_B.mp4' }
-		//]
-	},
-          onBeforeFinish: endClip ,
-          onPlaylistReplace: function(){alert("fgrr");}
+      clip: {
+        provider: 'rtmp'
+      },
+      onBeforeFinish: endClip ,
+      onPlaylistReplace: function() {
+        alert("fgrr");
+      }
 
-
-});
+    });
 
 
     $("#buyNow").live("click", function() {
-     window.location = "http://fff.pl";
+      window.location = "http://fff.pl";
     });
-
 
 
     $("#answer_links a").live("click", function() {
@@ -109,162 +88,72 @@
         $("a.offer_for_you").attr("href", "http://fff.pl");
         $(".buttons_menu").show();
         list = $.cookie("pll_ivgvq").split(";").slice(4);
-          for(i=0;i<=0;i++){
-            list[i]={url: 'mp4:'+list[i], duration:200}
-          }
+        for (i = 0; i <= 0; i++) {
+          list[i] = {url: 'mp4:' + list[i], duration:200}
+        }
         list.push({url: 'mp4:<%= @ivideo.end_movie%>', duration:200});
-//        jwplayer().load(list);
-                flowplayer("container", {src: "/javascripts/flowplayer-3.2.7.swf", wmode: 'opaque'}, {
-
-	plugins:  {
-    controls: null,
-		rtmp: {
-			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
-			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
-		}
-  },
-                  wmode: 'opaque',
-
-  clip: {
-
-		provider: 'rtmp',
-    streams: list
-//			{ url: 'mp4:01_A.mp4' },
-//			{ url: 'mp4:02_B.mp4' }
-		//]
-	},
+        flowplayer("container", {src: "/javascripts/flowplayer-3.2.7.swf", wmode: 'opaque'}, {
+          plugins:  {
+            controls: null,
+            rtmp: {
+              url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+              netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+            }
+          },
+          wmode: 'opaque',
+          clip: {
+            provider: 'rtmp',
+            streams: list
+          },
           onFinish: endClip1
-
-
-});
+        });
       }
       return false;
     });
 
-
-//            jwplayer("container").setup({
-//        flashplayer: "/javascripts/player.swf",
-//        file: "<%#= @ivideo.welcome_id1%>",
-//        height: 270,
-//        autostart: true,
-//        repeat: "list",
-//        bufferlength: 0,
-//        provider: "rtmp",
-//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
-//        width: 480
-//    });
-
-//jwplayer().onReady(function(){
-//        if ($.cookie("pll_ivgvq") == "once-again") {
-//        $(".buttons_menu").hide();
-//        jwplayer().load({provider: "rtmp",
-//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
-//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1 %>"});
-//        $.cookie("pll_ivgvq", null);
-//      } else {
-//        jwplayer().load({provider: "rtmp",
-//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",file: "<%#= @ivideo.welcome_id1 %>"});
-//        $.cookie("pll_ivgvqf", "finish");
-//      }
-//      $("#buyNow").hide();
-//    });
-
-     function endClip1(){
-//    if (state == 1 && ytplayer.getPlaylistIndex() == 4) {
-//      $("#buyNow").show();
-//    }
-       alert(this.getClip()['url']);
-    //if ($f().getClip()['url'] == 'mp4:<%= @ivideo.end_movie%>') {
-
-//        if ($.cookie("pll_ivgvqf") == "finish") {
-          $("#video.pane").hide();
-          $("#questions.pane").hide();
-          $(".buttons_menu").show();
-//        document.getElementById("music").pause();
-          $("#finish.pane").show();
-//        }
-//        else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
-//          $("#video.pane").hide();
-//          $(".welcome").hide();
-//          $("#questions.pane").show();
-//          $("#questions .question").first().show();
-//        }
-//    }
-   // }
-     }
-        function endClip(){
-//    if (state == 1 && ytplayer.getPlaylistIndex() == 4) {
-//      $("#buyNow").show();
-//    }
-        if ($.cookie("pll_ivgvqf") == "finish") {
-          $("#video.pane").hide();
-          $("#questions.pane").hide();
-          $(".buttons_menu").show();
-//        document.getElementById("music").pause();
-          $("#finish.pane").show();
-        }
-        else if (!$.cookie("pll_ivgvq") || $.cookie("pll_ivgvq") == "once-again") {
-          $("#video.pane").hide();
-          $(".welcome").hide();
-          $("#questions.pane").show();
-          $("#questions .question").first().show();
-        }
-//    }
+    function endClip1() {
+      alert(this.getClip()['url']);
+      $("#video.pane").hide();
+      $("#questions.pane").hide();
+      $(".buttons_menu").show();
+      $("#finish.pane").show();
     }
 
-//      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-//        "ytapiplayer", "600", "335", "8", null, null, params, { id: "welcome_player" });
-
+    function endClip() {
+        $("#video.pane").hide();
+        $(".welcome").hide();
+        $("#questions.pane").show();
+        $("#questions .question").first().show();
+      }
 
     $("#finish.pane, .buttons_menu .once_again").live("click", function() {
       $("#finish.pane").hide();
+      $("#video.pane").show();
+      flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
+        plugins:  {
+          controls: null,
+          rtmp: {
+            url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
+            netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
+          }
+        },
 
-      $("#video.pane").show() ;
-              flowplayer("container", "/javascripts/flowplayer-3.2.7.swf", {
-	plugins:  {
-    controls: null,
-		rtmp: {
-			url: '/javascripts/flowplayer.rtmp-3.2.3.swf',
-			netConnectionUrl: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st'
-		}
-  },
-
-  clip: {
-		provider: 'rtmp',
-    streams: [
-			{ url: 'mp4:<%= @ivideo.welcome_id2 || @ivideo.welcome_id1%>', duration: 200 }
-		]
-	},
-          onBeforeFinish: endClip ,
-          onPlaylistReplace: function(){alert("fgrr");}
-
-
-});
-//      if (!$("#finish.pane").is(':visible')) {
-//        $("#video.pane.answers").removeClass("answers");
-//        $("#finish.pane").hide();
-//        jwplayer().load({provider: 'rtmp',
-//          streamer: 'rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st',
-//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1%>"});
-        $.cookie("pll_ivgvq", null);
-//      }
-//      else {
-//        $("#video.pane.answers").removeClass("answers");
-//        $("#finish.pane").hide();
-//        $.cookie("pll_ivgvq", "once-again");
-//        $("#video.pane").show();
-//        $(".buttons_menu").hide();
-//        jwplayer().load({provider: "rtmp",
-//        streamer: "rtmp://s1ku393q1o83s1.cloudfront.net/cfx/st",
-//          file: "<%#= @ivideo.welcome_id2.presence || @ivideo.welcome_id1 %>"});
-//        $.cookie("pll_ivgvq", null);
-//      }
-//      $.cookie("pll_ivgvqf", null);
+        clip: {
+          provider: 'rtmp',
+          streams: [
+            { url: 'mp4:<%= @ivideo.welcome_id2 || @ivideo.welcome_id1%>', duration: 200 }
+          ]
+        },
+        onBeforeFinish: endClip ,
+        onPlaylistReplace: function() {
+          alert("fgrr");
+        }
+      });
+      $.cookie("pll_ivgvq", null);
       $(".buttons_menu").hide();
 
     });
   });
-
 
 
   /**
