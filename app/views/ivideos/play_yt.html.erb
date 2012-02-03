@@ -27,8 +27,8 @@
 
   <div class="buttons buttons_menu">
     <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
-    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl/index.php/mid/67/fid/1439&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
-    <a class="offer_for_you" target="_blank" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vistula.edu.pl"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" target="_blank" href="htpp://vistula.edu.pl"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
 
 </div>
@@ -41,8 +41,8 @@
 
   <div class="buttons buttons_menu">
     <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
-    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitalia.pl/index.php/mid/67/fid/1439&t=Vitalia"><%= image_tag "vitalia/button_fb.png" %></a>
-    <a class="offer_for_you" href="#"><%= image_tag "vitalia/button_offer.png" %></a>
+    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vistula.edu.pl"><%= image_tag "vitalia/button_fb.png" %></a>
+    <a class="offer_for_you" target="_blank" href="htpp://vistula.edu.pl"><%= image_tag "vitalia/button_offer.png" %></a>
   </div>
 
 </div>
@@ -110,7 +110,7 @@
     var atts = { id: "myytplayer" };
     if ('<%= @ivideo.welcome_movie.present? %>' == "true") {
       swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=welcome_player",
-        "ytapiplayer", "600", "335", "8", null, null, params, { id: "welcome_player" });
+        "ytapiplayer", "640", "360", "8", null, null, params, { id: "welcome_player" });
     }
 
     $("#finish.pane, .buttons_menu .once_again").live("click", function() {
