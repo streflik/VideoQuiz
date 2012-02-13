@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Quiz < ActiveRecord::Base
-
+  default_scope where("ivideo is not true")
   belongs_to :user
   has_many :questions
   has_many :wins
@@ -14,6 +14,15 @@ class Quiz < ActiveRecord::Base
   def generate_codes(quantity = 100)
     quantity.times{self.codes << SecureRandom.hex(3)}
     save
+  end
+
+  def custom_codes=(c_codes)
+    c_codes = c_codes.split(/,|;|\n/).collect { |c| c.strip unless c.blank? }.compact
+    self.codes = c_codes
+  end
+
+  def custom_codes
+    self.codes.join("; ")
   end
 
 end

@@ -10,7 +10,7 @@ Videoquiz::Application.routes.draw do
   resources :quizzes do
     member do
       get :generate_codes
-      post :get_questions
+      get :get_questions
       post :check_answer
       get :check_answer
       get :get_codes

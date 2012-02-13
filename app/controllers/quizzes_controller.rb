@@ -7,6 +7,9 @@ class QuizzesController < ApplicationController
   before_filter :find_customers, :only => [:new, :create, :edit, :update]
   protect_from_forgery :except => [:get_questions, :check_answer]
 
+  caches_page :play
+  caches_page :get_questions
+
   load_and_authorize_resource :except => [:get_questions, :check_answer, :reward, :play]
 
   def play
@@ -39,6 +42,8 @@ class QuizzesController < ApplicationController
 
   def update
     if @quiz.update_attributes(params[:quiz])
+      expire_page :controller => :quizzes, :action => :play, :id => @quiz.id
+      expire_page :controller => :quizzes, :action => :get_questions, :id => @quiz.id
       redirect_to(@quiz, :notice => t("updated"))
     else
       render :action => "edit"

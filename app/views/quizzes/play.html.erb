@@ -104,13 +104,13 @@
           ytplayer.stop();
       }   else {
           ytplayer.loadPlaylist("GchEVSx9XEA","12d-5Azr6PI");
-//          ytplayer.addEventListener('onStateChange', 'goToQuestions');
+          ytplayer.addEventListener('onStateChange', 'goToQuestions');
 
       }
   }
   function goToQuestions(state) {
     if (state == 0) {
-      $.post("<%= get_questions_quiz_url(@quiz)%>", function(data) {
+      $.get("<%= get_questions_quiz_url(@quiz)%>", function(data) {
         $("#question_content").html(data);
       });
     $("#video.pane").hide();
