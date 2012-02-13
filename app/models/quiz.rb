@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Quiz < ActiveRecord::Base
-  default_scope where("ivideo is not true")
+  #default_scope where("ivideo is not true")
   belongs_to :user
   has_many :questions
   has_many :wins
