@@ -18,9 +18,6 @@
     <div id="ytapiplayer">
       Potrzebujesz Flash Player i włączonej obsługi Java Script.
     </div>
-    <div id="ytapiplayer2">
-      Potrzebujesz Flash Player i włączonej obsługi Java Script.
-    </div>
   </div>
 
   <div class="fb-like">
@@ -100,20 +97,61 @@
   function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById(playerId);
 
-          ytplayer.addEventListener('onStateChange', 'goToQuestions');
+    ytplayer.addEventListener('onStateChange', 'goToQuestions');
 
 
   }
   function goToQuestions(state) {
+//    alert("fff");
     if (state == 0) {
+      if(!$.cookie("ucc_<%=@quiz.id%>")){
       $.get("<%= get_questions_quiz_url(@quiz)%>", function(data) {
         $("#question_content").html(data);
       });
+    }else{
+      $("#question_content").html("<h2>Wykorzystano już dzisiejszą szansę.<br />Spróbuj ponownie jutro.</h2>");
+    }
     $("#video.pane").hide();
     $("ul#tabs .current").removeClass("current");
     $("ul#tabs .second").addClass("current");
     $("#question.pane").show();
     }
   }
+
+
+  jQuery.cookie = function (key, value, options) {
+
+    // key and at least value given, set cookie...
+    if (arguments.length > 1 && String(value) !== "[object Object]") {
+      options = jQuery.extend({}, options);
+
+      if (value === null || value === undefined) {
+        options.expires = -1;
+      }
+
+      if (typeof options.expires === 'number') {
+        var days = options.expires, t = options.expires = new Date();
+        t.setDate(t.getDate() + days);
+      }
+
+      value = String(value);
+
+      return (document.cookie = [
+        encodeURIComponent(key), '=',
+        options.raw ? value : encodeURIComponent(value),
+        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+        options.path ? '; path=' + options.path : '',
+        options.domain ? '; domain=' + options.domain : '',
+        options.secure ? '; secure' : ''
+      ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) {
+      return s;
+    } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+  };
 </script>
 
