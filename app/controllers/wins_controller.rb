@@ -9,7 +9,7 @@ class WinsController < ApplicationController
         end
         @quiz.save
         if @win.save
-          expire_action :controller => :quizzes, :action => :play, :id => @quiz.id
+          expire_page :controller => :quizzes, :action => :play, :id => @quiz.id
           #Resque.enqueue DeliverReward, @win.id
           UserMailer.reward(@win.id).deliver
           render :js=> "$('#coupon.pane').hide();$('#finish.pane').show();"
