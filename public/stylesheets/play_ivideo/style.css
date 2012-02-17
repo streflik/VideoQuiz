@@ -37,6 +37,7 @@ body {
 background:transparent;
 color:#424242;
 font-family:arial, sans-serif;
+overflow:hidden
 }
 
 .pane {
