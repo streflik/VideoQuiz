@@ -11,18 +11,19 @@
       <%= f.input :welcome_id1 %>
       <%= f.input :welcome_id2 %>
       <%= f.input :end_id1 %>
-      <%= f.input :end_id2 %>
-      <%= f.input :reward %>
-      <%= f.input :reward_short %>
-      <%= f.input :reward_exp %>
-      <%= f.input :instruction %>
-      <%= f.input :fb_page %>
+      <%#= f.input :end_id2 %>
+      <%#= f.input :reward %>
+      <%#= f.input :reward_short %>
+      <%#= f.input :reward_exp %>
+      <%#= f.input :instruction %>
+      <%#= f.input :fb_page %>
       <%= f.input :landing_page %>
       <%= f.input :google_anal %>
       <%= f.input :custom_css %>
       <%= f.input :poster%>
-      <%= f.input :poster_end%>
-      <%= f.input :music%>
+      <%=# f.input :poster_end%>
+      <%= f.input :poster_background %>
+      <%#= f.input :music%>
       <%= f.input :movies_type, :as=>:select, :collection => ["YouTube", "RTMP"] %>
       <div id="questions">
       <%= f.simple_fields_for :questions, @question do |q| %>

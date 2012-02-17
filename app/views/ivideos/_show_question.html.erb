@@ -1,5 +1,4 @@
-<div class="question">
-  <span class="number">Pytanie</span>
+<div class="question" style="background-image:url(<%= @video.background.url %>)">
   <h2><%= show_question.text %></h2>
   <ul id="answer_links">
     <li><%= link_to show_question.answer_1, "#", "data-video-id"=> show_question.video1 %></li>
@@ -12,6 +11,3 @@
     <li><%= link_to show_question.answer_8, "#", "data-video-id"=> show_question.video8 if show_question.answer_8.present?  %></li>
   </ul>
 </div>
-
-
-
