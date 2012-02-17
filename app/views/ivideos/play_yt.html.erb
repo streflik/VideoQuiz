@@ -1,9 +1,9 @@
 <!-- -------------------------------------------------------------------- poster -->
 
 <div class="pane" id="poster">
-  <%= image_tag @ivideo.poster.url || "vitalia/start.png" %>
+  <%= image_tag @ivideo.poster.url %>
   <div class="buttons">
-    <a class="start" href="#"><%= image_tag "vitalia/button_start.png" %></a>
+    <a class="start" href="#">Start</a>
   </div>
 </div>
 
@@ -15,7 +15,7 @@
 
 <!-- -------------------------------------------------------------------- video -->
 
-<div class="pane" id="video"  <%= "style='display:block'" if false %>>
+<div class="pane" id="video" <%= "style='display:block'" if false %>>
 
   <div class="player">
     <div id="ytapiplayer">
@@ -23,13 +23,7 @@
     </div>
   </div>
 
-  <div id="buyNow"></div>
-
-  <div class="buttons buttons_menu">
-    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
-    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vistula.edu.pl"><%= image_tag "vitalia/button_fb.png" %></a>
-    <a class="offer_for_you" target="_blank" href="htpp://vistula.edu.pl"><%= image_tag "vitalia/button_offer.png" %></a>
-  </div>
+  <%= render :partial => "buttons" %>
 
 </div>
 
@@ -37,13 +31,9 @@
 
 <div class="pane" id="finish">
 
-  <%= image_tag @ivideo.poster.url || "vitalia/start.png"  %>
+  <%= image_tag @ivideo.poster.url %>
 
-  <div class="buttons buttons_menu">
-    <a class="once_again" href="#"><%= image_tag "vitalia/button_again.png" %></a>
-    <a class="fb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vistula.edu.pl"><%= image_tag "vitalia/button_fb.png" %></a>
-    <a class="offer_for_you" target="_blank" href="htpp://vistula.edu.pl"><%= image_tag "vitalia/button_offer.png" %></a>
-  </div>
+  <%= render :partial => "buttons" %>
 
 </div>
 
