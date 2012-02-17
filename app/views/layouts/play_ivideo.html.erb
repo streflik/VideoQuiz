@@ -6,6 +6,9 @@
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" %>
   <style>
     <%= @ivideo.custom_css%>
+    #questions {
+     background-image:url(<%= @ivideo.background.url %>)
+    }
   </style>
 </head>
 <body>
