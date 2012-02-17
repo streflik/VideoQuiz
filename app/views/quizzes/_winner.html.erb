@@ -9,11 +9,11 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
   <a class="btn" target="_parent" href="http://www.cyfrowaszkola.pl/Account/Register?act=1">Odbierz Nagrodę TERAZ!</a>
 <% else %>
 
-<%= simple_form_for [@quiz, Win.new], :remote=>true do |f| %>
+<%= simple_form_for [@quiz, Win.new], :remote => true do |f| %>
     <%= f.error_notification %>
 
       <%= f.input :email, :label => false, :input_html => {:placeholder => "Wpisz swój email" } %>
-      <%= f.button :submit, "Wyślij Kupon TERAZ!", :class=>"submit" %>
+      <%= f.button :submit, "Wyślij Kupon TERAZ!", :class=>"submit"%>
 
 <% end %>
 
@@ -35,7 +35,8 @@ Aktywna do <strong><%= l(@quiz.reward_exp, :format => :long) %></strong></p>
 <script type="text/javascript">
   $("#win_email").focusin(function(){$(this).attr("placeholder","");});
   $("#new_win").live("submit", function(){
-    $.post("/quizzes/<%=@quiz.id%>/wins",$("#new_win").serialize());
+   $(this).find("input:submit").val("Wysyłanie...").attr("disabled",true);
+   $.post("/quizzes/<%=@quiz.id%>/wins",$("#new_win").serialize());
    return false;
   })
 </script>
