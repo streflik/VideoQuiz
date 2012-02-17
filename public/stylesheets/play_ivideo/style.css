@@ -48,7 +48,7 @@ position: relative;
 
 .pane img {
 cursor:pointer
-]
+}
 
 #video.pane, #finish.pane, .question, .buttons {
 display:none;
