@@ -10,7 +10,7 @@
 <!-- -------------------------------------------------------------------- pytania -->
 
 <div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file? %>>
-  <%= render :partial => "show_question", :collection => @ivideo.questions %>
+  <%= render :partial => "show_question", :collection => @ivideo.questions.order("position ASC, id ASC")  %>
 </div>
 
 <!-- -------------------------------------------------------------------- video -->
@@ -67,10 +67,10 @@
     function getOfferForYou(){
          list = $.cookie("pll_ivgvq").split(";").slice(1);
        if(list.indexOf("<%= @ivideo.questions[0].video1%>") >= 0 && list.indexOf("<%= @ivideo.questions[1].video2%>") >= 0 &&
-        (list.indexOf("<%= @ivideo.questions[2].video1%>") >= 0 || list.indexOf("<%= @ivideo.questions[2].video3%>") >= 0) && list.indexOf("<%= @ivideo.questions[3].video1%>") >= 0)
+        (list.indexOf("<%= @ivideo.questions[2].video1%>") >= 0 || list.indexOf("<%= @ivideo.questions[2].video3%>") >= 0) && list.indexOf("<%= @ivideo.questions[2].video1%>") >= 0)
        {
          link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/fitness";
-       } else if (list.indexOf("<%= @ivideo.questions[2].video2%>") > 0 && list.indexOf("<%= @ivideo.questions[3].video2%>") > 0) {
+       } else if (list.indexOf("<%= @ivideo.questions[2].video2%>") > 0 && list.indexOf("<%= @ivideo.questions[2].video2%>") > 0) {
          link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/diet";
        }else {
          link = "http://vitalia.pl/index.php/mid/67/fid/1439/tab/plusprogram";

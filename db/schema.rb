@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125204553) do
+ActiveRecord::Schema.define(:version => 20120222112910) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120125204553) do
     t.string   "video7"
     t.string   "answer_8"
     t.string   "video8"
+    t.integer  "position"
   end
 
   create_table "quizzes", :force => true do |t|
@@ -79,6 +81,10 @@ ActiveRecord::Schema.define(:version => 20120125204553) do
     t.string   "music_content_type"
     t.integer  "music_file_size"
     t.datetime "music_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "users", :force => true do |t|

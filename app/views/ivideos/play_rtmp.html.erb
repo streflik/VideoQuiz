@@ -3,7 +3,7 @@
 <!-- -------------------------------------------------------------------- pytania -->
 
 <div class="pane" id="questions" <%= "style='display:none'" if @ivideo.welcome_movie || @ivideo.poster.file? %>>
-  <%= render :partial => "show_question", :collection => @ivideo.questions %>
+  <%= render :partial => "show_question", :collection => @ivideo.questions.order("position ASC")  %>
 </div>
 
 <!-- -------------------------------------------------------------------- video -->

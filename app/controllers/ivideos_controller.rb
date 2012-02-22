@@ -10,7 +10,7 @@ class IvideosController < ApplicationController
 
   def new
     @ivideo = Ivideo.new
-    @question = @ivideo.questions.build
+    @ivideo.questions.build
   end
 
   def create

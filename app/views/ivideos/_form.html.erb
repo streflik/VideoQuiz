@@ -26,8 +26,10 @@
       <%#= f.input :music%>
       <%= f.input :movies_type, :as=>:select, :collection => ["YouTube", "RTMP"] %>
       <div id="questions">
-      <%= f.simple_fields_for :questions, @question do |q| %>
+      <%= f.simple_fields_for :questions, @ivideo.questions.order("position ASC") do |q| %>
           <div class="question">
+            <%= q.input :position %>
+            <%= q.input :id, :as => :hidden %>
           <%= q.input :text %>
           <%= q.input :answer_1 %> <%= q.input :video1%>
           <%= q.input :answer_2 %> <%= q.input :video2%>
